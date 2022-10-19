@@ -14,14 +14,16 @@ window.addEventListener('load', function () {
 			default : "arcade",
 			arcade: {
 				gravity : { y: 650  },
-				debug : true
+				debug : true,
+				//collideWorldBounds: true
 			}
 		}
 	});
 	
+	game.scene.add("Boot", Boot, true);
 	game.scene.add("Preload", Preload);
 	game.scene.add("Level", Level);
-	game.scene.add("Boot", Boot, true);
+	game.scene.add("SecondStage", SecondStage);
 });
 
 class Boot extends Phaser.Scene {
