@@ -88,14 +88,20 @@ class Level extends Phaser.Scene {
 		// ancrage de la caméra sur le joueur
 		this.cameras.main.startFollow(this.player); 
 
+		this.cameras.main.once('camerafadeoutcomplete', function (camera) {
+			camera.fadeIn(450, 255);}, this);
+
 		this.lescollision(); 
 	}
 
 	update(){
 		
 		if(this.player.x < 0+8){
+			//this.cameras.main.fadeOut(450, 255);
 			this.scene.start("SecondStage");
 		}
+
+        //this.cameras.main.fadeOut(450, 255);
 
 	}
 	

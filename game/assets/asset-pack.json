@@ -64,6 +64,11 @@
                 "key": "animationsDuNoir"
             },
             {
+                "url": "assets/Background.png",
+                "type": "image",
+                "key": "Background"
+            },
+            {
                 "url": "assets/carte.json",
                 "type": "tilemapTiledJSON",
                 "key": "carte"
@@ -74,9 +79,19 @@
                 "type": "image"
             },
             {
+                "url": "assets/logo.png",
+                "type": "image",
+                "key": "logo"
+            },
+            {
                 "url": "assets/Nature_environment_01.png",
                 "type": "image",
                 "key": "Nature_environment_01"
+            },
+            {
+                "url": "assets/Option_.png",
+                "type": "image",
+                "key": "Option_"
             },
             {
                 "url": [
@@ -85,6 +100,11 @@
                 ],
                 "type": "scripts",
                 "key": "Physics"
+            },
+            {
+                "url": "assets/Start.png",
+                "type": "image",
+                "key": "Start"
             },
             {
                 "url": "assets/tile32.png",
