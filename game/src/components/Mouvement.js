@@ -33,6 +33,9 @@ class Mouvement {
 	/** @type {boolean} */
 	playable = true;
 
+    isDashing = false;
+    hasDashed = false;
+
     updateMouvement()
     {
         const vel = 200;
@@ -42,7 +45,27 @@ class Mouvement {
         const body = player.body;
 
         /**@type {Phaser.Physics.Arcade.Body}*/
-
+        if (this.cursors.space.isDown){
+            body.velocity.y = -200;
+        }
+        if (this.cursors.up.isDown){
+            //jump en fonction de l'appuie
+            if(this.timer === 0  && body.onFloor()){
+                body.velocity.y = -300;
+                this.timer += 1;
+            }
+            else if(this.timer > 0 && this.timer < 3){
+                this.timer += 1;
+            }
+            else if(this.timer > 0 && this.timer < 15){
+                body.velocity.y = -300 + (this.timer * 2);
+                this.timer += 1;
+            }
+            
+        }
+        else{
+            this.timer = 0;
+        }
         if (this.cursors.left.isDown)
         {
             if(body.velocity.x > -vel){
@@ -61,46 +84,24 @@ class Mouvement {
             player.flipX = false
             player.play('walk', true)
         }
-        else if (this.cursors.up.isDown)
-        {
-            //jump en fonction de l'appuie
-            if(this.timer === 0  && body.onFloor()){
-                body.velocity.y = -250;
-                this.timer += 1;
-            }
-            else if(this.timer > 0 && this.timer < 3){
-                this.timer += 1;
-            }
-            else if(this.timer > 2 && this.timer < 15){
-                body.velocity.y = -250 + (this.timer * 2);
-                this.timer += 1;
-            }
-
-            player.flipX = true
-            player.play('walk', true)
-        }
-        else if (this.cursors.down.isDown)
-        {
-            body.setVelocity(0, vel)
-            player.flipX = false
-            player.play('walk', true)
-        }
         else
         {
             //arrêt progressif du saut
-            if(body.velocity.y < -20){
+            if(body.velocity.y < -20 && !this.cursors.up.isDown){
                 body.velocity.y = body.velocity.y/1.2;
             }
-            else if(body.velocity.y > -21 && body.velocity.y < 0){
+            else if(body.velocity.y >= -21 && body.velocity.y < 0 && !this.cursors.up.isDown){
                 body.velocity.y = 0
             }
-            //remise du timer à 0
-            this.timer = 0;
-            if(Math.sign(body.velocity.x) === 1 && body.velocity.x > 0){
+            //arrêt progressif lors d'un déplacement
+            if(Math.sign(body.velocity.x) === 1 && body.velocity.x > 29){
                 body.velocity.x -= 30;
             }
-            else if(Math.sign(body.velocity.x) === -1 && body.velocity.x < 0){
+            else if(Math.sign(body.velocity.x) === -1 && body.velocity.x < -29){
                 body.velocity.x += 30;
+            }
+            else if(body.velocity.x < 30 && body.velocity.x > -30 && body.velocity.x != 0){
+                body.velocity.x = 0;
             }
 
             player.play("idle", true)
