@@ -1,0 +1,103 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/1 idle.png",
+                "frameConfig": {
+                    "frameWidth": 16,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "1 idle"
+            },
+            {
+                "url": "assets/1 walk.png",
+                "frameConfig": {
+                    "frameWidth": 16,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "1 walk"
+            },
+            {
+                "url": "assets/10 idle.png",
+                "frameConfig": {
+                    "frameWidth": 16,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "10 idle"
+            },
+            {
+                "url": "assets/10 walk.png",
+                "frameConfig": {
+                    "frameWidth": 16,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "10 walk"
+            },
+            {
+                "url": "assets/animations-perso.json",
+                "type": "animation",
+                "key": "animations-perso"
+            },
+            {
+                "url": "assets/animationsDuNoir.json",
+                "type": "animation",
+                "key": "animationsDuNoir"
+            },
+            {
+                "url": "assets/carte.json",
+                "type": "tilemapTiledJSON",
+                "key": "carte"
+            },
+            {
+                "url": "assets/dino.png",
+                "key": "dino",
+                "type": "image"
+            },
+            {
+                "url": "assets/Nature_environment_01.png",
+                "type": "image",
+                "key": "Nature_environment_01"
+            },
+            {
+                "url": [
+                    "src/components/Physics.js",
+                    "src/components/Mouvement.js"
+                ],
+                "type": "scripts",
+                "key": "Physics"
+            },
+            {
+                "url": "assets/tile32.png",
+                "type": "image",
+                "key": "tile32"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false
+    }
+}
