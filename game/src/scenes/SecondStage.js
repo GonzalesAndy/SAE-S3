@@ -30,12 +30,15 @@ class SecondStage extends Phaser.Scene {
 
 		this.editorCreate();
 
+        this.cameras.main.setViewport(0, 0,3200, 1640);
+		
+
 		this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start("SecondStage"));
 	}
 
-	/* END-USER-CODE */
+	update(){
+		//this.cameras.main.fadeOut(450, 255);
+	}
 }
 
-/* END OF COMPILED CODE */
 
-// You can write more code here
