@@ -51,6 +51,15 @@ class Level extends Phaser.Scene {
 		const ennemyMouvement = new Mouvement(ennemy);
 		ennemyMouvement.playable = false;
 
+		this.cameras.main.setBounds(0, 0, 3200, 1640);
+		// ancrage de la caméra sur le joueur
+		this.cameras.main.startFollow(player); 
+
+		//  Listen for this signal to reset once the fade is over
+		//this.scene.onFadeComplete.add(resetFade, this);
+
+		//this.input.onDown.add(fade, this);
+
 		this.player = player;
 		this.carte = carte;
 		this.ennemy = ennemy;
@@ -80,13 +89,12 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 		this.player.play("idle");
 		this.ennemy.play("idleN");
-		//this.ennemy.play("walkN");
+	
 
 		this.physics.world.setBounds(0, 0, 3200, 1640);
 		//  ajout du champs de la caméra de taille identique à celle du monde
-		this.cameras.main.setBounds(0, 0, 3200, 1640);
-		// ancrage de la caméra sur le joueur
-		this.cameras.main.startFollow(this.player); 
+
+
 
 		this.lescollision(); 
 	}
@@ -94,10 +102,28 @@ class Level extends Phaser.Scene {
 	update(){
 		
 		if(this.player.x < 0+8){
+			//this.cameras.main.fadeOut(450, 255);
+			console.log(this.player.x, this.player.y);
 			this.scene.start("SecondStage");
 		}
 
+        //this.cameras.main.fadeOut(450, 255);
+
 	}
+
+	fade() {
+
+		//  You can set your own fade color and duration
+		this.camera.fade(0x000000, 4000);
+
+	}
+
+	resetFade() {
+
+		this.camera.resetFX();
+
+	}
+
 	
 }
 

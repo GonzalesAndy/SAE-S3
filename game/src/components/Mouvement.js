@@ -13,9 +13,9 @@ class Mouvement {
 		gameObject["__Mouvement"] = this;
 
 		/* START-USER-CTR-CODE */
-		const scene = this.gameObject.scene
+		const scene = this.gameObject.scene;
 
-		this.cursors = scene.input.keyboard.createCursorKeys()
+		this.cursors = scene.input.keyboard.createCursorKeys();
 		this.playable = true;
 
 		scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)

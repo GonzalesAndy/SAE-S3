@@ -38,7 +38,6 @@ class Physics {
 
 	start()
 	{
-
 		this.scene.physics.add.existing(this.gameObject, this.static)
 	}
 

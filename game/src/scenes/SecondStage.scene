@@ -8,18 +8,52 @@
     },
     "displayList": [
         {
-            "type": "Image",
-            "id": "0b3cf165-dff6-4b0a-8bda-9ddbf22e99e4",
-            "label": "dino",
+            "type": "TilemapLayer",
+            "id": "9e562ffd-93d7-4a74-a2a4-c5f9381b0012",
+            "label": "foreground_1",
+            "scope": "CLASS",
             "components": [],
+            "x": -700,
+            "y": -48,
+            "tilemapId": "a2e7e02b-a711-4f44-8904-949db0f58152",
+            "layerName": "Foreground",
+            "tilesets": [
+                "Nature_environment_01"
+            ]
+        },
+        {
+            "type": "Sprite",
+            "id": "1563b45f-0a4b-4bb0-bce1-e10d82c318ad",
+            "label": "player",
+            "scope": "CLASS",
+            "components": [
+                "Physics",
+                "Mouvement"
+            ],
             "texture": {
-                "key": "dino"
+                "key": "1 idle",
+                "frame": 0
             },
-            "x": 346,
-            "y": 225
+            "x": 778,
+            "y": 312,
+            "scaleX": 3,
+            "scaleY": 3
         }
     ],
-    "plainObjects": [],
+    "plainObjects": [
+        {
+            "id": "a2e7e02b-a711-4f44-8904-949db0f58152",
+            "type": "Tilemap",
+            "label": "carte",
+            "key": "carte",
+            "tilesets": [
+                {
+                    "name": "Nature_environment_01",
+                    "imageKey": "Nature_environment_01"
+                }
+            ]
+        }
+    ],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
