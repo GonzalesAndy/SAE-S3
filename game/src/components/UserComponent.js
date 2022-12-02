@@ -46,18 +46,18 @@ class UserComponent {
     scene;
 
     awake() {
-        // override this
+        
     }
 
     start() {
-        // override this
+        
     }
 
     update() {
-        // override this
+        
     }
 
     destroy() {
-        // override this
+        
     }
 }

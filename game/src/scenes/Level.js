@@ -1,111 +1,185 @@
-
-// You can write more code here
-
-/* START OF COMPILED CODE */
-
 class Level extends Phaser.Scene {
-
-	constructor() {
-		super("Level");
-
-		/* START-USER-CTR-CODE */
-		// Write your code here.
-		/* END-USER-CTR-CODE */
+	//nameMap: NameMap
+	init(nameMap) {
+		this.nameMap = nameMap;
 	}
 
 	/** @returns {void} */
 	editorCreate() {
 
-		// carte
-		const carte = this.add.tilemap("carte");
-		carte.addTilesetImage("Nature_environment_01", "Nature_environment_01");
+		// Création carte/jeu de tuile
+		const carte = this.make.tilemap({key : this.nameMap});
+		const tileSet1 = carte.addTilesetImage("JeuTuile","JeuTuile");
 
-		// sky_1
-		carte.createLayer("sky", ["Nature_environment_01"], 0, 0);
+		//Création "Layer"
+		const fond = carte.createLayer("Fond", [tileSet1]);
+		const platforme = carte.createLayer("Platforme", [tileSet1]);
+		const demiPlatforme = carte.createLayer("DemiPlatforme", [tileSet1]);
 
-		// background_near_1
-		carte.createLayer("background_near", ["Nature_environment_01"], 0, 0);
-
-		// foreground_1
-		const foreground_1 = carte.createLayer("Foreground", ["Nature_environment_01"], 0, 0);
-
-		// background_far_1
-		carte.createLayer("background_far", ["Nature_environment_01"], 0, 0);
+		//Création collision layer
+		fond.setCollisionByProperty({ estSolide: true });
+		platforme.setCollisionByProperty({ estSolide: true });
+		demiPlatforme.setCollisionByProperty({ estSolide: true });
 
 		// player
-		const player = this.add.sprite(419, 254, "1 idle", 0);
+		const player = this.physics.add.sprite(32, 455, "1 idle", 0);
 		player.scaleX = 3;
 		player.scaleY = 3;
 
+		player.setCollideWorldBounds(true);
+
 		// ennemy
-		const ennemy = this.add.sprite(366, 400, "10 idle", 0);
+		const ennemy = this.add.sprite(32, 265, "10 idle", 0);
 		ennemy.scaleX = 3;
 		ennemy.scaleY = 3;
 
 		// player (components)
 		new Physics(player);
-		new Mouvement(player);
+		const mouvement = new Mouvement(player);
 
 		// ennemy (components)
 		new Physics(ennemy);
 		const ennemyMouvement = new Mouvement(ennemy);
 		ennemyMouvement.playable = false;
 
+	
+		const question = new Question(this);
+
+
+
+		//ajout collision layer - joueur/ennemy
+		this.physics.add.collider(player, [fond,platforme,demiPlatforme]);
+		this.physics.add.collider(ennemy, [fond,platforme,demiPlatforme]);
+
+		//ajout collision joueur - ennemy
+		this.physics.add.collider(ennemy, player);
+
+		//limité la caméra
+		this.cameras.main.setBounds(0, 0, 1200, 672);
+
+		// ancrage de la caméra sur le joueur
+		this.cameras.main.startFollow(player); 
+
+		//flash quand on entre dans le stage
+		this.cameras.main.flash();
+
+
+		////			OPTION			////
+
+
+		//quand on appuie sur entrer, on lance les options
+		this.input.keyboard.on('keydown-ENTER', this.runOption, this);
+
+		// feuilleOption
+		const option = this.add.image(500, 294, "feuilleOption").setScrollFactor(0);
+		option.scaleX = 0.8;
+		option.scaleY = 0.8;
+
+		// quitter
+		const quitter = this.add.image(710, 100, "quitter").setScrollFactor(0);
+		quitter.scaleX = 0.07;
+		quitter.scaleY = 0.07;
+
+		//annimation boutons
+		new PushOnClick(quitter);
+
+		option.visible = false;
+		quitter.visible = false;
+
+		option.setImmovable = true;
+
+		////			/////			////
+
+
+
+		const move = true
+		this.question = question;
 		this.player = player;
+		this.move = move;
+		this.mouvement = mouvement;
 		this.carte = carte;
 		this.ennemy = ennemy;
-		this.foreground_1 = foreground_1;
+		this.fond = fond;
+		this.platforme = platforme;
+		this.demiPlatforme = demiPlatforme;
+		this.quitter = quitter;
+		this.option = option;
 		this.events.emit("scene-awake");
 	}
 
+	/** @type {Phaser.Tilemaps.TilemapLayer} */
+	fond;
+	/** @type {Phaser.Tilemaps.TilemapLayer} */
+	platforme;
+	/** @type {Phaser.Tilemaps.TilemapLayer} */
+	demiPlatforme;
 	/** @type {Phaser.GameObjects.Sprite} */
 	player;
+	/** @type {Phaser.GameObjects.Sprite} */
+	quitter;
+	/** @type {Phaser.GameObjects.Sprite} */
+	option;
 	/** @type {Phaser.Tilemaps.Tilemap} */
 	carte;
 
-	/* START-USER-CODE */
-	lescollision(){
+	runOption(){
+		
+		this.move = false;
 
-		this.physics.add.collider(this.player, this.foreground_1);
-		//this.player.add.collider.WorldBounds(true);
-		this.physics.add.collider(this.ennemy, this.foreground_1);
-		this.physics.add.collider(this.ennemy, this.player);
-		this.foreground_1.setCollision([74,93,94,99,117,120,140,141,142,144]);
-	
+
+		this.quitter.visible = true;
+		this.option.visible = true;
+
+		
+		this.quitter.once('pointerup', function(event) { 
+
+			this.quitter.visible = false;
+			this.option.visible = false;
+
+			this.move = true;
+		}, this);
 
 	}
 
 	create() {
 
 		this.editorCreate();
+	
+		//perso joue les animations
 		this.player.play("idle");
 		this.ennemy.play("idleN");
-		//this.ennemy.play("walkN");
 
-		this.physics.world.setBounds(0, 0, 3200, 1640);
-		//  ajout du champs de la caméra de taille identique à celle du monde
-		this.cameras.main.setBounds(0, 0, 3200, 1640);
-		// ancrage de la caméra sur le joueur
-		this.cameras.main.startFollow(this.player); 
-
-		this.cameras.main.once('camerafadeoutcomplete', function (camera) {
-			camera.fadeIn(450, 255);}, this);
-
-		this.lescollision(); 
+		//Limite du monde
+		this.physics.world.setBounds(0, 0, 1200, 672);
 	}
 
 	update(){
-		
-		if(this.player.x < 0+8){
-			//this.cameras.main.fadeOut(450, 255);
-			this.scene.start("SecondStage");
+
+
+		//this.question.runQuestion();
+		//this.runQuestion();
+
+
+		if (!this.move){
+			this.mouvement.stop();
 		}
 
-        //this.cameras.main.fadeOut(450, 255);
+		//quand on clique, on passe a autre chose
+		this.player.once('pointerup',this.runOption, this);
 
+		//Si le joueur arrivé à la porte, lancement stage suivant
+		if(this.player.x > 1175){
+			if(this.player.y <= 150 && this.player.y >0){
+
+				//flash quand on sors du stage
+				this.cameras.main.flash();
+
+				this.player.x = 1160;
+				this.move = false;
+				//lancer la question
+				this.question.runQuestion();
+				
+			}
+		}
 	}
-	
 }
-
-
-// You can write more code here
