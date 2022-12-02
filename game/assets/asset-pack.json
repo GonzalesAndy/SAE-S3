@@ -1,6 +1,8 @@
 {
     "section1": {
-        "files": [
+        "files": [ 
+            
+
             {
                 "url": "assets/1 idle.png",
                 "frameConfig": {
@@ -53,6 +55,7 @@
                 "type": "spritesheet",
                 "key": "10 walk"
             },
+
             {
                 "url": "assets/animations-perso.json",
                 "type": "animation",
@@ -63,35 +66,58 @@
                 "type": "animation",
                 "key": "animationsDuNoir"
             },
+
+
+            
             {
-                "url": "assets/Background.png",
+                "url": "assets/menu/background.png",
                 "type": "image",
-                "key": "Background"
+                "key": "background"
             },
             {
-                "url": "assets/carte.json",
+                "url": "assets/map/map1.json",
                 "type": "tilemapTiledJSON",
-                "key": "carte"
+                "key": "map1"
             },
             {
-                "url": "assets/dino.png",
-                "key": "dino",
-                "type": "image"
+                "url": "assets/map/map2.json",
+                "type": "tilemapTiledJSON",
+                "key": "map2"
             },
             {
-                "url": "assets/logo.png",
+                "url": "assets/map/map3.json",
+                "type": "tilemapTiledJSON",
+                "key": "map3"
+            },
+            {
+                "url": "assets/map/map4.json",
+                "type": "tilemapTiledJSON",
+                "key": "map4"
+            },
+            {
+                "url": "assets/menu/logo.png",
                 "type": "image",
                 "key": "logo"
             },
             {
-                "url": "assets/Nature_environment_01.png",
+                "url": "assets/map/JeuTuile.png",
                 "type": "image",
-                "key": "Nature_environment_01"
+                "key": "JeuTuile"
             },
             {
-                "url": "assets/Option_.png",
+                "url": "assets/no_son.png",
                 "type": "image",
-                "key": "Option_"
+                "key": "no_son"
+            },
+            {
+                "url": "assets/menu/option/feuilleOption.png",
+                "type": "image",
+                "key": "feuilleOption"
+            },
+            {
+                "url": "assets/menu/engrenage.png",
+                "type": "image",
+                "key": "engrenage"
             },
             {
                 "url": [
@@ -102,14 +128,34 @@
                 "key": "Physics"
             },
             {
-                "url": "assets/Start.png",
+                "url": "assets/menu/option/quitter.png",
                 "type": "image",
-                "key": "Start"
+                "key": "quitter"
             },
             {
-                "url": "assets/tile32.png",
+                "url": "assets/son.png",
                 "type": "image",
-                "key": "tile32"
+                "key": "son"
+            },
+            {
+                "url": "assets/menu/start.png",
+                "type": "image",
+                "key": "start"
+            },
+            {
+                "url": "assets/question/feuilleQuestion.png",
+                "type": "image",
+                "key": "feuille"
+            },
+            {
+                "url": "assets/question/qcm.png",
+                "type": "image",
+                "key": "qcm"
+            },
+            {
+                "url": "assets/question/valider.png",
+                "type": "image",
+                "key": "valider"
             }
         ]
     },

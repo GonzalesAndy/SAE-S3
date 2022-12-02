@@ -10,10 +10,6 @@ class PushOnClick extends UserComponent {
 
 		this.gameObject = gameObject;
 		gameObject["__PushOnClick"] = this;
-
-		/* START-USER-CTR-CODE */
-		// Write your code here.
-		/* END-USER-CTR-CODE */
 	}
 
 	/** @returns {PushOnClick} */
@@ -24,7 +20,6 @@ class PushOnClick extends UserComponent {
 	/** @type {Phaser.GameObjects.Image} */
 	gameObject;
 
-	/* START-USER-CODE */
 
 	awake() {
 
@@ -41,10 +36,4 @@ class PushOnClick extends UserComponent {
 
 		});
 	}
-
-	/* END-USER-CODE */
 }
-
-/* END OF COMPILED CODE */
-
-// You can write more code here

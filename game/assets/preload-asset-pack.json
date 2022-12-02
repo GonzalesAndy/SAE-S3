@@ -1,11 +1,6 @@
 {
     "section1": {
         "files": [
-            {
-                "url": "assets/guapen.png",
-                "type": "image",
-                "key": "guapen"
-            }
         ]
     },
     "meta": {

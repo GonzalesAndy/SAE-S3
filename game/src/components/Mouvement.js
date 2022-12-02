@@ -1,18 +1,9 @@
-
-// You can write more code here
-
-/* START OF COMPILED CODE */
-
-/* START-USER-IMPORTS */
-/* END-USER-IMPORTS */
-
 class Mouvement {
 
 	constructor(gameObject) {
 		this.gameObject = gameObject;
 		gameObject["__Mouvement"] = this;
 
-		/* START-USER-CTR-CODE */
 		const scene = this.gameObject.scene
 
         this.scene = scene;
@@ -27,8 +18,6 @@ class Mouvement {
 		this.playable = true;
 
 		scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
-
-		/* END-USER-CTR-CODE */
 	}
 
 	/** @returns {Mouvement} */
@@ -60,13 +49,13 @@ class Mouvement {
 
         const body = player.body;
 
+/*
         if(body.onFloor() && this.hasDashed === true)
-            this.hasDashed = false;
-
+            this.hasDashed = false;*/
 
         /**@type {Phaser.Physics.Arcade.Body}*/
         if (this.cursors.space.isDown)
-            body.velocity.y = -2000;
+            body.velocity.y = -200;
 
         if (this.cursors.up.isDown){
             //jump en fonction de l'appuie
@@ -209,19 +198,21 @@ class Mouvement {
 		player.play('idleN', true);
 	}
 
-	/* START-USER-CODE */
+    stop(){
+        this.gameObject.body.velocity.x = 0;
+        this.gameObject.body.velocity.y = 0;
+    }
+
 	update()
 	{
+
+        //EN COURS pour lancer le menu option dans le jeu 
+        //this.scene.input.keyboard.on('keyup-' + 'W', this.runOption);
+
 		if (this.playable){
 			this.updateMouvement();
 		}else{
 			this.update2Mouvement();
 		}
 	}
-
-	/* END-USER-CODE */
 }
-
-/* END OF COMPILED CODE */
-
-// You can write more code here
