@@ -18,8 +18,6 @@ class Mouvement {
     jumpBegin = 0;
     dashVel = 600;
     dashTime = 0;
-    xKeys = 0;
-    yKeys = 0;
 
 	constructor(gameObject) {
 		this.gameObject = gameObject;
@@ -57,14 +55,16 @@ class Mouvement {
     }
 
     updateVelocity() {
-        if(this.cursors.m.isDown){
-            this.vel.y = -500
-        }
+        this.gameStop = false;
         if(!this.isDashing){
             // x movement
             this.gameObject.body.velocity.x += (this.cursors.right.isDown-this.cursors.left.isDown)*this.X_ACCELERATION;
             this.gameObject.body.velocity.x = Phaser.Math.Clamp(this.gameObject.body.velocity.x, -this.MAX_X_SPEED, this.MAX_X_SPEED);
             this.gameObject.body.velocity.x = Phaser.Math.Linear(this.gameObject.body.velocity.x, 0, this.X_INERTIE);
+
+            if(this.cursors.m.isDown){
+                this.gameObject.body.velocity.y = -500
+            }
 
             // y movement
             if (this.cursors.spacebar.isDown){
@@ -77,7 +77,6 @@ class Mouvement {
                     this.gameObject.body.velocity.y = -300;
                 }
 			    else if(this.getNow() - this.jumpBegin >= 100 && this.getNow() - this.jumpBegin < 325){
-                    console.log("prout")
 				    this.gameObject.body.velocity.y = -400 + Math.floor((this.getNow() - this.jumpBegin)/1.7);
 			    }
 		    }
@@ -129,11 +128,10 @@ class Mouvement {
 	{
         // movements playable character
 		if (this.playable){
-        this.updateVelocity();
-        // this.updateMovement();
+            this.updateVelocity();
 		}
         // movements npc
-        else{
+        else if(!this.playable){
 			this.update2Mouvement();
 		}
 	}
