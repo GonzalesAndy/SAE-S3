@@ -56,6 +56,7 @@ class Question{
 
         this.scene = scene;
 
+
         this.valider = valider;
 
         this.groupeBoutons = groupeBoutons;
@@ -126,7 +127,8 @@ class Question{
 		
 			}
 			this.valider.once('pointerup', function(event) { 
-                this.scene.start("Level","map2");
+                //this.scene.scene.start("Level","map2");
+                this.scene.scene.start("SecondStage");
 			}, this);
 		}, this);
 

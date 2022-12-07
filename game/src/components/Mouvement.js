@@ -115,6 +115,11 @@ class Mouvement {
         this.gameObject.body.velocity.x *= this.dashVel;
         this.gameObject.body.velocity.y *= this.dashVel;
     }
+    // // // A changer // // //
+    stop(){
+        this.gameObject.body.velocity.x = 0;
+        this.gameObject.body.velocity.y = 0;
+    }
 
     // npc
 	update2Mouvement(){
