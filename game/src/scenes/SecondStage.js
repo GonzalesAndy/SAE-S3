@@ -7,6 +7,11 @@ class SecondStage extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
+		
+		this.scene.switch('level',"map1");
+		this.scene.switch('Question');
+
+		/*
 		// Création carte/jeu de tuile
 		const carte = this.make.tilemap({key : "map2"});
 		const tileSet1 = carte.addTilesetImage("JeuTuile","JeuTuile");
@@ -77,34 +82,37 @@ class SecondStage extends Phaser.Scene {
 		this.quitter = quitter;
 
 		this.events.emit("scene-awake");
+		*/
 	}
 
 	/** @type {Phaser.Tilemaps.TilemapLayer} */
-	fond;
+	//fond;
 	/** @type {Phaser.Tilemaps.TilemapLayer} */
-	platforme;
+	//platforme;
 	/** @type {Phaser.Tilemaps.TilemapLayer} */
-	demiPlatforme;
+	//demiPlatforme;
 	/** @type {Phaser.GameObjects.Sprite} */
-	player;
+	//player;
 	/** @type {Phaser.Tilemaps.Tilemap} */
-	carte;
+	//carte;
 	/** @type {Phaser.GameObjects.Sprite} */
-	option;
+	//option;
 	/** @type {Phaser.GameObjects.Sprite} */
-	quitter;
+	//quitter; 
 
 	create() {
 
 		this.editorCreate();
 
+		/*
 		//perso joue les animations
 		this.player.play("idle");
 
 		//Limite du monde
-		this.physics.world.setBounds(0, 0, 1200, 672);
+		this.physics.world.setBounds(0, 0, 1200, 672);*/
 	}
 
+	/*
 	runOption(){
 
 		this.player.visible = false;
@@ -126,8 +134,9 @@ class SecondStage extends Phaser.Scene {
 		console.log("et voila")
 
 	}
-
+	*/
 	update(){
+		/*
 		//Si le joueur arrivé à la porte, lancement stage suivant
 		if(this.player.x > 1200+8){
 			this.scene.start("Level3");
@@ -136,6 +145,6 @@ class SecondStage extends Phaser.Scene {
 
 		if(this.player.x < 8){
 			this.player.x = this.player.x + 10;
-		}
+		}*/
 	}
 }

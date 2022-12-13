@@ -36,7 +36,6 @@ class Menu extends Phaser.Scene {
 		//annimation boutons
 		new PushOnClick(engrenage);
 
-
 		// feuilleOption
 		const option = this.add.image(500, 294, "feuilleOption");
 		option.scaleX = 0.8;
@@ -59,7 +58,8 @@ class Menu extends Phaser.Scene {
 
 		//quand on appuie sur entrer, on run le jeu
 		this.input.keyboard.on('keydown-ENTER', function(){
-			this.scene.start("Level","map1");
+			this.scene.start('Level',"map1", true);
+			//this.scene.start("SecondStage");
 		}, this);
 
 		this.background = background;

@@ -1,217 +1,154 @@
 class Mouvement {
 
+    // const
+    X_ACCELERATION = 15;
+    X_INERTIE = 0.05;
+    MAX_X_SPEED = 10000;
+
+    GRAVITY_ACCELERATION = 5;
+    MAX_FALL_SPEED = 800;
+    GLIDE_TIMER = 100;  // ms
+
+    // var
+	gameObject;
+	playable = true;
+    isDashing = false;
+    hasDashed = false;
+    jump = false;
+    jumpBegin = 0;
+    dashVel = 600;
+    dashTime = 0;
+
 	constructor(gameObject) {
+
 		this.gameObject = gameObject;
 		gameObject["__Mouvement"] = this;
 
 		const scene = this.gameObject.scene
 
-        this.scene = scene;
+		this.cursors = scene.input.keyboard.addKeys({
+            'left': Phaser.Input.Keyboard.KeyCodes.LEFT, 
+            'right': Phaser.Input.Keyboard.KeyCodes.RIGHT,
+            'up': Phaser.Input.Keyboard.KeyCodes.UP,
+            'down': Phaser.Input.Keyboard.KeyCodes.DOWN,
+            'spacebar': Phaser.Input.Keyboard.KeyCodes.SPACE,
+            'shift': Phaser.Input.Keyboard.KeyCodes.SHIFT,
+            'm':Phaser.Input.Keyboard.KeyCodes.M});
 
-		this.cursors = scene.input.keyboard.createCursorKeys()
-        
-        this.upLeft = scene.input.keyboard.createCombo([this.cursors.up,this.cursors.left]);
-        this.upRight = scene.input.keyboard.createCombo([this.cursors.up,this.cursors.right]);
-        this.downLeft = scene.input.keyboard.createCombo([this.cursors.down,this.cursors.left]);
-        this.downRight = scene.input.keyboard.createCombo([this.cursors.down,this.cursors.right]);
-        
-		this.playable = true;
-
-		scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
+		scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
 	}
 
 	/** @returns {Mouvement} */
-	static getComponent(gameObject){
+	static getComponent(gameObject) {
 		return gameObject["__Mouvement"];
     }
 
-	/** @type {Phaser.GameObjects.Sprite} */
-	gameObject;
-	/** @type {boolean} */
-    scene;
+    isOnFloor() {
+        return this.gameObject.body.onFloor();
+    }
 
-	playable = true;
+    getNow() {
+        return this.gameObject.scene.time.now; // time in milliseconds
+    }
 
-    isDashing = false;
-    hasDashed = false;
-    dashTimer = 60;
+    timeBetween(timer){
+        return this.getNow - timer
+    }
 
-    upLeft;
-    upRight;
-    downLeft;
-    downRight;
+    updateVelocity() {
+        this.gameStop = false;
+        //J'ai mis ce if pour debug, mais ca marche pas sans
+        if (typeof this.gameObject.body !== "undefined"){
+            if(!this.isDashing){
 
-    updateMouvement()
-    {
-        const vel = 250;
+                // x movement
+                this.gameObject.body.velocity.x += (this.cursors.right.isDown-this.cursors.left.isDown)*this.X_ACCELERATION;
+                this.gameObject.body.velocity.x = Phaser.Math.Clamp(this.gameObject.body.velocity.x, -this.MAX_X_SPEED, this.MAX_X_SPEED);
+                this.gameObject.body.velocity.x = Phaser.Math.Linear(this.gameObject.body.velocity.x, 0, this.X_INERTIE);
 
-        const player = this.gameObject;
+                if(this.cursors.m.isDown){
+                    //this.gameObject.play('idle', true);
+                    this.gameObject.body.velocity.y = -500
+                }
 
-        const body = player.body;
+                // y movement
+                if (this.cursors.spacebar.isDown){
 
-/*
-        if(body.onFloor() && this.hasDashed === true)
-            this.hasDashed = false;*/
+                    this.gameObject.play('idle', true);
 
-        /**@type {Phaser.Physics.Arcade.Body}*/
-        if (this.cursors.space.isDown)
-            body.velocity.y = -200;
+                // adaptative jump
+                    if(this.isOnFloor() && this.jump === false){
+                        this.jump = true;
+                        this.jumpBegin = this.getNow()
+                    }
+                    else if(this.getNow() - this.jumpBegin < 100){
+                        this.gameObject.body.velocity.y = -300;
+                    }
+                    else if(this.getNow() - this.jumpBegin >= 100 && this.getNow() - this.jumpBegin < 325){
+                        this.gameObject.body.velocity.y = -400 + Math.floor((this.getNow() - this.jumpBegin)/1.7);
+                    }
+                }
 
-        if (this.cursors.up.isDown){
-            //jump en fonction de l'appuie
-            if(this.timer === 0  && body.onFloor()){
-                body.velocity.y = -400;
-                this.timer += 1;
-            }
-
-            else if(this.timer > 0 && this.timer < 3)
-                this.timer += 1;
-
-            else if(this.timer > 0 && this.timer < 15){
-                body.velocity.y = -400 + (this.timer * 2);
-                this.timer += 1;
+                if(Phaser.Input.Keyboard.JustDown(this.cursors.shift) && this.hasDashed === false){
+                    this.hasDashed = true;
+                    this.isDashing = true;
+                    this.dashTime = this.getNow();
+                    this.dash();
+                }
+                if (this.isOnFloor()){
+                    if(this.hasDashed && !this.isDashing){
+                        this.hasDashed = false;
+                    }
+                    if(!this.cursors.spacebar.isDown){
+                        this.jump = false;
+                    }
+                }
             }
             
+            // end of dash
+            else if(this.getNow() - this.dashTime > 150){
+                this.isDashing = false;
+                this.gameObject.body.setAllowGravity(true);
+                this.gameObject.body.velocity.x /= 2;
+                this.gameObject.body.velocity.y /= 2;
+            }
         }
-        else
-            this.timer = 0;
-        
-        if (this.cursors.left.isDown && this.isDashing === false)
-        {
-            if(body.velocity.x > -vel)
-                body.velocity.x -= 20;
-
-            player.flipX = true
-            player.play('walk', true)
-        }
-        else if (this.cursors.right.isDown && this.isDashing === false)
-        {
-            if(body.velocity.x < vel)
-                body.velocity.x += 20;
-
-            player.flipX = false
-            player.play('walk', true)
-        }
-        if(!body.onFloor())
-        {
-            //arrêt progressif du saut
-            if(body.velocity.y < -20 && !this.cursors.up.isDown)
-                body.velocity.y = body.velocity.y/1.2;
-
-            else if(body.velocity.y >= -21 && body.velocity.y < 0 && !this.cursors.up.isDown)
-                body.velocity.y = 0
-        }
-        //arrêt progressif lors d'un déplacement
-        if(!this.cursors.left.isDown && !this.cursors.right.isDown){
-            if(Math.sign(body.velocity.x) === 1 && body.velocity.x > 29)
-                body.velocity.x -= 10;
-
-            else if(Math.sign(body.velocity.x) === -1 && body.velocity.x < -29)
-                body.velocity.x += 10;
-
-            else if(body.velocity.x < 30 && body.velocity.x > -30 && body.velocity.x != 0)
-                body.velocity.x = 0;
-                
-            player.play("idle", true)
-        }
-        if(this.cursors.shift.isDown && this.hasDashed === false){
-            this.hasDashed = true;
-            this.isDashing = true;
-        }
-        if(this.isDashing === true)
-            this.dash();
     }
 
-    dash()
-    {
-        const vel = 250;
-
-        const player = this.gameObject;
-
-        const body = player.body;
-
-        if (this.dashTimer > 0){
-            player.body.setAllowGravity(false);
-            if (this.cursors.right.isDown){
-                body.velocity.x = vel * 2;
-                body.velocity.y = 0;
-                this.dashTimer -= 1;
-            }
-            else if(this.cursors.left.isDown){
-                body.velocity.x = -vel * 2;
-                body.velocity.y = 0;
-                this.dashTimer -= 1;
-            }
-            else if(this.cursors.up.isDown){
-                body.velocity.x = 0;
-                body.velocity.y = -vel * 2;
-                this.dashTimer -= 1;
-            }
-            else if(this.cursors.down.isDown){
-                body.velocity.x = 0;
-                body.velocity.y = vel * 2;
-                this.dashTimer -= 1;
-            }
-            else if(this.upLeft.matched){
-                body.velocity.x = vel * 2;
-                body.velocity.y = -vel * 2;
-                this.dashTimer -= 1;
-            }
-            else if(this.upRight.matched){
-                body.velocity.x = -vel * 2;
-                body.velocity.y = -vel * 2;
-                this.dashTimer -= 1;
-            }
-            else if(this.downLeft.matched){
-                body.velocity.x = vel * 2;
-                body.velocity.y = vel * 2;
-                this.dashTimer -= 1;
-            }
-            else if(this.downRight.matched){
-                body.velocity.x = -vel * 2;
-                body.velocity.y = vel * 2;
-                this.dashTimer -= 1;
-            }
-            if(!(this.cursors.right.isDown || this.cursors.left.isDown || this.cursors.up.isDown || this.cursors.down.isDown)){
-                if (player.flipX === false){
-                    body.velocity.x = vel * 2;
-                    body.velocity.y = 0;
-                }
-                else{
-                    body.velocity.x = -vel * 2;
-                    body.velocity.y = 0;
-                }
-            }
-        }
-        else{
-            this.isDashing = false;
-            this.dashTimer = 45;
-            player.body.setAllowGravity(true);
-        }  
+    // implementing dash
+    dash() {
+        this.gameObject.body.setAllowGravity(false);
+        this.gameObject.body.velocity.x = this.cursors.right.isDown-this.cursors.left.isDown;
+        this.gameObject.body.velocity.y = this.cursors.down.isDown-this.cursors.up.isDown;
+        this.gameObject.body.velocity.normalize();
+        this.gameObject.body.velocity.x *= this.dashVel;
+        this.gameObject.body.velocity.y *= this.dashVel;
     }
-
-	update2Mouvement(){
-		const player = this.gameObject
-		/**@type {Phaser.Physics.Arcade.Body} */
-		const body = player.body
-		body.setVelocity(0, 0)
-		player.play('idleN', true);
-	}
-
+    // // // A changer // // //
     stop(){
         this.gameObject.body.velocity.x = 0;
         this.gameObject.body.velocity.y = 0;
     }
 
+    // npc
+	update2Mouvement(){
+		const player = this.gameObject
+		const body = player.body
+		//body.setVelocity(0, 0)
+		//player.play('idleN', true);
+	}
+
 	update()
 	{
 
-        //EN COURS pour lancer le menu option dans le jeu 
-        //this.scene.input.keyboard.on('keyup-' + 'W', this.runOption);
+        //this.gameObject.play('idle', true);
 
-		if (this.playable){
-			this.updateMouvement();
-		}else{
+        // movements playable character
+		if (this.playable){ 
+            this.updateVelocity();
+		}
+        // movements npc
+        else if(!this.playable){
 			this.update2Mouvement();
 		}
 	}

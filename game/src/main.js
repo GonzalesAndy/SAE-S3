@@ -19,17 +19,18 @@ window.addEventListener('load', function () {
 		physics : {
 			default : "arcade",
 			arcade: {
-				gravity : { y: 650 },
+				gravity : { y: 1250 },
 				debug : true
 			}
 		}
 	});
 	
-	game.scene.add("Boot", Boot, true);
-	game.scene.add("Preload", Preload);
-	game.scene.add("Menu", Menu);
-	game.scene.add("Level", Level);
-	game.scene.add("SecondStage", SecondStage);
+	game.scene.add('Boot', Boot, true);
+	game.scene.add('Preload', Preload);
+	game.scene.add('Menu', Menu);
+	game.scene.add('PointDeVie', PointDeVie);
+	game.scene.add('Level', Level);
+	game.scene.add('SecondStage', SecondStage);
 });
 
 class Boot extends Phaser.Scene {

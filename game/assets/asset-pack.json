@@ -57,6 +57,29 @@
             },
 
             {
+                "url": "assets/ennemy.png",
+                "frameConfig": {
+                    "frameWidth": 128,
+                    "frameHeight": 128,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "ennemyFly"
+
+            },
+
+            {
+                "url": "assets/animations-ennemy.json",
+                "type": "animation",
+                "key": "animations-ennemy"
+            },
+
+
+
+            {
                 "url": "assets/animations-perso.json",
                 "type": "animation",
                 "key": "animations-perso"
@@ -156,6 +179,17 @@
                 "url": "assets/question/valider.png",
                 "type": "image",
                 "key": "valider"
+            },
+
+            {
+                "url": "assets/Coeur.png",
+                "type": "image",
+                "key": "Coeur"
+            },
+            {
+                "url": "assets/Coeur_vide.png",
+                "type": "image",
+                "key": "Coeur_vide"
             }
         ]
     },

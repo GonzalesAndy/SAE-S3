@@ -7,6 +7,8 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
+		console.log("rentree2");
+
 		// Création carte/jeu de tuile
 		const carte = this.make.tilemap({key : this.nameMap});
 		const tileSet1 = carte.addTilesetImage("JeuTuile","JeuTuile");
@@ -29,19 +31,19 @@ class Level extends Phaser.Scene {
 		player.setCollideWorldBounds(true);
 
 		// ennemy
-		const ennemy = this.add.sprite(32, 265, "10 idle", 0);
-		ennemy.scaleX = 3;
-		ennemy.scaleY = 3;
+		const ennemy = this.add.sprite(32, 265, "ennemy", 0);
+		ennemy.scaleX = 1/2;
+		ennemy.scaleY = 1/2;
 
 		// player (components)
 		new Physics(player);
-		const mouvement = new Mouvement(player);
+		const mouvementPlayer = new Mouvement(player);
 
 		// ennemy (components)
 		new Physics(ennemy);
+
 		const ennemyMouvement = new Mouvement(ennemy);
 		ennemyMouvement.playable = false;
-
 	
 		const question = new Question(this);
 
@@ -89,14 +91,17 @@ class Level extends Phaser.Scene {
 		option.setImmovable = true;
 
 		////			/////			////
-
-
+		
+		this.scene.launch("PointDeVie");
+		this.scene.sendToBack();
 
 		const move = true
+
+		this.sur = new PointDeVie();
 		this.question = question;
 		this.player = player;
+		this.mouvementPlayer = mouvementPlayer;
 		this.move = move;
-		this.mouvement = mouvement;
 		this.carte = carte;
 		this.ennemy = ennemy;
 		this.fond = fond;
@@ -104,6 +109,13 @@ class Level extends Phaser.Scene {
 		this.demiPlatforme = demiPlatforme;
 		this.quitter = quitter;
 		this.option = option;
+
+		this.ennemyX = this.ennemy.x;
+		this.ennemyY = this.ennemy.y;
+		this.i = 0;
+		this.pv = 0;
+		this.timer = 0;
+
 		this.events.emit("scene-awake");
 	}
 
@@ -122,8 +134,15 @@ class Level extends Phaser.Scene {
 	/** @type {Phaser.Tilemaps.Tilemap} */
 	carte;
 
+	sur;
+	ennemyX;
+	ennemyY;
+	i;
+	pv;
+	timer;
+
 	runOption(){
-		
+
 		this.move = false;
 
 
@@ -143,25 +162,26 @@ class Level extends Phaser.Scene {
 
 	create() {
 
+		console.log("Entree")
+
 		this.editorCreate();
+
 	
 		//perso joue les animations
 		this.player.play("idle");
 		this.ennemy.play("idleN");
 
+
 		//Limite du monde
 		this.physics.world.setBounds(0, 0, 1200, 672);
+
 	}
 
 	update(){
 
 
-		//this.question.runQuestion();
-		//this.runQuestion();
-
-
 		if (!this.move){
-			this.mouvement.stop();
+			this.mouvementPlayer.stop();
 		}
 
 		//quand on clique, on passe a autre chose
@@ -169,6 +189,7 @@ class Level extends Phaser.Scene {
 
 		//Si le joueur arrivé à la porte, lancement stage suivant
 		if(this.player.x > 1175){
+			
 			if(this.player.y <= 150 && this.player.y >0){
 
 				//flash quand on sors du stage
@@ -176,10 +197,48 @@ class Level extends Phaser.Scene {
 
 				this.player.x = 1160;
 				this.move = false;
-				//lancer la question
-				this.question.runQuestion();
 				
+				//this.scene.start("Level", "map2");
+				this.question.runQuestion();
 			}
 		}
+
+		////////////////////////////////////////////////////// Mouvement entité
+					//timer avant deplacement par rapport au joueur
+					this.timer+=1;
+					if(this.timer === 2){
+					this.physics.moveToObject(this.ennemy,this.player,200);
+
+					// si les coordonnée de la frame precedante et actuelle sont === on fait bouger l'entité
+					if(Math.abs(this.ennemy.x - this.ennemyX) < 0.1 && Math.abs(this.ennemy.y - this.ennemyY) < 0.1){
+						this.i+= 1;
+					}
+					if(this.i>= 50){
+						this.ennemy.y -= 110;
+						this.ennemy.x -= 10;
+						this.i = 0;	
+					}
+					this.timer=0;
+				
+					//////////////////////////////////////////////////////////
+
+				///redefinition des ancienne valeur de coordonnée au novelle
+				this.ennemyX = this.ennemy.x;
+				this.ennemyY = this.ennemy.y;
+			}
+			//condition de collision entre l'ennemy et le joueur
+			//toucher 1 fois , 1 vie de perdu et ainsi de suite jusqu'au game over
+			if(this.physics.collide(this.player,this.ennemy)){
+				console.log("ca touche");
+				this.player.x +=80;
+				this.pv+=1;
+				this.sur.premierCoeur();
+
+				if(this.pv === 2){
+				}
+				if(this.pv === 3){
+				}	
+			}	
+
 	}
 }
