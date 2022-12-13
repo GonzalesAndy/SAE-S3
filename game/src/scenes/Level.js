@@ -7,6 +7,8 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
+		console.log("rentree2");
+
 		// Création carte/jeu de tuile
 		const carte = this.make.tilemap({key : this.nameMap});
 		const tileSet1 = carte.addTilesetImage("JeuTuile","JeuTuile");
@@ -35,13 +37,13 @@ class Level extends Phaser.Scene {
 
 		// player (components)
 		new Physics(player);
-		const mouvement = new Mouvement(player);
+		const mouvementPlayer = new Mouvement(player);
 
 		// ennemy (components)
 		new Physics(ennemy);
+
 		const ennemyMouvement = new Mouvement(ennemy);
 		ennemyMouvement.playable = false;
-
 	
 		const question = new Question(this);
 
@@ -98,8 +100,8 @@ class Level extends Phaser.Scene {
 		this.sur = new PointDeVie();
 		this.question = question;
 		this.player = player;
+		this.mouvementPlayer = mouvementPlayer;
 		this.move = move;
-		this.mouvement = mouvement;
 		this.carte = carte;
 		this.ennemy = ennemy;
 		this.fond = fond;
@@ -140,7 +142,7 @@ class Level extends Phaser.Scene {
 	timer;
 
 	runOption(){
-		
+
 		this.move = false;
 
 
@@ -160,25 +162,26 @@ class Level extends Phaser.Scene {
 
 	create() {
 
+		console.log("Entree")
+
 		this.editorCreate();
+
 	
 		//perso joue les animations
 		this.player.play("idle");
 		this.ennemy.play("idleN");
 
+
 		//Limite du monde
 		this.physics.world.setBounds(0, 0, 1200, 672);
+
 	}
 
 	update(){
 
 
-		//this.question.runQuestion();
-		//this.runQuestion();
-
-
 		if (!this.move){
-			this.mouvement.stop();
+			this.mouvementPlayer.stop();
 		}
 
 		//quand on clique, on passe a autre chose
@@ -186,6 +189,7 @@ class Level extends Phaser.Scene {
 
 		//Si le joueur arrivé à la porte, lancement stage suivant
 		if(this.player.x > 1175){
+			
 			if(this.player.y <= 150 && this.player.y >0){
 
 				//flash quand on sors du stage
@@ -193,9 +197,9 @@ class Level extends Phaser.Scene {
 
 				this.player.x = 1160;
 				this.move = false;
-				//lancer la question
-				this.question.runQuestion();
 				
+				//this.scene.start("Level", "map2");
+				this.question.runQuestion();
 			}
 		}
 

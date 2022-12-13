@@ -56,53 +56,55 @@ class Mouvement {
 
     updateVelocity() {
         this.gameStop = false;
-        if(!this.isDashing){
-            // x movement
-            this.gameObject.body.velocity.x += (this.cursors.right.isDown-this.cursors.left.isDown)*this.X_ACCELERATION;
-            this.gameObject.body.velocity.x = Phaser.Math.Clamp(this.gameObject.body.velocity.x, -this.MAX_X_SPEED, this.MAX_X_SPEED);
-            this.gameObject.body.velocity.x = Phaser.Math.Linear(this.gameObject.body.velocity.x, 0, this.X_INERTIE);
+        if (typeof this.gameObject.body !== "undefined"){
+            if(!this.isDashing){
+                // x movement
+                this.gameObject.body.velocity.x += (this.cursors.right.isDown-this.cursors.left.isDown)*this.X_ACCELERATION;
+                this.gameObject.body.velocity.x = Phaser.Math.Clamp(this.gameObject.body.velocity.x, -this.MAX_X_SPEED, this.MAX_X_SPEED);
+                this.gameObject.body.velocity.x = Phaser.Math.Linear(this.gameObject.body.velocity.x, 0, this.X_INERTIE);
 
-            if(this.cursors.m.isDown){
-                this.gameObject.body.velocity.y = -500
-            }
+                if(this.cursors.m.isDown){
+                    this.gameObject.body.velocity.y = -500
+                }
 
-            // y movement
-            if (this.cursors.spacebar.isDown){
-			// adaptative jump
-			    if(this.isOnFloor() && this.jump === false){
-				    this.jump = true;
-                    this.jumpBegin = this.getNow()
-			    }
-                else if(this.getNow() - this.jumpBegin < 100){
-                    this.gameObject.body.velocity.y = -300;
+                // y movement
+                if (this.cursors.spacebar.isDown){
+                // adaptative jump
+                    if(this.isOnFloor() && this.jump === false){
+                        this.jump = true;
+                        this.jumpBegin = this.getNow()
+                    }
+                    else if(this.getNow() - this.jumpBegin < 100){
+                        this.gameObject.body.velocity.y = -300;
+                    }
+                    else if(this.getNow() - this.jumpBegin >= 100 && this.getNow() - this.jumpBegin < 325){
+                        this.gameObject.body.velocity.y = -400 + Math.floor((this.getNow() - this.jumpBegin)/1.7);
+                    }
                 }
-			    else if(this.getNow() - this.jumpBegin >= 100 && this.getNow() - this.jumpBegin < 325){
-				    this.gameObject.body.velocity.y = -400 + Math.floor((this.getNow() - this.jumpBegin)/1.7);
-			    }
-		    }
 
-            if(Phaser.Input.Keyboard.JustDown(this.cursors.shift) && this.hasDashed === false){
-                this.hasDashed = true;
-                this.isDashing = true;
-                this.dashTime = this.getNow();
-                this.dash();
-            }
-            if (this.isOnFloor()){
-                if(this.hasDashed && !this.isDashing){
-                    this.hasDashed = false;
+                if(Phaser.Input.Keyboard.JustDown(this.cursors.shift) && this.hasDashed === false){
+                    this.hasDashed = true;
+                    this.isDashing = true;
+                    this.dashTime = this.getNow();
+                    this.dash();
                 }
-                if(!this.cursors.spacebar.isDown){
-                    this.jump = false;
+                if (this.isOnFloor()){
+                    if(this.hasDashed && !this.isDashing){
+                        this.hasDashed = false;
+                    }
+                    if(!this.cursors.spacebar.isDown){
+                        this.jump = false;
+                    }
                 }
             }
-        }
         
-        // end of dash
-        else if(this.getNow() - this.dashTime > 150){
-            this.isDashing = false;
-            this.gameObject.body.setAllowGravity(true);
-            this.gameObject.body.velocity.x /= 2;
-            this.gameObject.body.velocity.y /= 2;
+            // end of dash
+            else if(this.getNow() - this.dashTime > 150){
+                this.isDashing = false;
+                this.gameObject.body.setAllowGravity(true);
+                this.gameObject.body.velocity.x /= 2;
+                this.gameObject.body.velocity.y /= 2;
+            }
         }
     }
 
@@ -122,12 +124,12 @@ class Mouvement {
     }
 
     // npc
-	update2Mouvement(){
+	/*update2Mouvement(){
 		const player = this.gameObject
 		const body = player.body
 		body.setVelocity(0, 0)
 		player.play('idleN', true);
-	}
+	}*/
 
 	update()
 	{
@@ -135,9 +137,10 @@ class Mouvement {
 		if (this.playable){
             this.updateVelocity();
 		}
+        /*
         // movements npc
         else if(!this.playable){
 			this.update2Mouvement();
-		}
+		}*/
 	}
 }

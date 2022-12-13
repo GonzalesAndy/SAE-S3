@@ -124,11 +124,14 @@ class Question{
 			if (reponse == 0){
 				this.Aright.visible = false;
 				this.Afalse.visible = true;
-		
 			}
+            
 			this.valider.once('pointerup', function(event) { 
-                //this.scene.scene.start("Level","map2");
-                this.scene.scene.start("SecondStage");
+                
+                this.scene.scene.start("Level", "map2");
+				
+                //console.log("sortie");
+                //return 1;
 			}, this);
 		}, this);
 
