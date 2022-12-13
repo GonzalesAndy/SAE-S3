@@ -7,10 +7,12 @@ class PointDeVie extends Phaser.Scene {
 
 	/** @returns {void} */
 	editorCreate() {
-		
+
 		// coeur1
-		//console.log("SOMETHING:")
-		//console.log(this)
+		
+		console.log("SOMETHING:")
+		console.log(this)
+    
 		const coeur1 = this.add.image(900, 30, "Coeur");
 		coeur1.scaleX = 0.07;
 		coeur1.scaleY = 0.07;
@@ -46,8 +48,9 @@ class PointDeVie extends Phaser.Scene {
 		
 		
 		
-		//console.log("DEFINE COEUR: ")
-		//console.log(this)
+		console.log("DEFINE COEUR: ")
+		console.log(this)
+    
 		this.coeur1 = coeur1;
 		this.coeur2 = coeur2;
 		this.coeur3 = coeur3;

@@ -30,6 +30,7 @@ window.addEventListener('load', function () {
 	game.scene.add('Menu', Menu);
 	game.scene.add('PointDeVie', PointDeVie);
 	game.scene.add('Level', Level);
+
 });
 
 class Boot extends Phaser.Scene {

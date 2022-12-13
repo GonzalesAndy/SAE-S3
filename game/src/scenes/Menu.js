@@ -58,7 +58,8 @@ class Menu extends Phaser.Scene {
 
 		//quand on appuie sur entrer, on run le jeu
 		this.input.keyboard.on('keydown-ENTER', function(){
-			this.scene.start('Level',"map1", true);
+			this.scene.start("Level","map1");
+      
 			//this.scene.start("SecondStage");
 		}, this);
 
