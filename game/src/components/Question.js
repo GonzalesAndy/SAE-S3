@@ -5,7 +5,6 @@ class Question{
         const feuilleQuestion = scene.add.image(500, 294, "feuille").setScrollFactor(0);
     
         const quest = scene.add.text(230, 150, "How do we say 'Informatique' in English ?", { font: "32px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-
         
         const Aright = scene.add.text(420, 200, "Right", { font: "60px Helvetica bold", fill: "#228B22" }).setScrollFactor(0);
         const Afalse = scene.add.text(420, 200, "False", { font: "60px Helvetica bold", fill: "#ff0000" }).setScrollFactor(0);
@@ -43,6 +42,10 @@ class Question{
 
 
         var liste = [Tbutton1, Tbutton2, Tbutton3, Tbutton4];
+
+		var reponse = 0;
+
+        this.reponse = reponse;
 
         valider.visible = false;
         Afalse.visible = false;
@@ -85,53 +88,57 @@ class Question{
             this.liste[i].visible = true;
         }
         
-		var reponse = 0;
+        var Bonnereponse = 0
 
-        //Mettre la séléction on vert
-        this.children[0].once('pointerup', function(event) { 
-            this.Tbutton1.setStyle({color : "#228B22"})
-            this.Tbutton2.setStyle({color : "#66431a"})
-            this.Tbutton3.setStyle({color : "#66431a"})
-            this.Tbutton4.setStyle({color : "#66431a"})
-        }, this);
-        this.children[1].once('pointerup', function(event) { 
-            this.Tbutton1.setStyle({color : "#66431a"})
-            this.Tbutton2.setStyle({color : "#228B22"})
-            this.Tbutton3.setStyle({color : "#66431a"})
-            this.Tbutton4.setStyle({color : "#66431a"})
-            reponse = 1;
-        }, this);
-        this.children[2].once('pointerup', function(event) { 
-            this.Tbutton1.setStyle({color : "#66431a"})
-            this.Tbutton2.setStyle({color : "#66431a"})
-            this.Tbutton3.setStyle({color : "#228B22"})
-            this.Tbutton4.setStyle({color : "#66431a"})
-        }, this);
-        this.children[3].once('pointerup', function(event) { 
-            this.Tbutton1.setStyle({color : "#66431a"})
-            this.Tbutton2.setStyle({color : "#66431a"})
-            this.Tbutton3.setStyle({color : "#66431a"})
-            this.Tbutton4.setStyle({color : "#228B22"})
-        }, this);
+        if (this.reponse == 0){
+            
+            //Mettre la séléction on vert
+            this.children[0].once('pointerup', function(event) { 
+                this.Tbutton1.setStyle({color : "#228B22"})
+                this.Tbutton2.setStyle({color : "#66431a"})
+                this.Tbutton3.setStyle({color : "#66431a"})
+                this.Tbutton4.setStyle({color : "#66431a"})
+            }, this);
+            this.children[1].once('pointerup', function(event) { 
+                this.Tbutton1.setStyle({color : "#66431a"})
+                this.Tbutton2.setStyle({color : "#228B22"})
+                this.Tbutton3.setStyle({color : "#66431a"})
+                this.Tbutton4.setStyle({color : "#66431a"})
+                Bonnereponse = 1;
+            }, this);
+            this.children[2].once('pointerup', function(event) { 
+                this.Tbutton1.setStyle({color : "#66431a"})
+                this.Tbutton2.setStyle({color : "#66431a"})
+                this.Tbutton3.setStyle({color : "#228B22"})
+                this.Tbutton4.setStyle({color : "#66431a"})
+            }, this);
+            this.children[3].once('pointerup', function(event) { 
+                this.Tbutton1.setStyle({color : "#66431a"})
+                this.Tbutton2.setStyle({color : "#66431a"})
+                this.Tbutton3.setStyle({color : "#66431a"})
+                this.Tbutton4.setStyle({color : "#228B22"})
+            }, this);
+        }
+
 
         //On regarde si la réponse est juste ou fausse
 		this.valider.once('pointerup', function(event) { 
-			if (reponse == 1){
+            this.reponse = 1;
+
+			if (Bonnereponse == 1){
 				this.Aright.visible = true;
 				this.Afalse.visible = false;
 
 			}
-			if (reponse == 0){
+			if (Bonnereponse == 0){
 				this.Aright.visible = false;
 				this.Afalse.visible = true;
 			}
             
 			this.valider.once('pointerup', function(event) { 
                 
-                this.scene.scene.start("Level", "map2");
+                this.scene.scene.start("Level", 2);
 				
-                //console.log("sortie");
-                //return 1;
 			}, this);
 		}, this);
 

@@ -1,13 +1,32 @@
 class Level extends Phaser.Scene {
-	//nameMap: NameMap
-	init(nameMap) {
-		this.nameMap = nameMap;
+	/*
+	this.nameMap -> nom de la map
+	this.xDepart -> coordoné X de départ du joueur
+	this.yDepart -> coordoné Y de départ du joueur
+	this.porteY -> coordoné Y de la porte (sortie de map)
+	*/
+
+	init(arg){
+
+		//En fonction de quel map est appelé, on change les paramettres
+		switch(arg){
+			case 1 : //si map1
+				this.nameMap = "map1";
+				this.xDepart  = 32;
+				this.yDepart = 455;
+				this.porteY = [0,150];
+				break;
+			case 2 : //si map2
+				this.nameMap = "map2";
+				this.xDepart  = 100;
+				this.yDepart = 100;
+				this.porteY = [312,360];
+				break;
+		}
 	}
 
 	/** @returns {void} */
 	editorCreate() {
-
-		console.log("rentree2");
 
 		// Création carte/jeu de tuile
 		const carte = this.make.tilemap({key : this.nameMap});
@@ -24,7 +43,7 @@ class Level extends Phaser.Scene {
 		demiPlatforme.setCollisionByProperty({ estSolide: true });
 
 		// player
-		const player = this.physics.add.sprite(32, 455, "1 idle", 0);
+		const player = this.physics.add.sprite(this.xDepart, this.yDepart, "1 idle", 0);
 		player.scaleX = 3;
 		player.scaleY = 3;
 
@@ -47,9 +66,8 @@ class Level extends Phaser.Scene {
 	
 		const question = new Question(this);
 
-
-
 		//ajout collision layer - joueur/ennemy
+		
 		this.physics.add.collider(player, [fond,platforme,demiPlatforme]);
 		this.physics.add.collider(ennemy, [fond,platforme,demiPlatforme]);
 
@@ -65,9 +83,7 @@ class Level extends Phaser.Scene {
 		//flash quand on entre dans le stage
 		this.cameras.main.flash();
 
-
 		////			OPTION			////
-
 
 		//quand on appuie sur entrer, on lance les options
 		this.input.keyboard.on('keydown-ENTER', this.runOption, this);
@@ -162,8 +178,6 @@ class Level extends Phaser.Scene {
 
 	create() {
 
-		console.log("Entree")
-
 		this.editorCreate();
 
 	
@@ -179,7 +193,6 @@ class Level extends Phaser.Scene {
 
 	update(){
 
-
 		if (!this.move){
 			this.mouvementPlayer.stop();
 		}
@@ -190,7 +203,7 @@ class Level extends Phaser.Scene {
 		//Si le joueur arrivé à la porte, lancement stage suivant
 		if(this.player.x > 1175){
 			
-			if(this.player.y <= 150 && this.player.y >0){
+			if(this.player.y <= this.porteY[1] && this.player.y > this.porteY[0]){
 
 				//flash quand on sors du stage
 				this.cameras.main.flash();
@@ -198,7 +211,6 @@ class Level extends Phaser.Scene {
 				this.player.x = 1160;
 				this.move = false;
 				
-				//this.scene.start("Level", "map2");
 				this.question.runQuestion();
 			}
 		}
