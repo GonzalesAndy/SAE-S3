@@ -85,14 +85,6 @@
                 "key": "animations-perso"
             },
             {
-                "url": "assets/animationsDuNoir.json",
-                "type": "animation",
-                "key": "animationsDuNoir"
-            },
-
-
-            
-            {
                 "url": "assets/menu/background.png",
                 "type": "image",
                 "key": "background"
