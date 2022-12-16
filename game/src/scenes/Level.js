@@ -28,6 +28,7 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
+
 		// Création carte/jeu de tuile
 		const carte = this.make.tilemap({key : this.nameMap});
 		const tileSet1 = carte.addTilesetImage("JeuTuile","JeuTuile");
@@ -35,12 +36,12 @@ class Level extends Phaser.Scene {
 		//Création "Layer"
 		const fond = carte.createLayer("Fond", [tileSet1]);
 		const platforme = carte.createLayer("Platforme", [tileSet1]);
-		const demiPlatforme = carte.createLayer("DemiPlatforme", [tileSet1]);
 
 		//Création collision layer
 		fond.setCollisionByProperty({ estSolide: true });
 		platforme.setCollisionByProperty({ estSolide: true });
-		demiPlatforme.setCollisionByProperty({ estSolide: true });
+		//demiPlatforme.setCollisionByProperty({ estSolide: true });
+
 
 		// player
 		const player = this.physics.add.sprite(this.xDepart, this.yDepart, "1 idle", 0);
@@ -48,6 +49,15 @@ class Level extends Phaser.Scene {
 		player.scaleY = 3;
 
 		player.setCollideWorldBounds(true);
+
+		
+		// demiPlatforme
+		const Demimap = this.add.tilemap("demiMap1");
+		Demimap.addTilesetImage("DemiPlatforme", "JeuTuile");
+		const demiPlatforme = Demimap.createLayer("DemiPlatforme", ["DemiPlatforme"], 0, 0);
+		demiPlatforme.setCollisionByProperty({ estSolide: true });
+		this.Demimap = Demimap;
+		this.physics.add.collider(player, demiPlatforme);
 
 		// ennemy
 		const ennemy = this.add.sprite(32, 265, "ennemy", 0);
@@ -68,8 +78,8 @@ class Level extends Phaser.Scene {
 
 		//ajout collision layer - joueur/ennemy
 		
-		this.physics.add.collider(player, [fond,platforme,demiPlatforme]);
-		this.physics.add.collider(ennemy, [fond,platforme,demiPlatforme]);
+		this.physics.add.collider(player, [fond,platforme]);
+		this.physics.add.collider(ennemy, [fond,platforme]);
 
 		//ajout collision joueur - ennemy
 		this.physics.add.collider(ennemy, player);
@@ -118,11 +128,11 @@ class Level extends Phaser.Scene {
 		this.player = player;
 		this.mouvementPlayer = mouvementPlayer;
 		this.move = move;
-		this.carte = carte;
+		//this.carte = carte;
 		this.ennemy = ennemy;
-		this.fond = fond;
-		this.platforme = platforme;
-		this.demiPlatforme = demiPlatforme;
+		//this.fond = fond;
+		//this.platforme = platforme;
+		//this.demiPlatforme = demiPlatforme;
 		this.quitter = quitter;
 		this.option = option;
 

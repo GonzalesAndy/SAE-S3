@@ -70,15 +70,11 @@
                 "key": "ennemyFly"
 
             },
-
             {
                 "url": "assets/animations-ennemy.json",
                 "type": "animation",
                 "key": "animations-ennemy"
             },
-
-
-
             {
                 "url": "assets/animations-perso.json",
                 "type": "animation",
@@ -108,6 +104,11 @@
                 "url": "assets/map/map4.json",
                 "type": "tilemapTiledJSON",
                 "key": "map4"
+            },
+            {
+                "url": "assets/map/demiMap1.json",
+                "type": "tilemapTiledJSON",
+                "key": "demiMap1"
             },
             {
                 "url": "assets/menu/logo.png",
