@@ -1,11 +1,11 @@
 class Level extends Phaser.Scene {
+	
 	/*
 	this.nameMap -> nom de la map
 	this.xDepart -> coordoné X de départ du joueur
 	this.yDepart -> coordoné Y de départ du joueur
 	this.porteY -> coordoné Y de la porte (sortie de map)
 	*/
-
 	init(arg){
 
 		//En fonction de quel map est appelé, on change les paramettres
@@ -22,7 +22,9 @@ class Level extends Phaser.Scene {
 				this.yDepart = 100;
 				this.porteY = [312,360];
 				break;
-		}
+		}//Fin case
+
+		//En fonction de quel personnage a été choisi (homme/femme)
 		switch(arg[1]){
 			case 1 :
 				this.nomPerso = "1 idle";
@@ -30,10 +32,10 @@ class Level extends Phaser.Scene {
 			case 2 :
 				this.nomPerso = "1 idle";
 				break;
-		}
+		} //Fin case
 		this.intPerso = arg[1];
 
-	}
+	}// Fin init
 
 	/** @returns {void} */
 	editorCreate() {
@@ -50,16 +52,16 @@ class Level extends Phaser.Scene {
 		//Création collision layer
 		fond.setCollisionByProperty({ estSolide: true });
 		platforme.setCollisionByProperty({ estSolide: true });
-		//demiPlatforme.setCollisionByProperty({ estSolide: true });
-
 
 		// player
 		const player = this.physics.add.sprite(this.xDepart, this.yDepart, this.nomPerso, 0);
 		player.scaleX = 3;
 		player.scaleY = 3;
-
 		player.setCollideWorldBounds(true);
 
+		// player (components)
+		new Physics(player);
+		const mouvementPlayer = new Mouvement(player);
 		
 		// demiPlatforme
 		const Demimap = this.add.tilemap("demiMap1");
@@ -74,21 +76,12 @@ class Level extends Phaser.Scene {
 		ennemy.scaleX = 1/2;
 		ennemy.scaleY = 1/2;
 
-		// player (components)
-		new Physics(player);
-		const mouvementPlayer = new Mouvement(player);
-
 		// ennemy (components)
 		new Physics(ennemy);
-
 		const ennemyMouvement = new Mouvement(ennemy);
 		ennemyMouvement.playable = false;
 
-		console.log(this.intPerso);
-		const question = new Question(this, this.intPerso);
-
 		//ajout collision layer - joueur/ennemy
-		
 		this.physics.add.collider(player, [fond,platforme]);
 		this.physics.add.collider(ennemy, [fond,platforme]);
 
@@ -132,60 +125,43 @@ class Level extends Phaser.Scene {
 		this.scene.launch("PointDeVie");
 		this.scene.sendToBack();
 
-		const move = true
-
+		this.question = new Question(this, this.intPerso);
 		this.sur = new PointDeVie();
-		this.question = question;
+
+		this.move = true;
+
 		this.player = player;
 		this.mouvementPlayer = mouvementPlayer;
-		this.move = move;
-		//this.carte = carte;
 		this.ennemy = ennemy;
-		//this.fond = fond;
-		//this.platforme = platforme;
-		//this.demiPlatforme = demiPlatforme;
 		this.quitter = quitter;
 		this.option = option;
 
-		this.ennemyX = this.ennemy.x;
-		this.ennemyY = this.ennemy.y;
-		this.i = 0;
-		this.pv = 0;
-		this.timer = 0;
-
 		this.events.emit("scene-awake");
-	}
+	} //Fin editorCreate
 
-	/** @type {Phaser.Tilemaps.TilemapLayer} */
-	fond;
-	/** @type {Phaser.Tilemaps.TilemapLayer} */
-	platforme;
-	/** @type {Phaser.Tilemaps.TilemapLayer} */
-	demiPlatforme;
+	/** @type {Phaser.GameObjects.components} */
+	question;
+	/** @type {Phaser.GameObjects.components} */
+	sur;
+	/** @type {boolean} */
+	player;
 	/** @type {Phaser.GameObjects.Sprite} */
 	player;
+	/** @type {Phaser.GameObjects.components} */
+	mouvementPlayer;
+	/** @type {Phaser.GameObjects.Sprite} */
+	ennemy;
 	/** @type {Phaser.GameObjects.Sprite} */
 	quitter;
 	/** @type {Phaser.GameObjects.Sprite} */
 	option;
-	/** @type {Phaser.Tilemaps.Tilemap} */
-	carte;
-
-	sur;
-	ennemyX;
-	ennemyY;
-	i;
-	pv;
-	timer;
 
 	runOption(){
 
 		this.move = false;
 
-
 		this.quitter.visible = true;
 		this.option.visible = true;
-
 		
 		this.quitter.once('pointerup', function(event) { 
 
@@ -195,35 +171,32 @@ class Level extends Phaser.Scene {
 			this.move = true;
 		}, this);
 
-	}
+	} //Fin RunOption()
 
 	create() {
 
 		this.editorCreate();
-
 	
 		//perso joue les animations
 		this.player.play("idle");
 		this.ennemy.play("idleN");
 
-
 		//Limite du monde
+		//this.physics.world.setBounds(0, 0, 2880, 960);
 		this.physics.world.setBounds(0, 0, 1200, 672);
 
-	}
+	} // Fin create()
 
 	update(){
 
 		if (!this.move){
 			this.mouvementPlayer.stop();
-		}
+		} // Fin if
 
-		//quand on clique, on passe a autre chose
-		this.player.once('pointerup',this.runOption, this);
-
-		//Si le joueur arrivé à la porte, lancement stage suivant
+		//Si le joueur arrivé à la limite du monde, lancement stage suivant 2880 ou 1175
 		if(this.player.x > 1175){
 			
+			//Si le joueur arrivé à la porte, lancement stage suivant
 			if(this.player.y <= this.porteY[1] && this.player.y > this.porteY[0]){
 
 				//flash quand on sors du stage
@@ -232,46 +205,9 @@ class Level extends Phaser.Scene {
 				this.player.x = 1160;
 				this.move = false;
 				
+				//lancer la question
 				this.question.runQuestion();
-			}
-		}
-
-		////////////////////////////////////////////////////// Mouvement entité
-					//timer avant deplacement par rapport au joueur
-					this.timer+=1;
-					if(this.timer === 2){
-					this.physics.moveToObject(this.ennemy,this.player,200);
-
-					// si les coordonnée de la frame precedante et actuelle sont === on fait bouger l'entité
-					if(Math.abs(this.ennemy.x - this.ennemyX) < 0.1 && Math.abs(this.ennemy.y - this.ennemyY) < 0.1){
-						this.i+= 1;
-					}
-					if(this.i>= 50){
-						this.ennemy.y -= 110;
-						this.ennemy.x -= 10;
-						this.i = 0;	
-					}
-					this.timer=0;
-				
-					//////////////////////////////////////////////////////////
-
-				///redefinition des ancienne valeur de coordonnée au novelle
-				this.ennemyX = this.ennemy.x;
-				this.ennemyY = this.ennemy.y;
-			}
-			//condition de collision entre l'ennemy et le joueur
-			//toucher 1 fois , 1 vie de perdu et ainsi de suite jusqu'au game over
-			if(this.physics.collide(this.player,this.ennemy)){
-				console.log("ca touche");
-				this.player.x +=80;
-				this.pv+=1;
-				this.sur.premierCoeur();
-
-				if(this.pv === 2){
-				}
-				if(this.pv === 3){
-				}	
-			}	
-
-	}
-}
+			} //Fin if
+		} // Fin if
+	} //Fin update()
+} //Fin class
