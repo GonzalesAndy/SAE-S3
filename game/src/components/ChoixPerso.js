@@ -21,37 +21,38 @@ class ChoixPerso{
         var choix;
 
 		// player
-		const player1 = scene.physics.add.sprite(0, 0, "1 idle", 0).setScrollFactor(0);
-        Phaser.Display.Align.In.Center(player1, feuille, -200, 0);
-        player1.body.setAllowGravity(false)
-		player1.scaleX = 5;
-		player1.scaleY = 5;
+		const joueur1 = scene.physics.add.sprite(0, 0, "1 idle", 0).setScrollFactor(0);
+        Phaser.Display.Align.In.Center(joueur1, feuille, -200, 0);
+        joueur1.body.setAllowGravity(false)
+		joueur1.scaleX = 5;
+		joueur1.scaleY = 5;
 
-		// player2
-		const player2 = scene.physics.add.sprite(0, 0, "1 idle", 0).setScrollFactor(0);
-        Phaser.Display.Align.In.Center(player2, feuille, 200, 0);
-        player2.body.setAllowGravity(false)
-		player2.scaleX = 5;
-		player2.scaleY = 5;
+		// joueur2
+		const joueur2 = scene.physics.add.sprite(0, 0, "1 idle", 0).setScrollFactor(0);
+        Phaser.Display.Align.In.Center(joueur2, feuille, 200, 0);
+        joueur2.body.setAllowGravity(false)
+		joueur2.scaleX = 5;
+		joueur2.scaleY = 5;
 
-        player1.visible = false;
-        player2.visible = false;
+        // Visible
+        joueur1.visible = false;
+        joueur2.visible = false;
 
-        player1.play("walk");
-        player2.play("walk");
+        joueur1.play("walk");
+        joueur2.play("walk");
 
-        new PushOnClick(player1);
-        new PushOnClick(player2);
+        new PushOnClick(joueur1);
+        new PushOnClick(joueur2);
         
         this.feuille = feuille;
         this.choix1 = choix1;
         this.choix2 = choix2;
         this.choix = choix;
-        this.player1 = player1;
-        this.player2 = player2;
+        this.joueur1 = joueur1;
+        this.joueur2 = joueur2;
         this.scene = scene;
     
-    }
+    } // Fin constructor()
 
 	runChoixPerso(){
 
@@ -59,17 +60,16 @@ class ChoixPerso{
 		this.feuille.visible = true;
         this.choix1.visible = true;
         this.choix2.visible = true;
-        this.player1.visible = true;
-        this.player2.visible = true;
+        this.joueur1.visible = true;
+        this.joueur2.visible = true;
 
-        this.player1.once('pointerup', function(event) { 
+        this.joueur1.once('pointerup', function(event) { 
             this.choix = 1;
             this.scene.scene.start('Level', [1, 1]);
         }, this);
-        this.player2.once('pointerup', function(event) { 
+        this.joueur2.once('pointerup', function(event) { 
             this.choix = 2;
             this.scene.scene.start('Level', [1, 2]);
         }, this);
-
-	}
-}
+	} // Fin runChoixPerso()
+} // Fin class
