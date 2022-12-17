@@ -137,7 +137,7 @@ class Question{
             
 			this.valider.once('pointerup', function(event) { 
                 
-                this.scene.scene.start("Level", 2);
+                this.scene.scene.start("Level", [2]);
 				
 			}, this);
 		}, this);

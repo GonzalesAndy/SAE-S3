@@ -9,7 +9,7 @@ class Level extends Phaser.Scene {
 	init(arg){
 
 		//En fonction de quel map est appelé, on change les paramettres
-		switch(arg){
+		switch(arg[0]){
 			case 1 : //si map1
 				this.nameMap = "map1";
 				this.xDepart  = 32;
@@ -23,6 +23,16 @@ class Level extends Phaser.Scene {
 				this.porteY = [312,360];
 				break;
 		}
+		switch(arg[1]){
+			case 1 :
+				this.nomPerso = "1 idle";
+				break;
+			case 2 :
+				this.nomPerso = "1 idle";
+				break;
+		}
+		this.intPerso = arg[1];
+
 	}
 
 	/** @returns {void} */
@@ -44,7 +54,7 @@ class Level extends Phaser.Scene {
 
 
 		// player
-		const player = this.physics.add.sprite(this.xDepart, this.yDepart, "1 idle", 0);
+		const player = this.physics.add.sprite(this.xDepart, this.yDepart, this.nomPerso, 0);
 		player.scaleX = 3;
 		player.scaleY = 3;
 
@@ -73,8 +83,9 @@ class Level extends Phaser.Scene {
 
 		const ennemyMouvement = new Mouvement(ennemy);
 		ennemyMouvement.playable = false;
-	
-		const question = new Question(this);
+
+		console.log(this.intPerso);
+		const question = new Question(this, this.intPerso);
 
 		//ajout collision layer - joueur/ennemy
 		

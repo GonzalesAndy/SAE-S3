@@ -53,12 +53,14 @@ class Menu extends Phaser.Scene {
 		//annimation boutons
 		new PushOnClick(quitter);
 
+		const choixPerso = new ChoixPerso(this);
+
 		//visibilité bouton quitter
 		quitter.visible = false;
 
 		//quand on appuie sur entrer, on run le jeu
 		this.input.keyboard.on('keydown-ENTER', function(){
-			this.scene.start('Level', 1);
+			choixPerso.runChoixPerso();
 		}, this);
 
 		this.background = background;
