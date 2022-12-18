@@ -200,6 +200,7 @@ class Level extends Phaser.Scene {
 	update(){
 
 		this.ennemyMouvement.suivre(this.player);
+		this.mouvementPlayer.update();
 
 		if (!this.move){
 			this.mouvementPlayer.stop();
@@ -219,6 +220,7 @@ class Level extends Phaser.Scene {
 				
 				//lancer la question
 				this.question.runQuestion();
+				
 			} //Fin if
 		} // Fin if
 	} //Fin update()

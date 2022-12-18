@@ -20,7 +20,7 @@ window.addEventListener('load', function () {
 			default : "arcade",
 			arcade: {
 				gravity : { y: 1250 },
-				debug : true
+				//debug : true
 			}
 		}
 	});

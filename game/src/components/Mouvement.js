@@ -92,54 +92,52 @@ class Mouvement {
 
     updateVelocity() {
         this.gameStop = false;
-        if (typeof this.gameObject.body !== "undefined") {
-            if (!this.isDashing) {
-                // x movement
-                this.gameObject.body.velocity.x += (this.cursors.right.isDown - this.cursors.left.isDown) * this.X_ACCELERATION;
-                this.gameObject.body.velocity.x = Phaser.Math.Clamp(this.gameObject.body.velocity.x, -this.MAX_X_SPEED, this.MAX_X_SPEED);
-                this.gameObject.body.velocity.x = Phaser.Math.Linear(this.gameObject.body.velocity.x, 0, this.X_INERTIE);
+        if (!this.isDashing) {
+            // x movement
+            this.gameObject.body.velocity.x += (this.cursors.right.isDown - this.cursors.left.isDown) * this.X_ACCELERATION;
+            this.gameObject.body.velocity.x = Phaser.Math.Clamp(this.gameObject.body.velocity.x, -this.MAX_X_SPEED, this.MAX_X_SPEED);
+            this.gameObject.body.velocity.x = Phaser.Math.Linear(this.gameObject.body.velocity.x, 0, this.X_INERTIE);
 
-                if (this.cursors.m.isDown) {
-                    this.gameObject.body.velocity.y = -500
+            if (this.cursors.m.isDown) {
+                this.gameObject.body.velocity.y = -500
+            } // Fin if
+
+            // y movement
+            if (this.cursors.spacebar.isDown) {
+                // adaptative jump
+                if (this.isOnFloor() && this.jump === false) {
+                    this.jump = true;
+                    this.jumpBegin = this.getNow()
+                } else if (this.getNow() - this.jumpBegin < 100) {
+                    this.gameObject.body.velocity.y = -300;
+                } else if (this.getNow() - this.jumpBegin >= 100 && this.getNow() - this.jumpBegin < 325) {
+                    this.gameObject.body.velocity.y = -400 + Math.floor((this.getNow() - this.jumpBegin) / 1.7);
+                } // Fin else if
+            } // Fin if
+
+            if (Phaser.Input.Keyboard.JustDown(this.cursors.shift) && this.hasDashed === false) {
+                this.hasDashed = true;
+                this.isDashing = true;
+                this.dashTime = this.getNow();
+                this.dash();
+            } // Fin if
+            
+            if (this.isOnFloor()) {
+                if (this.hasDashed && !this.isDashing) {
+                    this.hasDashed = false;
                 } // Fin if
-
-                // y movement
-                if (this.cursors.spacebar.isDown) {
-                    // adaptative jump
-                    if (this.isOnFloor() && this.jump === false) {
-                        this.jump = true;
-                        this.jumpBegin = this.getNow()
-                    } else if (this.getNow() - this.jumpBegin < 100) {
-                        this.gameObject.body.velocity.y = -300;
-                    } else if (this.getNow() - this.jumpBegin >= 100 && this.getNow() - this.jumpBegin < 325) {
-                        this.gameObject.body.velocity.y = -400 + Math.floor((this.getNow() - this.jumpBegin) / 1.7);
-                    } // Fin else if
+                if (!this.cursors.spacebar.isDown) {
+                    this.jump = false;
                 } // Fin if
+            } // Fin if
 
-                if (Phaser.Input.Keyboard.JustDown(this.cursors.shift) && this.hasDashed === false) {
-                    this.hasDashed = true;
-                    this.isDashing = true;
-                    this.dashTime = this.getNow();
-                    this.dash();
-                } // Fin if
-                
-                if (this.isOnFloor()) {
-                    if (this.hasDashed && !this.isDashing) {
-                        this.hasDashed = false;
-                    } // Fin if
-                    if (!this.cursors.spacebar.isDown) {
-                        this.jump = false;
-                    } // Fin if
-                } // Fin if
+        } else if (this.getNow() - this.dashTime > 150) { // Fin du dash
+            this.isDashing = false;
+            this.gameObject.body.setAllowGravity(true);
+            this.gameObject.body.velocity.x /= 2;
+            this.gameObject.body.velocity.y /= 2;
+        } // Fin else if
 
-            } else if (this.getNow() - this.dashTime > 150) { // Fin du dash
-                this.isDashing = false;
-                this.gameObject.body.setAllowGravity(true);
-                this.gameObject.body.velocity.x /= 2;
-                this.gameObject.body.velocity.y /= 2;
-            } // Fin else if
-
-        } // Fin if
     } // Fin updateVelocity()
 
     // implementing dash
@@ -158,11 +156,28 @@ class Mouvement {
         this.gameObject.body.velocity.y = 0;
     } // Fin stop()
 
+    direction(){
+        if(this.cursors.right.isDown){
+            this.gameObject.play("walk");
+        } else if(this.cursors.left.isDown){
+            this.gameObject.play("walk");
+            this.gameObject.flipX = true;
+        } // Fin else if
+    } // Fin direction
 
     update() {
-        // movements playable character
-        if (this.playable) {
-            this.updateVelocity();
+
+        if (typeof this.gameObject.body !== "undefined") {
+
+            // movements playable character
+            if (this.playable) {
+                this.gameObject.flipX = false;
+                this.gameObject.play("idle");
+                this.direction();
+                this.updateVelocity();
+            } // Fin if
+
         } // Fin if
+
     } // Fin update()
 }
