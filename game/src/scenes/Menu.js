@@ -3,7 +3,7 @@ class Menu extends Phaser.Scene {
 	constructor() {
 		super("Menu");
 
-	}
+	} // Fin constructor()
 
 	/** @returns {void} */
 	editorCreate() {
@@ -72,7 +72,7 @@ class Menu extends Phaser.Scene {
 		this.engrenage = engrenage;
 
 		this.events.emit("scene-awake");
-	}
+	} // Fin editorCreate()
 
 	/** @type {Phaser.GameObjects.TileSprite} */
 	background;
@@ -107,23 +107,22 @@ class Menu extends Phaser.Scene {
 			this.engrenage.visible = true;
 		}, this);
 
-	}
+	} // Fin runOption()
 
 	create() {
 
 		this.editorCreate();
 		this.walker.play('walk');
 
-
-	}
+	} // Fin create()
 
 	update() {
 
-		//quand on clique, on passe a autre chose
+		//quand on clique sur l'engrenage, on affiche le menu
 		this.engrenage.once('pointerup',this.runOption, this);
 
-        //this.scene.input.keyboard.on('keyup-'+'W', function (event) { console.log("echap") });
+        // Faire bouger l'arrière plan
 		this.background.tilePositionX += 0.7;
 
-	}
+	} // Fin update()
 }

@@ -132,9 +132,17 @@ class Level extends Phaser.Scene {
 
 		this.player = player;
 		this.mouvementPlayer = mouvementPlayer;
+		this.ennemyMouvement = ennemyMouvement;
 		this.ennemy = ennemy;
 		this.quitter = quitter;
 		this.option = option;
+
+		///    ///    ///    Test    ///    ///    ///
+
+
+		///    ///    ///    ////    ///    ///    ///
+
+
 
 		this.events.emit("scene-awake");
 	} //Fin editorCreate
@@ -149,6 +157,8 @@ class Level extends Phaser.Scene {
 	player;
 	/** @type {Phaser.GameObjects.components} */
 	mouvementPlayer;
+	/** @type {Phaser.GameObjects.components} */
+	ennemyMouvement;
 	/** @type {Phaser.GameObjects.Sprite} */
 	ennemy;
 	/** @type {Phaser.GameObjects.Sprite} */
@@ -188,6 +198,8 @@ class Level extends Phaser.Scene {
 	} // Fin create()
 
 	update(){
+
+		this.ennemyMouvement.suivre(this.player);
 
 		if (!this.move){
 			this.mouvementPlayer.stop();
