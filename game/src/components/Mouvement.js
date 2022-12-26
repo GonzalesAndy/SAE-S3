@@ -51,7 +51,6 @@ class Mouvement {
 
         this.ennemy = this.gameObject;
 
-
         //timer avant deplacement par rapport au joueur
         this.timer += 1;
         if (this.timer === 2) {

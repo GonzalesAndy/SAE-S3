@@ -44,7 +44,6 @@ class Menu extends Phaser.Scene {
 		//visibilité option
 		option.visible = false;
 
-
 		// quitter
 		const quitter = this.add.image(710, 100, "quitter");
 		quitter.scaleX = 0.07;

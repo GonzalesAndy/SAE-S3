@@ -28,7 +28,6 @@ window.addEventListener('load', function () {
 	game.scene.add('Boot', Boot, true);
 	game.scene.add('Preload', Preload);
 	game.scene.add('Menu', Menu);
-	game.scene.add('PointDeVie', PointDeVie);
 	game.scene.add('Level', Level);
 });
 

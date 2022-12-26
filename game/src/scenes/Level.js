@@ -122,11 +122,11 @@ class Level extends Phaser.Scene {
 
 		////			/////			////
 		
-		this.scene.launch("PointDeVie");
-		this.scene.sendToBack();
+		//this.scene.launch("PointDeVie");
+		//this.scene.sendToBack();
 
 		this.question = new Question(this, this.intPerso);
-		this.sur = new PointDeVie();
+		this.sur = new PointDeVie(this);
 
 		this.move = true;
 
@@ -220,8 +220,22 @@ class Level extends Phaser.Scene {
 				
 				//lancer la question
 				this.question.runQuestion();
-				
+
 			} //Fin if
 		} // Fin if
+
+		//Si le joueur touche l'ennemy 
+		if( this.player.x - 24 <= this.ennemy.x + 32 &&
+			this.player.x + 24 >= this.ennemy.x - 32 &&
+			this.player.y - 24 <= this.ennemy.y + 32 &&
+			this.player.y + 24 >= this.ennemy.y - 32){
+			this.sur.pntDeVie -= 1;
+			this.sur.perd();
+			this.ennemy.x -= 100;
+			this.ennemy.y -= 100;
+		} // Fin if
+
+	//console.log(this.sur.pntDeVie)
+
 	} //Fin update()
 } //Fin class
