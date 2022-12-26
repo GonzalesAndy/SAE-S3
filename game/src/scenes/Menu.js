@@ -97,7 +97,6 @@ class Menu extends Phaser.Scene {
 		this.quitter.visible = true;
 		this.option.visible = true;
 
-
 		this.quitter.once('pointerup', function(event) { 
 			this.quitter.visible = false;
 			this.option.visible = false;
