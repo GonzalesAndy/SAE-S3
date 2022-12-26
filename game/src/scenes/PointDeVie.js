@@ -6,7 +6,7 @@ class PointDeVie extends Phaser.GameObjects.Image {
 		var pntDeVie = 3;
 		this.pntDeVie = pntDeVie;
 		this.setScrollFactor(0);
-
+		this.scene = scene;
 		scene.add.existing(this);
 	}
 
@@ -17,6 +17,9 @@ class PointDeVie extends Phaser.GameObjects.Image {
 		else if(this.pntDeVie == 1){
 			this.setTexture("1vies");
 		}
+		else if(this.pntDeVie == 0){
+            this.scene.scene.start('GameOver')
+		} // Fin if else
 	}
 
 }
