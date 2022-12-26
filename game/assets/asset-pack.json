@@ -173,16 +173,20 @@
                 "type": "image",
                 "key": "valider"
             },
-
             {
-                "url": "assets/Coeur.png",
+                "url": "assets/3vies.png",
                 "type": "image",
-                "key": "Coeur"
+                "key": "3vies"
             },
             {
-                "url": "assets/Coeur_vide.png",
+                "url": "assets/2vies.png",
                 "type": "image",
-                "key": "Coeur_vide"
+                "key": "2vies"
+            },
+            {
+                "url": "assets/1vies.png",
+                "type": "image",
+                "key": "1vies"
             }
         ]
     },
