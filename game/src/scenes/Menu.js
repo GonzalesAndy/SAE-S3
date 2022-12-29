@@ -82,4 +82,4 @@ class Menu extends Phaser.Scene {
 		this.background.tilePositionX += 0.7;
 
 	} // Fin update()
-}
+} //Fin class

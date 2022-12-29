@@ -95,7 +95,6 @@ class Level extends Phaser.Scene {
 		//flash quand on entre dans le stage
 		this.cameras.main.flash();
 
-
 		//quand on appuie sur entrer, on lance les options
 		this.input.keyboard.on('keydown-ENTER', function(){
 			this.scene.launch('Option');
@@ -124,7 +123,7 @@ class Level extends Phaser.Scene {
 	} //Fin editorCreate
 
 	/** @type {Phaser.GameObjects.components} */
-	question;
+	//question;
 	/** @type {Phaser.GameObjects.components} */
 	sur;
 	/** @type {boolean} */
@@ -169,13 +168,15 @@ class Level extends Phaser.Scene {
 			if(this.player.y <= this.porteY[1] && this.player.y > this.porteY[0]){
 
 				//flash quand on sors du stage
-				this.cameras.main.flash();
+				//this.cameras.main.flash();
 
 				this.player.x = 1160;
 				this.move = false;
-				
-				//lancer la question
-				this.question.runQuestion();
+				//console.log(this.nameMap, this.intPerso, this.vitesseEnnemy)
+				this.scene.start('Question',{ nameMap: this.nameMap, intPerso: this.intPerso , vitesseEnnemy: this.vitesseEnnemy});
+				//this.scene.launch('Question');
+				this.scene.pause('Level');
+				this.scene.sendToBack();
 
 			} //Fin if
 		} // Fin if

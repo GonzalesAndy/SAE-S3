@@ -37,4 +37,4 @@ class Option extends Phaser.Scene {
 		this.editorCreate();
     } // Fin create()
 
-}
+} //Fin class
