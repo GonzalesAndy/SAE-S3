@@ -36,26 +36,7 @@ class Menu extends Phaser.Scene {
 		//annimation boutons
 		new PushOnClick(engrenage);
 
-		// feuilleOption
-		const option = this.add.image(500, 294, "feuilleOption");
-		option.scaleX = 0.8;
-		option.scaleY = 0.8;
-
-		//visibilité option
-		option.visible = false;
-
-		// quitter
-		const quitter = this.add.image(710, 100, "quitter");
-		quitter.scaleX = 0.07;
-		quitter.scaleY = 0.07;
-
-		//annimation boutons
-		new PushOnClick(quitter);
-
 		const choixPerso = new ChoixPerso(this);
-
-		//visibilité bouton quitter
-		quitter.visible = false;
 
 		//quand on appuie sur entrer, on run le jeu
 		this.input.keyboard.on('keydown-ENTER', function(){
@@ -63,8 +44,6 @@ class Menu extends Phaser.Scene {
 		}, this);
 
 		this.background = background;
-		this.quitter = quitter;
-		this.option = option;
 		this.titre = titre;
 		this.start = start;
 		this.walker = walker;
@@ -79,33 +58,10 @@ class Menu extends Phaser.Scene {
 	titre;
 	/** @type {Phaser.GameObjects.Image} */
 	start;
-	/** @type {Phaser.GameObjects.Image} */
-	quitter;
-	/** @type {Phaser.GameObjects.Image} */
-	option;
 	/** @type {Phaser.GameObjects.Sprite} */
 	walker;
 	/** @type {Phaser.GameObjects.Image} */
 	engrenage;
-
-
-	runOption(){
-
-		this.start.visible = false;
-		this.engrenage.visible = false;
-
-		this.quitter.visible = true;
-		this.option.visible = true;
-
-		this.quitter.once('pointerup', function(event) { 
-			this.quitter.visible = false;
-			this.option.visible = false;
-
-			this.start.visible = true;
-			this.engrenage.visible = true;
-		}, this);
-
-	} // Fin runOption()
 
 	create() {
 
@@ -116,9 +72,12 @@ class Menu extends Phaser.Scene {
 
 	update() {
 
-		//quand on clique sur l'engrenage, on affiche le menu
-		this.engrenage.once('pointerup',this.runOption, this);
 
+		//quand on clique sur l'engrenage, on affiche le menu
+		this.engrenage.once('pointerup',function(){
+			this.scene.launch('Option');
+			this.scene.pause('Menu');
+		}, this);
         // Faire bouger l'arrière plan
 		this.background.tilePositionX += 0.7;
 

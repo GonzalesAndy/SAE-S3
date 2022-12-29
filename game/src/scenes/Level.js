@@ -95,30 +95,15 @@ class Level extends Phaser.Scene {
 		//flash quand on entre dans le stage
 		this.cameras.main.flash();
 
-		////			OPTION			////
 
 		//quand on appuie sur entrer, on lance les options
-		this.input.keyboard.on('keydown-ENTER', this.runOption, this);
+		this.input.keyboard.on('keydown-ENTER', function(){
+			this.scene.launch('Option');
+			this.scene.pause('Level');
+			this.scene.sendToBack();
+		}, this);
 
-		// feuilleOption
-		const option = this.add.image(500, 294, "feuilleOption").setScrollFactor(0);
-		option.scaleX = 0.8;
-		option.scaleY = 0.8;
 
-		// quitter
-		const quitter = this.add.image(710, 100, "quitter").setScrollFactor(0);
-		quitter.scaleX = 0.07;
-		quitter.scaleY = 0.07;
-
-		//annimation boutons
-		new PushOnClick(quitter);
-
-		option.visible = false;
-		quitter.visible = false;
-
-		option.setImmovable = true;
-
-		this.question = new Question(this, this.intPerso, this.vitesseEnnemy);
 		this.sur = new PointDeVie(this);
 
 		this.move = true;
@@ -127,8 +112,6 @@ class Level extends Phaser.Scene {
 		this.mouvementPlayer = mouvementPlayer;
 		//this.ennemyMouvement = ennemyMouvement;
 		this.ennemy = ennemy;
-		this.quitter = quitter;
-		this.option = option;
 
 		///    ///    ///    Test    ///    ///    ///
 
@@ -154,27 +137,6 @@ class Level extends Phaser.Scene {
 	//ennemyMouvement;
 	/** @type {Phaser.GameObjects.Sprite} */
 	ennemy;
-	/** @type {Phaser.GameObjects.Sprite} */
-	quitter;
-	/** @type {Phaser.GameObjects.Sprite} */
-	option;
-
-	runOption(){
-
-		this.move = false;
-
-		this.quitter.visible = true;
-		this.option.visible = true;
-		
-		this.quitter.once('pointerup', function(event) { 
-
-			this.quitter.visible = false;
-			this.option.visible = false;
-
-			this.move = true;
-		}, this);
-
-	} //Fin RunOption()
 
 	create() {
 

@@ -142,7 +142,11 @@ class Question{
 			this.valider.once('pointerup', function(event) { 
 
                 if (Bonnereponse == 1){
-                    this.scene.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy - 10]);
+                    if (this.vitesseEnnemy <= 80){
+                        this.scene.scene.start("Level", [2, this.intPerso, 70]);
+                    }else{
+                        this.scene.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy - 10]);
+                    }
                 }
                 if (Bonnereponse == 0){
                     this.scene.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy + 50]);
