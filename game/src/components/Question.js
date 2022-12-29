@@ -1,14 +1,22 @@
 class Question{
 
-    constructor(scene){
+    constructor(scene,intPerso,vitesseEnnemy){
 
-        const feuilleQuestion = scene.add.image(500, 294, "feuille").setScrollFactor(0);
+        this.scene = scene;
+        this.intPerso = intPerso;
+        this.vitesseEnnemy = vitesseEnnemy;
+
+
+        console.log(this.scene);
+        console.log(this.vitesseEnnemy);
+
+        const feuilleQuestion =  this.scene.add.image(500, 294, "feuille").setScrollFactor(0);
     
-        const quest = scene.add.text(230, 150, "How do we say 'Informatique' in English ?", { font: "32px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+        const quest = this.scene.add.text(230, 150, "How do we say 'Informatique' in English ?", { font: "32px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
         
-        const Aright = scene.add.text(420, 200, "Right", { font: "60px Helvetica bold", fill: "#228B22" }).setScrollFactor(0);
-        const Afalse = scene.add.text(420, 200, "False", { font: "60px Helvetica bold", fill: "#ff0000" }).setScrollFactor(0);
-        var groupeBoutons = scene.physics.add.staticGroup([
+        const Aright = this.scene.add.text(420, 200, "Right", { font: "60px Helvetica bold", fill: "#228B22" }).setScrollFactor(0);
+        const Afalse = this.scene.add.text(420, 200, "False", { font: "60px Helvetica bold", fill: "#ff0000" }).setScrollFactor(0);
+        var groupeBoutons = this.scene.physics.add.staticGroup([
             { key: 'qcm', frame: 0, repeat: 1, setXY: { x: 350, y: 300, stepX: 280, scrollFactorX : 0} },
             { key: 'qcm', frame: 0, repeat: 1, setXY: { x: 350, y: 350, stepX: 280 } }
         ])
@@ -23,14 +31,14 @@ class Question{
         }
 
 
-        const valider = scene.add.image(490, 415, "valider").setScrollFactor(0);
+        const valider = this.scene.add.image(490, 415, "valider").setScrollFactor(0);
         valider.scaleX = 0.07;
         valider.scaleY = 0.07;
 
-        const Tbutton1 = scene.add.text(260, 285, "Informatique", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-        const Tbutton2 = scene.add.text(512, 285, "Computer Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-        const Tbutton3 = scene.add.text(235, 335, "Ordinateur Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-        const Tbutton4 = scene.add.text(552, 335, "Informatick", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+        const Tbutton1 = this.scene.add.text(260, 285, "Informatique", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+        const Tbutton2 = this.scene.add.text(512, 285, "Computer Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+        const Tbutton3 = this.scene.add.text(235, 335, "Ordinateur Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+        const Tbutton4 = this.scene.add.text(552, 335, "Informatick", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
         new PushOnClick(valider);
 
         //centrer les trucs
@@ -56,9 +64,6 @@ class Question{
         Tbutton4.visible = false;
         feuilleQuestion.visible = false;
         quest.visible = false;
-
-        this.scene = scene;
-
 
         this.valider = valider;
 
@@ -120,7 +125,6 @@ class Question{
             }, this);
         }
 
-
         //On regarde si la réponse est juste ou fausse
 		this.valider.once('pointerup', function(event) { 
             this.reponse = 1;
@@ -136,8 +140,13 @@ class Question{
 			}
             
 			this.valider.once('pointerup', function(event) { 
-                
-                this.scene.scene.start("Level", [2]);
+
+                if (Bonnereponse == 1){
+                    this.scene.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy - 10]);
+                }
+                if (Bonnereponse == 0){
+                    this.scene.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy + 50]);
+                }
 				
 			}, this);
 		}, this);

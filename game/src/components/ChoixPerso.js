@@ -65,11 +65,11 @@ class ChoixPerso{
 
         this.joueur1.once('pointerup', function(event) { 
             this.choix = 1;
-            this.scene.scene.start('Level', [1, 1]);
+            this.scene.scene.start('Level', [1, 1, 70]);
         }, this);
         this.joueur2.once('pointerup', function(event) { 
             this.choix = 2;
-            this.scene.scene.start('Level', [1, 2]);
+            this.scene.scene.start('Level', [1, 2, 70]);
         }, this);
 	} // Fin runChoixPerso()
 } // Fin class

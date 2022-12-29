@@ -11,7 +11,6 @@ class Mouvement {
 
     // var
     gameObject;
-    playable = true;
     isDashing = false;
     hasDashed = false;
     jump = false;
@@ -46,36 +45,6 @@ class Mouvement {
     static getComponent(gameObject) {
         return gameObject["__Mouvement"];
     } // Fin getComponent()
-
-    suivre(player) {
-
-        this.ennemy = this.gameObject;
-
-        //timer avant deplacement par rapport au joueur
-        this.timer += 1;
-        if (this.timer === 2) {
-            this.scene.physics.moveToObject(this.ennemy, player, 200);
-
-            // si les coordonnée de la frame precedante et actuelle sont === on fait bouger l'entité
-            if (Math.abs(this.ennemy.x - this.ennemyX) < 0.1 && Math.abs(this.ennemy.y - this.ennemyY) < 0.1) {
-                this.i += 1;
-            } // Fin if
-
-            if (this.i >= 50) {
-                this.ennemy.y -= 110;
-                this.ennemy.x -= 10;
-                this.i = 0;
-            } // Fin if
-
-            this.timer = 0;
-
-            //redefinition des ancienne valeur de coordonnée au novelle
-            this.ennemyX = this.ennemy.x;
-            this.ennemyY = this.ennemy.y;
-
-        }// Fin if 
-
-    } // Fin suivre()
 
     isOnFloor() {
         return this.gameObject.body.onFloor();
@@ -157,26 +126,23 @@ class Mouvement {
 
     direction(){
         if(this.cursors.right.isDown){
-            this.gameObject.play("walk");
+            this.gameObject.play("walk", true);
         } else if(this.cursors.left.isDown){
-            this.gameObject.play("walk");
+            this.gameObject.play("walk", true);
             this.gameObject.flipX = true;
-        } // Fin else if
+        } else{
+            this.gameObject.play("idle", true);
+        }// Fin else if
     } // Fin direction
 
     update() {
 
         if (typeof this.gameObject.body !== "undefined") {
 
-            // movements playable character
-            if (this.playable) {
-                this.gameObject.flipX = false;
-                this.gameObject.play("idle");
-                this.direction();
-                this.updateVelocity();
-            } // Fin if
-
-        } // Fin if
+            this.gameObject.flipX = false;
+            this.direction();
+            this.updateVelocity();
+        } // Fin if 
 
     } // Fin update()
 }

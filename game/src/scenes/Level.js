@@ -34,6 +34,7 @@ class Level extends Phaser.Scene {
 				break;
 		} //Fin case
 		this.intPerso = arg[1];
+		this.vitesseEnnemy = arg[2];
 
 	}// Fin init
 
@@ -78,30 +79,9 @@ class Level extends Phaser.Scene {
 
 		// ennemy (components)
 		new Physics(ennemy);
-		const ennemyMouvement = new Mouvement(ennemy);
-		ennemyMouvement.playable = false;
 
 		//ajout collision layer - joueur/ennemy
 		this.physics.add.collider(player, [fond,platforme]);
-
-		var pathFindingPlatform = [];
-		var arr = [];
-
-		//console.log(carte.layer.data);
-		for (var i = 0; i < carte.layer.data.length; ++i){
-			for (var j = 0; j < carte.layer.data[i].length; ++j){
-				arr.push(carte.layer.data[i][j].index);
-			}
-			//console.log(arr);
-			pathFindingPlatform.push(arr);
-			arr = []
-		}
-		console.log();
-		console.log(pathFindingPlatform);
-		
-		//console.log(carte["layers"][1]["data"][0][0]);
-		//this.levelData = JSON.parse(this.game.cache.getText('map1'));
-		//console.log(this.levelData);
 
 		//ajout collision joueur - ennemy
 		this.physics.add.collider(ennemy, player);
@@ -138,19 +118,14 @@ class Level extends Phaser.Scene {
 
 		option.setImmovable = true;
 
-		////			/////			////
-		
-		//this.scene.launch("PointDeVie");
-		//this.scene.sendToBack();
-
-		this.question = new Question(this, this.intPerso);
+		this.question = new Question(this, this.intPerso, this.vitesseEnnemy);
 		this.sur = new PointDeVie(this);
 
 		this.move = true;
 
 		this.player = player;
 		this.mouvementPlayer = mouvementPlayer;
-		this.ennemyMouvement = ennemyMouvement;
+		//this.ennemyMouvement = ennemyMouvement;
 		this.ennemy = ennemy;
 		this.quitter = quitter;
 		this.option = option;
@@ -176,7 +151,7 @@ class Level extends Phaser.Scene {
 	/** @type {Phaser.GameObjects.components} */
 	mouvementPlayer;
 	/** @type {Phaser.GameObjects.components} */
-	ennemyMouvement;
+	//ennemyMouvement;
 	/** @type {Phaser.GameObjects.Sprite} */
 	ennemy;
 	/** @type {Phaser.GameObjects.Sprite} */
@@ -217,7 +192,8 @@ class Level extends Phaser.Scene {
 
 	update(){
 
-		this.ennemyMouvement.suivre(this.player);
+		//this.ennemyMouvement.suivre(this.player);
+        this.physics.moveToObject(this.ennemy, this.player, this.vitesseEnnemy);
 		this.mouvementPlayer.update();
 
 		if (!this.move){
@@ -247,6 +223,8 @@ class Level extends Phaser.Scene {
 			this.player.x + 24 >= this.ennemy.x - 32 &&
 			this.player.y - 24 <= this.ennemy.y + 32 &&
 			this.player.y + 24 >= this.ennemy.y - 32){
+			
+			// On enlève un point de vie et on recule l'ennemy
 			this.sur.pntDeVie -= 1;
 			this.sur.perd();
 			this.ennemy.x -= 100;
