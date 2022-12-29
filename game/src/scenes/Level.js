@@ -83,7 +83,25 @@ class Level extends Phaser.Scene {
 
 		//ajout collision layer - joueur/ennemy
 		this.physics.add.collider(player, [fond,platforme]);
-		this.physics.add.collider(ennemy, [fond,platforme]);
+
+		var pathFindingPlatform = [];
+		var arr = [];
+
+		//console.log(carte.layer.data);
+		for (var i = 0; i < carte.layer.data.length; ++i){
+			for (var j = 0; j < carte.layer.data[i].length; ++j){
+				arr.push(carte.layer.data[i][j].index);
+			}
+			//console.log(arr);
+			pathFindingPlatform.push(arr);
+			arr = []
+		}
+		console.log();
+		console.log(pathFindingPlatform);
+		
+		//console.log(carte["layers"][1]["data"][0][0]);
+		//this.levelData = JSON.parse(this.game.cache.getText('map1'));
+		//console.log(this.levelData);
 
 		//ajout collision joueur - ennemy
 		this.physics.add.collider(ennemy, player);

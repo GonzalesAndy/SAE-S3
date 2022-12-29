@@ -5,7 +5,6 @@ class GameOver extends Phaser.Scene {
 
 	} // Fin constructor()
 
-
 	/** @returns {void} */
 	editorCreate() {
 
@@ -17,6 +16,5 @@ class GameOver extends Phaser.Scene {
 	create() {
 		this.editorCreate();
 	} // Fin create()
-
 
 } // Fin class GameOver
