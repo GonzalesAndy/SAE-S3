@@ -1,20 +1,20 @@
 class GameOver extends Phaser.Scene {
 
-	constructor() {
-		super("GameOver");
+    constructor() {
+        super("GameOver");
 
-	} // Fin constructor()
+    } // Fin constructor()
 
-	/** @returns {void} */
-	editorCreate() {
+    /** @returns {void} */
+    editorCreate() {
 
-		// progress
-		const progress = this.add.text(500, 349, "Game Over", {});
-		this.events.emit("scene-awake");
-	} // Fin editorCreate()
+        // progress
+        const progress = this.add.text(500, 349, "Game Over", {});
+        this.events.emit("scene-awake");
+    } // Fin editorCreate()
 
-	create() {
-		this.editorCreate();
-	} // Fin create()
+    create() {
+        this.editorCreate();
+    } // Fin create()
 
 } // Fin class GameOver

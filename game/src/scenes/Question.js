@@ -1,147 +1,158 @@
 class Question extends Phaser.Scene{
 
     init(data){
-    //constructor(){ 
-        //super('Question');
         
         this.nameMap = data.nameMap;
         this.intPerso = data.intPerso;
         this.vitesseEnnemy = data.vitesseEnnemy;
-        /*
-        const nameMap = data.nameMap;
-        const intPerso = data.intPerso;
-        const vitesseEnnemy = data.vitesseEnnemy;
-
-        this.nameMap = nameMap;
-        this.intPerso = this.intPerso;
-        this.vitesseEnnemy = this.vitesseEnnemy;*/
 
     } // Fin init()
 
-    editorCreate(){
+	/** @returns {void} */
+	editorCreate() {
         
+        // feuilleQuestion
         const feuilleQuestion =  this.add.image(500, 294, "feuille").setScrollFactor(0);
-        const quest = this.add.text(230, 150, "How do we say 'Informatique' in English ?", { font: "32px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                
+        // txtQuestion
+        const txtQuestion = this.add.text(230, 150, "How do we say 'Informatique' in English ?", { font: "32px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
         
-        const Aright = this.scene.scene.add.text(420, 200, "Right", { font: "60px Helvetica bold", fill: "#228B22" }).setScrollFactor(0);
-        const Afalse = this.scene.scene.add.text(420, 200, "False", { font: "60px Helvetica bold", fill: "#ff0000" }).setScrollFactor(0);
-        var groupeBoutons = this.scene.scene.physics.add.staticGroup([
-            { key: 'qcm', frame: 0, repeat: 1, setXY: { x: 350, y: 300, stepX: 280, scrollFactorX : 0} },
-            { key: 'qcm', frame: 0, repeat: 1, setXY: { x: 350, y: 350, stepX: 280 } }
-        ])
-
-        var children = groupeBoutons.getChildren();
-
-        for (var i = 0; i < children.length; i++){
-            var child = children[i];
-            new PushOnClick(child);
-            child.setScrollFactor(0);
-        }
-
-
         const valider = this.scene.scene.add.image(490, 415, "valider").setScrollFactor(0);
         valider.scaleX = 0.07;
         valider.scaleY = 0.07;
-
-
-        const Tbutton1 = this.scene.scene.add.text(260, 285, "Informatique", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-        const Tbutton2 = this.scene.scene.add.text(512, 285, "Computer Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-        const Tbutton3 = this.scene.scene.add.text(235, 335, "Ordinateur Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-        const Tbutton4 = this.scene.scene.add.text(552, 335, "Informatick", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
         new PushOnClick(valider);
 
-        console.log(1);
-        //centrer les trucs
-        Phaser.Display.Align.In.Center(quest, feuilleQuestion, 0, -120);
-        Phaser.Display.Align.In.Center(Tbutton1, children[0]);
-        Phaser.Display.Align.In.Center(Tbutton2, children[1]);
-        Phaser.Display.Align.In.Center(Tbutton3, children[2]);
-        Phaser.Display.Align.In.Center(Tbutton4, children[3]);
 
+		//Aligner feuille et question
+        Phaser.Display.Align.In.Center(txtQuestion, feuilleQuestion, 0, -120);
 
-        var liste = [Tbutton1, Tbutton2, Tbutton3, Tbutton4];
-
-		var reponse = 0;
-
+        // Texte "Right" & "False"
+        const Aright = this.scene.scene.add.text(420, 200, "Right", { font: "60px Helvetica bold", fill: "#228B22" }).setScrollFactor(0);
+        const Afalse = this.scene.scene.add.text(420, 200, "False", { font: "60px Helvetica bold", fill: "#ff0000" }).setScrollFactor(0);
         Afalse.visible = false;
         Aright.visible = false;
 
-        //On rend tout visible 
-        for (var i = 0; i < children.length; i++){
-            children[i].visible = true;
-            liste[i].visible = true;
-        }
-        
-        var Bonnereponse = 0
+		// Groupe de bouton
+		var groupeBoutton = this.add.group([
+            { key: 'qcm', frame: 0, repeat: 1, setXY: { x: 350, y: 300, stepX: 280, scrollFactorX : 0} },
+            { key: 'qcm', frame: 0, repeat: 1, setXY: { x: 350, y: 350, stepX: 280 } }
+		]);
 
-        if (reponse == 0){
-            
-            //Mettre la séléction on vert
-            children[0].once('pointerup', function(event) { 
-                Tbutton1.setStyle({color : "#228B22"})
-                Tbutton2.setStyle({color : "#66431a"})
-                Tbutton3.setStyle({color : "#66431a"})
-                Tbutton4.setStyle({color : "#66431a"})
-            }, this);
-            children[1].once('pointerup', function(event) { 
-                Tbutton1.setStyle({color : "#66431a"})
-                Tbutton2.setStyle({color : "#228B22"})
-                Tbutton3.setStyle({color : "#66431a"})
-                Tbutton4.setStyle({color : "#66431a"})
-                Bonnereponse = 1;
-            }, this);
-            children[2].once('pointerup', function(event) { 
-                Tbutton1.setStyle({color : "#66431a"})
-                Tbutton2.setStyle({color : "#66431a"})
-                Tbutton3.setStyle({color : "#228B22"})
-                Tbutton4.setStyle({color : "#66431a"})
-            }, this);
-            children[3].once('pointerup', function(event) { 
-                Tbutton1.setStyle({color : "#66431a"})
-                Tbutton2.setStyle({color : "#66431a"})
-                Tbutton3.setStyle({color : "#66431a"})
-                Tbutton4.setStyle({color : "#228B22"})
-            }, this);
+		// Groupe de texte de bouton
+		const Txtbutton1 = this.scene.scene.add.text(260, 285, "Informatique", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+		const Txtbutton2 = this.scene.scene.add.text(512, 285, "Computer Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+		const Txtbutton3 = this.scene.scene.add.text(235, 335, "Ordinateur Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+		const Txtbutton4 = this.scene.scene.add.text(552, 335, "Informatick", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+		var groupeTexte = this.add.group();
+		groupeTexte.add(Txtbutton1);
+		groupeTexte.add(Txtbutton2);
+		groupeTexte.add(Txtbutton3);
+		groupeTexte.add(Txtbutton4);
+
+		//Creer les enfant des groupes
+        var enfantBoutton = groupeBoutton.getChildren();
+        var enfantTxt = groupeTexte.getChildren();
+
+		//Aligner les boutons et le text + push on click sur bouton
+		for (var i = 0; i < enfantBoutton.length; i++){
+            new PushOnClick(enfantBoutton[i]);
+			Phaser.Display.Align.In.Center(enfantTxt[i], enfantBoutton[i]);
         }
 
-        //On regarde si la réponse est juste ou fausse
-		valider.once('pointerup', function(event) { 
-            reponse = 1;
+		this.Aright = Aright;
+		this.Afalse = Afalse;
+		this.valider = valider;
+		this.enfantBoutton = enfantBoutton;
+		this.enfantTxt = enfantTxt;
 
-			if (Bonnereponse == 1){
-				Aright.visible = true;
-				Afalse.visible = false;
+		this.nmbCliqueSelectionnee = 0;
 
-			}
-			if (Bonnereponse == 0){
-				Aright.visible = false;
-				Afalse.visible = true;
-			}
-            
-			valider.once('pointerup', function(event) { 
+		this.events.emit("scene-awake");
+	} // Fin editorCreate()
 
-                
-                if (Bonnereponse == 1){
-                    if (vitesseEnnemy <= 80){
-                        this.scene.start("Level", [2, this.intPerso, 70]);
-                    }else{
-                        this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy - 10]);
-                    }
-                }else if (Bonnereponse == 0){
-                    this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy + 50]);
-                }
-				
-			}, this);
-		}, this); 
-
-
-        this.events.emit("scene-awake");
-
-    } // Fin editorCreate()
-    create(){
-
+	create() {
 		this.editorCreate();
-    } // Fin create()
-    
+	} // Fin create()
+
+	update(){
+		var Bonnereponse = 1;
+		var selectionnee;
+
+		console.log(this.nmbCliqueSelectionnee);
+
+		
+
+		// on déséléctionne l'ancienne réponse et séléctionne la nouvelle réponse
+		this.enfantBoutton[0].once('pointerup', function(event){
+			if (this.nmbCliqueSelectionnee == 0){// si la réponse n'as pas encore été séléctionné
+				this.enfantTxt[0].setStyle({color : "#228B22"})
+				this.enfantTxt[1].setStyle({color : "#66431a"})
+				this.enfantTxt[2].setStyle({color : "#66431a"})
+				this.enfantTxt[3].setStyle({color : "#66431a"})
+				selectionnee = 0;
+			}
+		}, this);
+		this.enfantBoutton[1].once('pointerup', function(event){
+			if (this.nmbCliqueSelectionnee == 0){// si la réponse n'as pas encore été séléctionné
+				this.enfantTxt[0].setStyle({color : "#66431a"})
+				this.enfantTxt[1].setStyle({color : "#228B22"})
+				this.enfantTxt[2].setStyle({color : "#66431a"})
+				this.enfantTxt[3].setStyle({color : "#66431a"})
+				selectionnee = 1;
+			}
+		}, this);		
+		this.enfantBoutton[2].once('pointerup', function(event){
+			if (this.nmbCliqueSelectionnee == 0){// si la réponse n'as pas encore été séléctionné
+				this.enfantTxt[0].setStyle({color : "#66431a"})
+				this.enfantTxt[1].setStyle({color : "#66431a"})
+				this.enfantTxt[2].setStyle({color : "#228B22"})
+				this.enfantTxt[3].setStyle({color : "#66431a"})
+				selectionnee = 2;
+			}
+		}, this);
+		this.enfantBoutton[3].once('pointerup', function(event){
+			if (this.nmbCliqueSelectionnee == 0){// si la réponse n'as pas encore été séléctionné
+				this.enfantTxt[0].setStyle({color : "#66431a"})
+				this.enfantTxt[1].setStyle({color : "#66431a"})
+				this.enfantTxt[2].setStyle({color : "#66431a"})
+				this.enfantTxt[3].setStyle({color : "#228B22"})
+				selectionnee = 3;
+			}
+		}, this);	
+
+
+		//On regarde si la réponse est juste ou fausse
+		this.valider.once('pointerup', function(event) { 
+
+			//Si c'est la premiere fois que on clique sur séléctionné
+			if(this.nmbCliqueSelectionnee == 0){
+
+				console.log("1");
+				this.nmbCliqueSelectionnee = 1; // On ne peut plus changer de réponse
+		
+				if (Bonnereponse == selectionnee){ // Si la réponse séléctionné est la bonne
+					this.Aright.visible = true;
+					this.Afalse.visible = false;					
+                    if (this.vitesseEnnemy <= 80){
+						this.vitesseEnnemy =  70;
+					}else{
+						this.vitesseEnnemy -=  10;
+					}
+				} else {
+					this.Aright.visible = false;
+					this.Afalse.visible = true;
+                    this.vitesseEnnemy + 50
+				}// Fin if else
+
+			}// Fin if else
+			
+			this.valider.once('pointerup', function(event) { 
+
+				this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy]);
+					
+			}, this);
+		}, this);
+
+	} // Fin update()
 
 } //Fin class
