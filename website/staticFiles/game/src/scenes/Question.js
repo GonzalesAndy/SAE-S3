@@ -12,12 +12,11 @@ class Question extends Phaser.Scene {
         editorCreate() {
                 console.log("caca")
                 const element = document.getElementById('tableauDonnees');
-                const tabQuestion = element.dataset.question;
-                const tabAnswer1 = element.dataset.answer1;
-                const tabAnswer2 = element.dataset.answer2;
-                const tabAnswer3 = element.dataset.answer3;
-                const tabAnswer4 = element.dataset.answer4;
-
+                const tabQuestion = element.dataset.question.split(",");
+                const tabAnswer1 = element.dataset.answer1.split(",");
+                const tabAnswer2 = element.dataset.answer2.split(",");
+                const tabAnswer3 = element.dataset.answer3.split(",");
+                const tabAnswer4 = element.dataset.answer4.split(",");
 
                 // feuilleQuestion
                 const feuilleQuestion = this.add.image(500, 294, "feuille").setScrollFactor(0);
