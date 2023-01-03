@@ -146,9 +146,17 @@ class Question extends Phaser.Scene{
 
 			}// Fin if else
 			
+            console.log(this.namemap, this.intPerso, this.vitesseEnnemy);
 			this.valider.once('pointerup', function(event) { 
 
-				this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy]);
+                //this.scene.destroy("Level")				
+                //this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy]);
+                this.scene.stop('Level');
+                this.scene.stop("Question");
+                this.scene.start('Level', [2, 1, 70]);
+                //this.scene.start('Menu');
+				//this.scene.sendToBack();
+
 					
 			}, this);
 		}, this);

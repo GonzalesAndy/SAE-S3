@@ -8,6 +8,8 @@ class Level extends Phaser.Scene {
 	*/
 	init(arg){
 
+		console.log("entrée");
+
 		//En fonction de quel map est appelé, on change les paramettres
 		switch(arg[0]){
 			case 1 : //si map1
@@ -141,6 +143,8 @@ class Level extends Phaser.Scene {
 
 		this.editorCreate();
 	
+		console.log("entrée2");
+
 		//perso joue les animations
 		this.player.play("idle");
 		this.ennemy.play("idleN");
@@ -155,7 +159,7 @@ class Level extends Phaser.Scene {
 
 		//this.ennemyMouvement.suivre(this.player);
         this.physics.moveToObject(this.ennemy, this.player, this.vitesseEnnemy);
-		this.mouvementPlayer.update();
+		//this.mouvementPlayer.update();
 
 		if (!this.move){
 			this.mouvementPlayer.stop();
@@ -172,10 +176,8 @@ class Level extends Phaser.Scene {
 
 				this.player.x = 1160;
 				this.move = false;
-				//console.log(this.nameMap, this.intPerso, this.vitesseEnnemy)
-				this.scene.start('Question',{ nameMap: this.nameMap, intPerso: this.intPerso , vitesseEnnemy: this.vitesseEnnemy});
-				//this.scene.launch('Question');
-				this.scene.pause('Level');
+				this.scene.launch('Question',{ nameMap: this.nameMap, intPerso: this.intPerso , vitesseEnnemy: this.vitesseEnnemy});
+				//this.scene.pause('Level');
 				this.scene.sendToBack();
 
 			} //Fin if

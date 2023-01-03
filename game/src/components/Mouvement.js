@@ -138,9 +138,8 @@ class Mouvement {
     update() {
 
         if (typeof this.gameObject.body !== "undefined") {
-
             this.gameObject.flipX = false;
-            this.direction();
+            //this.direction();
             this.updateVelocity();
         } // Fin if 
 
