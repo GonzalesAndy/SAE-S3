@@ -21,10 +21,10 @@ def game():
     allScore = Question.query.all()
     for item in allScore:
         question += str(item)[10:len(str(item))-1]+","
-        answer1 += str(item.answer1)
-        answer2 += str(item.answer2)
-        answer3 += str(item.answer3)
-        answer4 += str(item.answer4)
+        answer1 += str(item.answer1)+","
+        answer2 += str(item.answer2)+","
+        answer3 += str(item.answer3)+","
+        answer4 += str(item.answer4)+","
     print(question)
     return render_template("game.html", name=current_user.username, user=current_user, question=question, answer1=answer1, answer2=answer2, answer3=answer3, answer4=answer4)
 
