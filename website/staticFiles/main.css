@@ -1,0 +1,230 @@
+body {
+    background-image: url("/staticFiles/map.png");
+}
+
+
+/* Formulaire login et register */
+
+#formLogin {
+    background-color: rgba(0, 0, 0, .5);
+    padding: 3%;
+    border-radius: 20px;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+#formLogin>label {
+    color: beige;
+}
+
+#formLogin>h3 {
+    color: beige;
+}
+
+nav {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.btn-primary-outline {
+    background-color: transparent;
+    color: white;
+}
+
+.btn-primary-outline:hover {
+    color: rgb(187, 187, 187)
+}
+
+
+/* Formulaire Add */
+
+#formAdd {
+    background-color: rgba(0, 0, 0, .5);
+    padding: 3%;
+    border-radius: 20px;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+#formAdd>label {
+    color: beige;
+}
+
+#formAdd>h3 {
+    color: beige;
+}
+
+.col-10 {
+    padding: 1%;
+}
+
+@media screen and (max-width: 991px) {
+    .col-10,
+    .col-2,
+    input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+    #formAdd {
+        margin-bottom: 10%;
+    }
+}
+
+
+/* Leaderboard */
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    border-radius: 5px;
+    font-size: 12px;
+    max-width: 100%;
+    font-weight: normal;
+    white-space: nowrap;
+    margin-top: 3%;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    background: rgba(36, 32, 88, 0.9);
+}
+
+.scoreCol {
+    width: 20%;
+}
+
+th>a {
+    pointer-events: none;
+    text-decoration: none;
+    font-size: x-large;
+    color: white;
+}
+
+th {
+    border-bottom: 1px solid #364043;
+    color: #E2B842;
+    font-size: 0.85em;
+    font-weight: 600;
+    padding: 0.5em 1em;
+    text-align: left;
+    background: rgb(15, 11, 66);
+    border-radius: 0.25em;
+    margin: 1em;
+}
+
+td {
+    color: #fff;
+    font-weight: 500;
+    font-size: large;
+    padding: 0.65em 1em;
+}
+
+.disabled td {
+    color: #4F5F64;
+}
+
+tbody tr {
+    transition: background 0.25s ease;
+}
+
+tbody tr:hover {
+    background: rgb(28, 23, 84);
+}
+
+
+/* Page d'accueil */
+
+.flex-container {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.intro {
+    order: 0;
+}
+
+.carousel {
+    margin-top: 10%;
+    order: 1;
+    justify-content: center;
+    margin-right: 20%;
+}
+
+.intro {
+    background-color: rgba(0, 0, 0, .5);
+    padding: 3%;
+    border-radius: 20px;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+.intro>h1 {
+    color: wheat;
+    text-align: center;
+}
+
+.intro>p {
+    color: white;
+    font-size: x-large;
+    text-align: center;
+}
+
+
+/* Carousel */
+
+.mySlides {
+    display: none;
+}
+
+.tousPoints {
+    margin-left: 50%;
+}
+
+.point {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.activeDot {
+    background-color: #717171;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}

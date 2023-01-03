@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Question</th>
+        <th>Type</th>
+        <th>Answer 1</th>
+        <th>Answer 2</th>
+        <th>Answer 3</th>
+        <th>Answer 4</th>
+        <th>Delete Row</th>
+    </tr>
+    {% for data in data %}
+    <tr>
+        <td>{{data.questionId}}</td>
+        <td>{{data.question}}</td>
+        <td>{{data.type}}</td>
+        <td>{{data.answer1}}</td>
+        <td>{{data.answer2}}</td>
+        <td>{{data.answer3}}</td>
+        <td>{{data.answer4}}</td>
+        <td>
+            <form action="/delete_row" method="POST">
+                <input type="hidden" name="row_id" value="{{data.questionId}}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
