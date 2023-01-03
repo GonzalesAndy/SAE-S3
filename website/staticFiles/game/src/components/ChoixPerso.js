@@ -21,18 +21,18 @@ class ChoixPerso{
         var choix;
 
 		// player
-		const joueur1 = scene.physics.add.sprite(0, 0, "1 idle", 0).setScrollFactor(0);
+		const joueur1 = scene.physics.add.sprite(0, 0, "idleF", 0).setScrollFactor(0);
         Phaser.Display.Align.In.Center(joueur1, feuille, -200, 0);
         joueur1.body.setAllowGravity(false)
-		joueur1.scaleX = 5;
-		joueur1.scaleY = 5;
+		joueur1.scaleX = 1;
+		joueur1.scaleY = 1;
 
 		// joueur2
 		const joueur2 = scene.physics.add.sprite(0, 0, "1 idle", 0).setScrollFactor(0);
         Phaser.Display.Align.In.Center(joueur2, feuille, 200, 0);
         joueur2.body.setAllowGravity(false)
-		joueur2.scaleX = 5;
-		joueur2.scaleY = 5;
+		joueur2.scaleX = 1;
+		joueur2.scaleY = 1;
 
         // Visible
         joueur1.visible = false;
