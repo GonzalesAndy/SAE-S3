@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, jsonify, render_template, request, flash
 from . import db
 from .models import Question, User
 from flask_login import login_required, current_user
@@ -7,12 +7,26 @@ views = Blueprint("views", __name__)
 
 
 @views.route("/")
+@login_required
 def home():
-    return render_template("home.html",user=current_user)
+    question = []
+    type = []
+    answer1 = []
+    answer2 = []
+    answer3 = []
+    answer4 = []
+    allScore = Question.query.all()
+    for item in allScore:
+        question.append(str(item)[10:len(str(item))-1])
+        type.append(item.type)
+        answer1.append(item.answer1)
+        answer2.append(item.answer2)
+        answer3.append(item.answer3)
+        answer4.append(item.answer4)
+    print(question)
+    return render_template("home.html", name=current_user.username, user=current_user, question=question, type=type, answer1=answer1, answer2=answer2, answer3=answer3, answer4=answer4)
 
-@views.route("/game")
-def game():
-    return render_template("game.html", user=current_user)
+
 
 @views.route("/add", methods=['GET', 'POST'])
 @login_required
