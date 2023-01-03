@@ -32,6 +32,7 @@ class Preload extends Phaser.Scene {
         this.editorPreload();
 
         //load le menu
+        //GameOverthis.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start('Menu'));
         this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start('Menu'));
     }
 
