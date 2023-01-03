@@ -134,3 +134,97 @@ tbody tr {
 tbody tr:hover {
     background: rgb(28, 23, 84);
 }
+
+
+/* Page d'accueil */
+
+.flex-container {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.intro {
+    order: 0;
+}
+
+.carousel {
+    margin-top: 10%;
+    order: 1;
+    justify-content: center;
+    margin-right: 20%;
+}
+
+.intro {
+    background-color: rgba(0, 0, 0, .5);
+    padding: 3%;
+    border-radius: 20px;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+.intro>h1 {
+    color: wheat;
+    text-align: center;
+}
+
+.intro>p {
+    color: white;
+    font-size: x-large;
+    text-align: center;
+}
+
+
+/* Carousel */
+
+.mySlides {
+    display: none;
+}
+
+.tousPoints {
+    margin-left: 50%;
+}
+
+.point {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.activeDot {
+    background-color: #717171;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
