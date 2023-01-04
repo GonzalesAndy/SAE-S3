@@ -4,58 +4,57 @@
 
 
             {
-                "url": "staticFiles/game/assets/1 idle.png",
+                "url": "staticFiles/game/assets/perso/idle_sprite_f.png",
                 "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16,
+                    "frameWidth": 128,
+                    "frameHeight": 128,
                     "startFrame": 0,
                     "endFrame": -1,
                     "spacing": 0,
                     "margin": 0
                 },
                 "type": "spritesheet",
-                "key": "1 idle"
+                "key": "idleF"
             },
             {
-                "url": "staticFiles/game/assets/1 walk.png",
+                "url": "staticFiles/game/assets/perso/idle_sprite_g.png",
                 "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16,
+                    "frameWidth": 128,
+                    "frameHeight": 128,
                     "startFrame": 0,
                     "endFrame": -1,
                     "spacing": 0,
                     "margin": 0
                 },
                 "type": "spritesheet",
-                "key": "1 walk"
+                "key": "idleG"
             },
             {
-                "url": "staticFiles/game/assets/10 idle.png",
+                "url": "staticFiles/game/assets/perso/run_sprite_f.png",
                 "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16,
+                    "frameWidth": 128,
+                    "frameHeight": 128,
                     "startFrame": 0,
                     "endFrame": -1,
                     "spacing": 0,
                     "margin": 0
                 },
                 "type": "spritesheet",
-                "key": "10 idle"
+                "key": "walkF"
             },
             {
-                "url": "staticFiles/game/assets/10 walk.png",
+                "url": "staticFiles/game/assets/perso/run_sprite_g.png",
                 "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16,
+                    "frameWidth": 128,
+                    "frameHeight": 128,
                     "startFrame": 0,
                     "endFrame": -1,
                     "spacing": 0,
                     "margin": 0
                 },
                 "type": "spritesheet",
-                "key": "10 walk"
+                "key": "walkG"
             },
-
             {
                 "url": "staticFiles/game/assets/ennemy.png",
                 "frameConfig": {

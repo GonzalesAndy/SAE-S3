@@ -1,17 +1,38 @@
 {
     "anims": [
         {
-            "key": "idle",
+            "key": "idleF",
             "type": "frame",
             "frames": [
                 {
-                    "key": "1 idle",
+                    "key": "idleF",
                     "frame": 0,
                     "duration": 0,
                     "keyframe": false
                 },
                 {
-                    "key": "1 idle",
+                    "key": "idleF",
+                    "frame": 3,
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 2,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },        
+        {
+            "key": "idleG",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "idleG",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleG",
                     "frame": 3,
                     "duration": 0,
                     "keyframe": false
@@ -22,29 +43,62 @@
             "repeat": -1
         },
         {
-            "key": "walk",
+            "key": "walkF",
             "type": "frame",
             "frames": [
                 {
-                    "key": "1 walk",
+                    "key": "walkF",
                     "frame": 2,
                     "duration": 0,
                     "keyframe": false
                 },
                 {
-                    "key": "1 walk",
+                    "key": "walkF",
                     "frame": 5,
                     "duration": 0,
                     "keyframe": false
                 },
                 {
-                    "key": "1 walk",
+                    "key": "walkF",
                     "frame": 8,
                     "duration": 0,
                     "keyframe": false
                 },
                 {
-                    "key": "1 walk",
+                    "key": "walkF",
+                    "frame": 11,
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 6,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "walkG",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "walkG",
+                    "frame": 2,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
+                    "frame": 5,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
+                    "frame": 8,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
                     "frame": 11,
                     "duration": 0,
                     "keyframe": false

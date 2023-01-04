@@ -28,7 +28,7 @@ class ChoixPerso{
 		joueur1.scaleY = 1;
 
 		// joueur2
-		const joueur2 = scene.physics.add.sprite(0, 0, "1 idle", 0).setScrollFactor(0);
+		const joueur2 = scene.physics.add.sprite(0, 0, "idleG", 0).setScrollFactor(0);
         Phaser.Display.Align.In.Center(joueur2, feuille, 200, 0);
         joueur2.body.setAllowGravity(false)
 		joueur2.scaleX = 1;
@@ -38,8 +38,8 @@ class ChoixPerso{
         joueur1.visible = false;
         joueur2.visible = false;
 
-        joueur1.play("walk");
-        joueur2.play("walk");
+        joueur1.play("walkF");
+        joueur2.play("walkG");
 
         new PushOnClick(joueur1);
         new PushOnClick(joueur2);
