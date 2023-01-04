@@ -1,5 +1,6 @@
 body {
     background-image: url("/staticFiles/map.png");
+    margin: 0;
 }
 
 
@@ -74,6 +75,10 @@ nav {
 
 /* Leaderboard */
 
+.container {
+    overflow: scroll;
+}
+
 table {
     margin-left: auto;
     margin-right: auto;
@@ -139,44 +144,29 @@ tbody tr:hover {
 /* Page d'accueil */
 
 .flex-container {
-    display: -ms-flexbox;
-    display: -webkit-flex;
+    margin-top: 3%;
     display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-align-content: center;
-    -ms-flex-line-pack: center;
-    align-content: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
+    justify-content: space-around;
     align-items: center;
-}
-
-.intro {
-    order: 0;
+    gap: 2%;
 }
 
 .carousel {
     margin-top: 10%;
     order: 1;
-    justify-content: center;
     margin-right: 20%;
 }
 
 .intro {
     background-color: rgba(0, 0, 0, .5);
+    order: 0;
     padding: 3%;
     border-radius: 20px;
     width: 60%;
     margin: 0 auto;
-    margin-top: 10%;
+    margin-top: 8%;
 }
 
 .intro>h1 {
@@ -217,7 +207,7 @@ tbody tr:hover {
 
 .fade {
     animation-name: fade;
-    animation-duration: 1.5s;
+    animation-duration: 3s;
 }
 
 @keyframes fade {
@@ -226,5 +216,16 @@ tbody tr:hover {
     }
     to {
         opacity: 1
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .flex-container {
+        flex-direction: column;
+    }
+    .mySlides {
+        max-width: fit-content;
+        margin-left: 0;
+        margin-right: 15%;
     }
 }
