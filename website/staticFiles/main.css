@@ -8,20 +8,70 @@ body {
 footer {
     position: fixed;
     bottom: 0;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(0, 0, 0, 0.2);
     color: white;
     width: 100%;
     text-align: center;
 }
 
-footer>a {
+footer>button {
+    background-color: transparent;
+    border-color: transparent;
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
 
-footer>a:hover {
+footer>button:hover {
     color: rgb(187, 187, 187);
+}
+
+
+/* Pop-Up Footer*/
+
+#popupMention,
+#popupPolitique {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(25, 0, 58);
+    border: 1px solid black;
+    padding: 20px;
+    color: white;
+    max-width: 80%;
+    max-height: 80%;
+    min-width: 300px;
+    overflow: scroll;
+}
+
+#popupMention>p,
+#popupPolitique>p {
+    font-size: 2vh;
+    word-wrap: break-word;
+}
+
+#popupMention>button,
+#popupPolitique>button {
+    position: absolute;
+    margin-right: 7%;
+    background-color: rgb(64, 64, 64);
+    right: 0;
+    left: auto;
+    border-color: white;
+    border-style: solid;
+    border-radius: 10%;
+    border-width: 1px;
+    width: 30px;
+    height: 30px;
+    color: rgb(187, 187, 187);
+}
+
+#popupMention>button:hover,
+#popupPolitique>button:hover {
+    transition: 0.5s;
+    background-color: rgb(64, 64, 64, .5);
+    color: red;
 }
 
 
