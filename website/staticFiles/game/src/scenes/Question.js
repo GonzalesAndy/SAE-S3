@@ -10,7 +10,6 @@ class Question extends Phaser.Scene {
 
         /** @returns {void} */
         editorCreate() {
-                console.log("caca")
                 const element = document.getElementById('tableauDonnees');
                 const tabQuestion = element.dataset.question.split(",");
                 const tabAnswer1 = element.dataset.answer1.split(",");
@@ -153,14 +152,12 @@ class Question extends Phaser.Scene {
 
                     } // Fin if else
 
-                    console.log(this.namemap, this.intPerso, this.vitesseEnnemy);
                     this.valider.once('pointerup', function(event) {
 
                         //this.scene.destroy("Level")				
-                        //this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy]);
                         this.scene.stop('Level');
                         this.scene.stop("Question");
-                        this.scene.start('Level', [2, 1, 70]);
+                        this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy]);
                         //this.scene.start('Menu');
                         //this.scene.sendToBack();
 
