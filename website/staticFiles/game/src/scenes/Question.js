@@ -11,20 +11,22 @@ class Question extends Phaser.Scene {
 
         /** @returns {void} */
         editorCreate() {
+
                 const element = document.getElementById('tableauDonnees');
                 const tabQuestion = element.dataset.question.split(",");
                 const tabAnswer1 = element.dataset.answer1.split(",");
                 const tabAnswer2 = element.dataset.answer2.split(",");
                 const tabAnswer3 = element.dataset.answer3.split(",");
                 const tabAnswer4 = element.dataset.answer4.split(",");
-                
-                var ale = this.getRandomInt(0, tabAnswer1.length - 1);
+                var listeReponse = [tabAnswer1, tabAnswer2, tabAnswer3, tabAnswer4];
+                var aleatoireQuestion = this.getRandomInt(0, tabAnswer1.length - 1);
+                this.tabAnswer1 = tabAnswer1;
 
                 // feuilleQuestion
                 const feuilleQuestion = this.add.image(500, 294, "feuille").setScrollFactor(0);
 
                 // txtQuestion
-                const txtQuestion = this.add.text(230, 150, tabQuestion[ale], { font: "32px Helvetica bold", fill: "#66431a", wordWrap: { width:650 } }).setScrollFactor(0);
+                const txtQuestion = this.add.text(230, 150, tabQuestion[aleatoireQuestion], { font: "32px Helvetica bold", fill: "#66431a", wordWrap: { width:650 } }).setScrollFactor(0);
 
                 const valider = this.scene.scene.add.image(490, 415, "valider").setScrollFactor(0);
                 valider.scaleX = 0.07;
@@ -47,11 +49,40 @@ class Question extends Phaser.Scene {
                     { key: 'qcm', frame: 0, repeat: 1, setXY: { x: 350, y: 350, stepX: 280 } }
                 ]);
 
+                var valeurExclus = []
+                var bonneReponse;
+
                 // Groupe de texte de bouton
-                const Txtbutton1 = this.scene.scene.add.text(260, 285, tabAnswer1[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-                const Txtbutton2 = this.scene.scene.add.text(512, 285, tabAnswer2[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-                const Txtbutton3 = this.scene.scene.add.text(235, 335, tabAnswer3[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-                const Txtbutton4 = this.scene.scene.add.text(552, 335, tabAnswer4[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
+                valeurExclus.push(aleatoireReponse);
+                const Txtbutton1 = this.scene.scene.add.text(260, 285, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                if(aleatoireReponse == 0){
+                    bonneReponse = 0;
+                }
+
+                var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
+                valeurExclus.push(aleatoireReponse);
+                const Txtbutton2 = this.scene.scene.add.text(512, 285, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0); 
+                if(aleatoireReponse == 0){
+                    bonneReponse = 1;
+                }
+
+                var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
+                valeurExclus.push(aleatoireReponse);
+                const Txtbutton3 = this.scene.scene.add.text(235, 335, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                if(aleatoireReponse == 0){
+                    bonneReponse = 2;
+                }
+
+                var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
+                valeurExclus.push(aleatoireReponse);
+                const Txtbutton4 = this.scene.scene.add.text(552, 335, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                if(aleatoireReponse == 0){
+                    bonneReponse = 3;
+                }
+
+                this.bonneReponse = bonneReponse;
+
                 var groupeTexte = this.add.group();
                 groupeTexte.add(Txtbutton1);
                 groupeTexte.add(Txtbutton2);
@@ -80,9 +111,7 @@ class Question extends Phaser.Scene {
             } // Fin editorCreate()
 
         createEvent(){
-            
-            var Bonnereponse = 1;
-            this.Bonnereponse = Bonnereponse
+
             var selectionnee;
             this.selectionnee = selectionnee;
 
@@ -94,7 +123,7 @@ class Question extends Phaser.Scene {
 
                     this.nmbCliqueSelectionnee = 1; // On ne peut plus changer de réponse
 
-                    if (this.Bonnereponse == this.selectionnee) { // Si la réponse séléctionné est la bonne
+                    if (this.bonneReponse == this.selectionnee) { // Si la réponse séléctionné est la bonne
                         this.Aright.visible = true;
                         this.Afalse.visible = false;
                         if (this.vitesseEnnemy <= 80) {
@@ -128,11 +157,20 @@ class Question extends Phaser.Scene {
             this.createEvent();
         } // Fin create()
 
-        getRandomInt(min, max) {
+        /*getRandomInt(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
+        }*/
+        getRandomInt(min, max, excludedValues) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            let randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
+            if (excludedValues && excludedValues.includes(randomInt)) {
+              return this.getRandomInt(min, max, excludedValues);
+            }
+            return randomInt;
+          }
 
         update() {
 
