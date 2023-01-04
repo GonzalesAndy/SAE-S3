@@ -5,6 +5,7 @@ class Question extends Phaser.Scene {
                 this.nameMap = data.nameMap;
                 this.intPerso = data.intPerso;
                 this.vitesseEnnemy = data.vitesseEnnemy;
+                this.pointDeViePerso = data.pointDeViePerso;
 
             } // Fin init()
 
@@ -84,8 +85,6 @@ class Question extends Phaser.Scene {
                 var Bonnereponse = 1;
                 var selectionnee;
 
-                console.log(this.nmbCliqueSelectionnee);
-
 
 
                 // on déséléctionne l'ancienne réponse et séléctionne la nouvelle réponse
@@ -133,7 +132,6 @@ class Question extends Phaser.Scene {
                     //Si c'est la premiere fois que on clique sur séléctionné
                     if (this.nmbCliqueSelectionnee == 0) {
 
-                        console.log("1");
                         this.nmbCliqueSelectionnee = 1; // On ne peut plus changer de réponse
 
                         if (Bonnereponse == selectionnee) { // Si la réponse séléctionné est la bonne
@@ -147,17 +145,17 @@ class Question extends Phaser.Scene {
                         } else {
                             this.Aright.visible = false;
                             this.Afalse.visible = true;
-                            this.vitesseEnnemy + 50
+                            this.vitesseEnnemy += 50
                         } // Fin if else
 
                     } // Fin if else
 
                     this.valider.once('pointerup', function(event) {
 
-                        //this.scene.destroy("Level")				
+                        //this.scene.destroy("Level")
                         this.scene.stop('Level');
                         this.scene.stop("Question");
-                        this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy]);
+                        this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso]);
                         //this.scene.start('Menu');
                         //this.scene.sendToBack();
 
