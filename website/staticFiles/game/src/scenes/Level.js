@@ -42,7 +42,6 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
-
 		// Création carte/jeu de tuile
 		const carte = this.make.tilemap({key : this.nameMap});
 		const tileSet1 = carte.addTilesetImage("JeuTuile","JeuTuile");
@@ -63,7 +62,7 @@ class Level extends Phaser.Scene {
 
 		// player (components)
 		new Physics(player);
-		const mouvementPlayer = new Mouvement(player);
+		const mouvementPlayer = new Mouvement(player, this.nomPerso);
 
 		// ennemy
 		const ennemy = this.add.sprite(32, 265, "ennemy", 0);
@@ -136,7 +135,12 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 
 		//perso joue les animations
-		this.player.play("idle");
+		if(this.nomPerso == "idleF"){
+			this.player.play("idleF");
+		}else if(this.nomPerso == "idleG"){
+			this.player.play("idleG");
+		} // Fin else if
+
 		this.ennemy.play("idleN");
 
 		//Limite du monde
@@ -166,7 +170,6 @@ class Level extends Phaser.Scene {
 
 				this.player.x = 1160;
 				this.move = false;
-				console.log(this.nameMap, this.intPerso , this.vitesseEnnemy, this.pointDeViePerso);
 				this.scene.launch('Question',{ nameMap: this.nameMap, intPerso: this.intPerso , vitesseEnnemy: this.vitesseEnnemy, pointDeViePerso : this.pointDeViePerso});
 				this.scene.pause('Level');
 				this.scene.sendToBack();
