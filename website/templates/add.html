@@ -25,8 +25,9 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">1.</div>
                 </div>
-                <input id="answer1" name="answer1" type="text" required="required" class="form-control">
+                <input id="answer1" name="answer1" type="text" aria-describedby="answer1HelpBlock" required="required" class="form-control">
             </div>
+            <span id="answer1HelpBlock" class="form-text text-muted">Always make this answer, the correct one.</span>
         </div>
         <label for="answer2" class="col-2 col-form-label">Answer 2</label>
         <div class="col-10">
@@ -34,7 +35,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">2.</div>
                 </div>
-                <input id="answer2" name="answer2" type="text" class="form-control">
+                <input id="answer2" name="answer2" type="text" required="required" class="form-control">
             </div>
         </div>
         <label for="answer3" class="col-2 col-form-label">Answer 3</label>
@@ -43,7 +44,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">3.</div>
                 </div>
-                <input id="answer3" name="answer3" type="text" class="form-control">
+                <input id="answer3" name="answer3" type="text" required="required" class="form-control">
             </div>
         </div>
         <label for="answer4" class="col-2 col-form-label">Answer 4</label>
@@ -52,7 +53,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">4.</div>
                 </div>
-                <input id="answer4" name="answer4" type="text" aria-describedby="answer4HelpBlock" class="form-control">
+                <input id="answer4" name="answer4" type="text" aria-describedby="answer4HelpBlock" required="required" class="form-control">
             </div>
             <span id="answer4HelpBlock" class="form-text text-muted">For the MCQ there should be 4 answers with only one right. For the other types of question, you can enter multiple possible answer, or just one.</span>
         </div>
