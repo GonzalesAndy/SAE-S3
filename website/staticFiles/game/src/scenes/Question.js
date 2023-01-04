@@ -18,11 +18,24 @@ class Question extends Phaser.Scene {
                 const tabAnswer3 = element.dataset.answer3.split(",");
                 const tabAnswer4 = element.dataset.answer4.split(",");
 
+                this.tabQuestion = tabQuestion;
+                this.tabAnswer1 = tabAnswer1;
+                this.tabAnswer2 = tabAnswer2;
+                this.tabAnswer3 = tabAnswer3;
+                this.tabAnswer4 = tabAnswer4;
+                
+                var ale = this.getRandomInt(0, this.tabAnswer1.length);
+                /*console.log(this.tabQuestion[ale]);
+                console.log(this.tabAnswer1[ale]);
+                console.log(this.tabAnswer2[ale]);
+                console.log(this.tabAnswer3[ale]);
+                console.log(this.tabAnswer4[ale]);*/
+
                 // feuilleQuestion
                 const feuilleQuestion = this.add.image(500, 294, "feuille").setScrollFactor(0);
 
                 // txtQuestion
-                const txtQuestion = this.add.text(230, 150, "How do we say 'Informatique' in English ?", { font: "32px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const txtQuestion = this.add.text(230, 150, tabQuestion[ale], { font: "32px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
 
                 const valider = this.scene.scene.add.image(490, 415, "valider").setScrollFactor(0);
                 valider.scaleX = 0.07;
@@ -46,10 +59,10 @@ class Question extends Phaser.Scene {
                 ]);
 
                 // Groupe de texte de bouton
-                const Txtbutton1 = this.scene.scene.add.text(260, 285, "Informatique", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-                const Txtbutton2 = this.scene.scene.add.text(512, 285, "Computer Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-                const Txtbutton3 = this.scene.scene.add.text(235, 335, "Ordinateur Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-                const Txtbutton4 = this.scene.scene.add.text(552, 335, "Informatick", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const Txtbutton1 = this.scene.scene.add.text(260, 285, tabAnswer1[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const Txtbutton2 = this.scene.scene.add.text(512, 285, tabAnswer2[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const Txtbutton3 = this.scene.scene.add.text(235, 335, tabAnswer3[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const Txtbutton4 = this.scene.scene.add.text(552, 335, tabAnswer4[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
                 var groupeTexte = this.add.group();
                 groupeTexte.add(Txtbutton1);
                 groupeTexte.add(Txtbutton2);
@@ -77,15 +90,62 @@ class Question extends Phaser.Scene {
                 this.events.emit("scene-awake");
             } // Fin editorCreate()
 
+        createEvent(){
+            
+            var Bonnereponse = 1;
+            this.Bonnereponse = Bonnereponse
+            var selectionnee;
+            this.selectionnee = selectionnee;
+
+            //On regarde si la réponse est juste ou fausse
+            this.valider.once('pointerup', function(event) {
+
+                //Si c'est la premiere fois que on clique sur séléctionné
+                if (this.nmbCliqueSelectionnee == 0) {
+
+                    this.nmbCliqueSelectionnee = 1; // On ne peut plus changer de réponse
+
+                    if (this.Bonnereponse == this.selectionnee) { // Si la réponse séléctionné est la bonne
+                        this.Aright.visible = true;
+                        this.Afalse.visible = false;
+                        if (this.vitesseEnnemy <= 80) {
+                            this.vitesseEnnemy = 70;
+                        } else {
+                            this.vitesseEnnemy -= 10;
+                        }
+                    } else {
+                        this.Aright.visible = false;
+                        this.Afalse.visible = true;
+                        this.vitesseEnnemy += 50
+                    } // Fin if else
+
+                } // Fin if else
+
+                this.valider.once('pointerup', function(event) {
+
+                    this.scene.stop("Question");
+                    this.scene.stop('Level');
+                    this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso]);
+
+
+
+                }, this);
+            }, this);
+
+        } // Fin createEvent
+
         create() {
-                this.editorCreate();
-            } // Fin create()
+            this.editorCreate();
+            this.createEvent();
+        } // Fin create()
+
+        getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
 
         update() {
-                var Bonnereponse = 1;
-                var selectionnee;
-
-
 
                 // on déséléctionne l'ancienne réponse et séléctionne la nouvelle réponse
                 this.enfantBoutton[0].once('pointerup', function(event) {
@@ -94,7 +154,7 @@ class Question extends Phaser.Scene {
                         this.enfantTxt[1].setStyle({ color: "#66431a" })
                         this.enfantTxt[2].setStyle({ color: "#66431a" })
                         this.enfantTxt[3].setStyle({ color: "#66431a" })
-                        selectionnee = 0;
+                        this.selectionnee = 0;
                     }
                 }, this);
                 this.enfantBoutton[1].once('pointerup', function(event) {
@@ -103,7 +163,7 @@ class Question extends Phaser.Scene {
                         this.enfantTxt[1].setStyle({ color: "#228B22" })
                         this.enfantTxt[2].setStyle({ color: "#66431a" })
                         this.enfantTxt[3].setStyle({ color: "#66431a" })
-                        selectionnee = 1;
+                        this.selectionnee = 1;
                     }
                 }, this);
                 this.enfantBoutton[2].once('pointerup', function(event) {
@@ -112,7 +172,7 @@ class Question extends Phaser.Scene {
                         this.enfantTxt[1].setStyle({ color: "#66431a" })
                         this.enfantTxt[2].setStyle({ color: "#228B22" })
                         this.enfantTxt[3].setStyle({ color: "#66431a" })
-                        selectionnee = 2;
+                        this.selectionnee = 2;
                     }
                 }, this);
                 this.enfantBoutton[3].once('pointerup', function(event) {
@@ -121,47 +181,10 @@ class Question extends Phaser.Scene {
                         this.enfantTxt[1].setStyle({ color: "#66431a" })
                         this.enfantTxt[2].setStyle({ color: "#66431a" })
                         this.enfantTxt[3].setStyle({ color: "#228B22" })
-                        selectionnee = 3;
+                        this.selectionnee = 3;
                     }
                 }, this);
 
-
-                //On regarde si la réponse est juste ou fausse
-                this.valider.once('pointerup', function(event) {
-
-                    //Si c'est la premiere fois que on clique sur séléctionné
-                    if (this.nmbCliqueSelectionnee == 0) {
-
-                        this.nmbCliqueSelectionnee = 1; // On ne peut plus changer de réponse
-
-                        if (Bonnereponse == selectionnee) { // Si la réponse séléctionné est la bonne
-                            this.Aright.visible = true;
-                            this.Afalse.visible = false;
-                            if (this.vitesseEnnemy <= 80) {
-                                this.vitesseEnnemy = 70;
-                            } else {
-                                this.vitesseEnnemy -= 10;
-                            }
-                        } else {
-                            this.Aright.visible = false;
-                            this.Afalse.visible = true;
-                            this.vitesseEnnemy += 50
-                        } // Fin if else
-
-                    } // Fin if else
-
-                    this.valider.once('pointerup', function(event) {
-
-                        //this.scene.destroy("Level")
-                        this.scene.stop('Level');
-                        this.scene.stop("Question");
-                        this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso]);
-                        //this.scene.start('Menu');
-                        //this.scene.sendToBack();
-
-
-                    }, this);
-                }, this);
 
             } // Fin update()
 
