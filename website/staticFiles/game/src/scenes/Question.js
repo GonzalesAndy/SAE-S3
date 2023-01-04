@@ -17,25 +17,14 @@ class Question extends Phaser.Scene {
                 const tabAnswer2 = element.dataset.answer2.split(",");
                 const tabAnswer3 = element.dataset.answer3.split(",");
                 const tabAnswer4 = element.dataset.answer4.split(",");
-
-                this.tabQuestion = tabQuestion;
-                this.tabAnswer1 = tabAnswer1;
-                this.tabAnswer2 = tabAnswer2;
-                this.tabAnswer3 = tabAnswer3;
-                this.tabAnswer4 = tabAnswer4;
                 
-                var ale = this.getRandomInt(0, this.tabAnswer1.length);
-                /*console.log(this.tabQuestion[ale]);
-                console.log(this.tabAnswer1[ale]);
-                console.log(this.tabAnswer2[ale]);
-                console.log(this.tabAnswer3[ale]);
-                console.log(this.tabAnswer4[ale]);*/
+                var ale = this.getRandomInt(0, tabAnswer1.length - 1);
 
                 // feuilleQuestion
                 const feuilleQuestion = this.add.image(500, 294, "feuille").setScrollFactor(0);
 
                 // txtQuestion
-                const txtQuestion = this.add.text(230, 150, tabQuestion[ale], { font: "32px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const txtQuestion = this.add.text(230, 150, tabQuestion[ale], { font: "32px Helvetica bold", fill: "#66431a", wordWrap: { width:650 } }).setScrollFactor(0);
 
                 const valider = this.scene.scene.add.image(490, 415, "valider").setScrollFactor(0);
                 valider.scaleX = 0.07;
@@ -47,8 +36,8 @@ class Question extends Phaser.Scene {
                 Phaser.Display.Align.In.Center(txtQuestion, feuilleQuestion, 0, -120);
 
                 // Texte "Right" & "False"
-                const Aright = this.scene.scene.add.text(420, 200, "Right", { font: "60px Helvetica bold", fill: "#228B22" }).setScrollFactor(0);
-                const Afalse = this.scene.scene.add.text(420, 200, "False", { font: "60px Helvetica bold", fill: "#ff0000" }).setScrollFactor(0);
+                const Aright = this.scene.scene.add.text(420, 225, "Right", { font: "50px Helvetica bold", fill: "#228B22" }).setScrollFactor(0);
+                const Afalse = this.scene.scene.add.text(420, 225, "Wrong", { font: "50px Helvetica bold", fill: "#ff0000" }).setScrollFactor(0);
                 Afalse.visible = false;
                 Aright.visible = false;
 
