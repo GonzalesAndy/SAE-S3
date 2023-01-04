@@ -12,15 +12,65 @@
                 },
                 {
                     "key": "idleF",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleF",
+                    "frame": 2,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleF",
                     "frame": 3,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleF",
+                    "frame": 4,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleF",
+                    "frame": 5,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleF",
+                    "frame": 6,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleF",
+                    "frame": 7,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleF",
+                    "frame": 8,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleF",
+                    "frame": 9,
                     "duration": 0,
                     "keyframe": false
                 }
             ],
-            "frameRate": 2,
+            "frameRate": 10,
             "skipMissedFrames": true,
             "repeat": -1
-        },        
+        },  
+
+
         {
             "key": "idleG",
             "type": "frame",
@@ -33,22 +83,99 @@
                 },
                 {
                     "key": "idleG",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleG",
+                    "frame": 2,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleG",
                     "frame": 3,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleG",
+                    "frame": 4,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleG",
+                    "frame": 5,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleG",
+                    "frame": 6,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleG",
+                    "frame": 7,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleG",
+                    "frame": 8,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "idleG",
+                    "frame": 9,
                     "duration": 0,
                     "keyframe": false
                 }
             ],
-            "frameRate": 2,
+            "frameRate": 10,
             "skipMissedFrames": true,
             "repeat": -1
-        },
+        },  
+        
+
+
+
+
         {
             "key": "walkF",
             "type": "frame",
             "frames": [
                 {
                     "key": "walkF",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkF",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkF",
                     "frame": 2,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkF",
+                    "frame": 3,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkF",
+                    "frame": 4,
                     "duration": 0,
                     "keyframe": false
                 },
@@ -60,7 +187,31 @@
                 },
                 {
                     "key": "walkF",
+                    "frame": 6,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkF",
+                    "frame": 7,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkF",
                     "frame": 8,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkF",
+                    "frame": 9,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkF",
+                    "frame": 10,
                     "duration": 0,
                     "keyframe": false
                 },
@@ -69,19 +220,56 @@
                     "frame": 11,
                     "duration": 0,
                     "keyframe": false
+                },
+                {
+                    "key": "walkF",
+                    "frame": 12,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkF",
+                    "frame": 13,
+                    "duration": 0,
+                    "keyframe": false
                 }
             ],
-            "frameRate": 6,
+            "frameRate": 15,
             "skipMissedFrames": true,
             "repeat": -1
         },
+
         {
             "key": "walkG",
             "type": "frame",
             "frames": [
                 {
                     "key": "walkG",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
                     "frame": 2,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
+                    "frame": 3,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
+                    "frame": 4,
                     "duration": 0,
                     "keyframe": false
                 },
@@ -93,7 +281,31 @@
                 },
                 {
                     "key": "walkG",
+                    "frame": 6,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
+                    "frame": 7,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
                     "frame": 8,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
+                    "frame": 9,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
+                    "frame": 10,
                     "duration": 0,
                     "keyframe": false
                 },
@@ -102,12 +314,27 @@
                     "frame": 11,
                     "duration": 0,
                     "keyframe": false
+                },
+                {
+                    "key": "walkG",
+                    "frame": 12,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "walkG",
+                    "frame": 13,
+                    "duration": 0,
+                    "keyframe": false
                 }
             ],
-            "frameRate": 6,
+            "frameRate": 15,
             "skipMissedFrames": true,
             "repeat": -1
         }
+
+
+
     ],
     "globalTimeScale": 1,
     "meta": {
