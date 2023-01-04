@@ -35,6 +35,7 @@ class Level extends Phaser.Scene {
 		} //Fin case
 		this.intPerso = arg[1];
 		this.vitesseEnnemy = arg[2];
+		this.pointDeViePerso = arg[3];
 
 	}// Fin init
 
@@ -96,6 +97,8 @@ class Level extends Phaser.Scene {
 
 
 		this.sur = new PointDeVie(this);
+		this.sur.pntDeVie = this.pointDeViePerso;
+		this.sur.perd();
 
 		this.move = true;
 
@@ -163,7 +166,8 @@ class Level extends Phaser.Scene {
 
 				this.player.x = 1160;
 				this.move = false;
-				this.scene.launch('Question',{ nameMap: this.nameMap, intPerso: this.intPerso , vitesseEnnemy: this.vitesseEnnemy});
+				console.log(this.nameMap, this.intPerso , this.vitesseEnnemy, this.pointDeViePerso);
+				this.scene.launch('Question',{ nameMap: this.nameMap, intPerso: this.intPerso , vitesseEnnemy: this.vitesseEnnemy, pointDeViePerso : this.pointDeViePerso});
 				this.scene.pause('Level');
 				this.scene.sendToBack();
 
@@ -178,6 +182,7 @@ class Level extends Phaser.Scene {
 			
 			// On enlève un point de vie et on recule l'ennemy
 			this.sur.pntDeVie -= 1;
+			this.pointDeViePerso -=1;
 			this.sur.perd();
 			this.ennemy.x -= 100;
 			this.ennemy.y -= 100;
