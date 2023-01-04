@@ -18,8 +18,9 @@ class Mouvement {
     dashVel = 600;
     dashTime = 0;
 
-    constructor(gameObject) {
+    constructor(gameObject, nomJoueur) {
         this.gameObject = gameObject;
+        this.nomJoueur =nomJoueur;
         gameObject["__Mouvement"] = this;
 
         const scene = this.gameObject.scene
@@ -34,8 +35,6 @@ class Mouvement {
             'm': Phaser.Input.Keyboard.KeyCodes.M
         });
 
-        this.timer = 0;
-        this.i = 0;
         this.scene = scene;
 
         scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
@@ -126,12 +125,22 @@ class Mouvement {
 
     direction(){
         if(this.cursors.right.isDown){
-            this.gameObject.play("walk", true);
+            if(this.nomJoueur == "idleF"){
+                this.gameObject.play("walkF", true);
+            }else if (this.nomJoueur == "idleG"){
+                this.gameObject.play("walkG", true);
+            } // Fin else if
+
         } else if(this.cursors.left.isDown){
-            this.gameObject.play("walk", true);
+            if(this.nomJoueur == "idleF"){
+                this.gameObject.play("walkF", true);
+            }else if (this.nomJoueur == "idleG"){
+                this.gameObject.play("walkG", true);
+            } // Fin else if
             this.gameObject.flipX = true;
+
         } else{
-            this.gameObject.play("idle", true);
+            this.gameObject.play(this.nomJoueur, true);
         }// Fin else if
     } // Fin direction
 
@@ -139,7 +148,7 @@ class Mouvement {
 
         if (typeof this.gameObject.body !== "undefined") {
             this.gameObject.flipX = false;
-            //this.direction();
+            this.direction();
             this.updateVelocity();
         } // Fin if 
 

@@ -79,15 +79,56 @@ class Question extends Phaser.Scene {
                 this.events.emit("scene-awake");
             } // Fin editorCreate()
 
+        createEvent(){
+            
+            var Bonnereponse = 1;
+            this.Bonnereponse = Bonnereponse
+            var selectionnee;
+            this.selectionnee = selectionnee;
+
+            //On regarde si la réponse est juste ou fausse
+            this.valider.once('pointerup', function(event) {
+
+                //Si c'est la premiere fois que on clique sur séléctionné
+                if (this.nmbCliqueSelectionnee == 0) {
+
+                    this.nmbCliqueSelectionnee = 1; // On ne peut plus changer de réponse
+
+                    if (this.Bonnereponse == this.selectionnee) { // Si la réponse séléctionné est la bonne
+                        this.Aright.visible = true;
+                        this.Afalse.visible = false;
+                        if (this.vitesseEnnemy <= 80) {
+                            this.vitesseEnnemy = 70;
+                        } else {
+                            this.vitesseEnnemy -= 10;
+                        }
+                    } else {
+                        this.Aright.visible = false;
+                        this.Afalse.visible = true;
+                        this.vitesseEnnemy += 50
+                    } // Fin if else
+
+                } // Fin if else
+
+                this.valider.once('pointerup', function(event) {
+
+                    this.scene.stop("Question");
+                    this.scene.stop('Level');
+                    this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso]);
+
+
+
+                }, this);
+            }, this);
+
+        } // Fin createEvent
+
         create() {
-                this.editorCreate();
-            } // Fin create()
+            this.editorCreate();
+            this.createEvent();
+        } // Fin create()
 
         update() {
-                var Bonnereponse = 1;
-                var selectionnee;
-
-
 
                 // on déséléctionne l'ancienne réponse et séléctionne la nouvelle réponse
                 this.enfantBoutton[0].once('pointerup', function(event) {
@@ -96,7 +137,7 @@ class Question extends Phaser.Scene {
                         this.enfantTxt[1].setStyle({ color: "#66431a" })
                         this.enfantTxt[2].setStyle({ color: "#66431a" })
                         this.enfantTxt[3].setStyle({ color: "#66431a" })
-                        selectionnee = 0;
+                        this.selectionnee = 0;
                     }
                 }, this);
                 this.enfantBoutton[1].once('pointerup', function(event) {
@@ -105,7 +146,7 @@ class Question extends Phaser.Scene {
                         this.enfantTxt[1].setStyle({ color: "#228B22" })
                         this.enfantTxt[2].setStyle({ color: "#66431a" })
                         this.enfantTxt[3].setStyle({ color: "#66431a" })
-                        selectionnee = 1;
+                        this.selectionnee = 1;
                     }
                 }, this);
                 this.enfantBoutton[2].once('pointerup', function(event) {
@@ -114,7 +155,7 @@ class Question extends Phaser.Scene {
                         this.enfantTxt[1].setStyle({ color: "#66431a" })
                         this.enfantTxt[2].setStyle({ color: "#228B22" })
                         this.enfantTxt[3].setStyle({ color: "#66431a" })
-                        selectionnee = 2;
+                        this.selectionnee = 2;
                     }
                 }, this);
                 this.enfantBoutton[3].once('pointerup', function(event) {
@@ -123,47 +164,10 @@ class Question extends Phaser.Scene {
                         this.enfantTxt[1].setStyle({ color: "#66431a" })
                         this.enfantTxt[2].setStyle({ color: "#66431a" })
                         this.enfantTxt[3].setStyle({ color: "#228B22" })
-                        selectionnee = 3;
+                        this.selectionnee = 3;
                     }
                 }, this);
 
-
-                //On regarde si la réponse est juste ou fausse
-                this.valider.once('pointerup', function(event) {
-
-                    //Si c'est la premiere fois que on clique sur séléctionné
-                    if (this.nmbCliqueSelectionnee == 0) {
-
-                        this.nmbCliqueSelectionnee = 1; // On ne peut plus changer de réponse
-
-                        if (Bonnereponse == selectionnee) { // Si la réponse séléctionné est la bonne
-                            this.Aright.visible = true;
-                            this.Afalse.visible = false;
-                            if (this.vitesseEnnemy <= 80) {
-                                this.vitesseEnnemy = 70;
-                            } else {
-                                this.vitesseEnnemy -= 10;
-                            }
-                        } else {
-                            this.Aright.visible = false;
-                            this.Afalse.visible = true;
-                            this.vitesseEnnemy += 50
-                        } // Fin if else
-
-                    } // Fin if else
-
-                    this.valider.once('pointerup', function(event) {
-
-                        //this.scene.destroy("Level")
-                        this.scene.stop('Level');
-                        this.scene.stop("Question");
-                        this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso]);
-                        //this.scene.start('Menu');
-                        //this.scene.sendToBack();
-
-
-                    }, this);
-                }, this);
 
             } // Fin update()
 
