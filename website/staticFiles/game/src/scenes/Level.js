@@ -136,7 +136,12 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 
 		//perso joue les animations
-		this.player.play("idle");
+		if(this.nomPerso == "idleF"){
+			this.player.play("idleF");
+		}else if(this.nomPerso == "idleG"){
+			this.player.play("idleG");
+		} // Fin else if
+
 		this.ennemy.play("idleN");
 
 		//Limite du monde

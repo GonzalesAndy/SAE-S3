@@ -18,6 +18,8 @@ class Question extends Phaser.Scene {
                 const tabAnswer3 = element.dataset.answer3.split(",");
                 const tabAnswer4 = element.dataset.answer4.split(",");
 
+                //console.log(tabQuestion);
+
                 // feuilleQuestion
                 const feuilleQuestion = this.add.image(500, 294, "feuille").setScrollFactor(0);
 
