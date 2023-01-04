@@ -18,13 +18,24 @@ class Question extends Phaser.Scene {
                 const tabAnswer3 = element.dataset.answer3.split(",");
                 const tabAnswer4 = element.dataset.answer4.split(",");
 
-                //console.log(tabQuestion);
+                this.tabQuestion = tabQuestion;
+                this.tabAnswer1 = tabAnswer1;
+                this.tabAnswer2 = tabAnswer2;
+                this.tabAnswer3 = tabAnswer3;
+                this.tabAnswer4 = tabAnswer4;
+                
+                var ale = this.getRandomInt(0, this.tabAnswer1.length);
+                /*console.log(this.tabQuestion[ale]);
+                console.log(this.tabAnswer1[ale]);
+                console.log(this.tabAnswer2[ale]);
+                console.log(this.tabAnswer3[ale]);
+                console.log(this.tabAnswer4[ale]);*/
 
                 // feuilleQuestion
                 const feuilleQuestion = this.add.image(500, 294, "feuille").setScrollFactor(0);
 
                 // txtQuestion
-                const txtQuestion = this.add.text(230, 150, "How do we say 'Informatique' in English ?", { font: "32px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const txtQuestion = this.add.text(230, 150, tabQuestion[ale], { font: "32px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
 
                 const valider = this.scene.scene.add.image(490, 415, "valider").setScrollFactor(0);
                 valider.scaleX = 0.07;
@@ -48,10 +59,10 @@ class Question extends Phaser.Scene {
                 ]);
 
                 // Groupe de texte de bouton
-                const Txtbutton1 = this.scene.scene.add.text(260, 285, "Informatique", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-                const Txtbutton2 = this.scene.scene.add.text(512, 285, "Computer Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-                const Txtbutton3 = this.scene.scene.add.text(235, 335, "Ordinateur Science", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
-                const Txtbutton4 = this.scene.scene.add.text(552, 335, "Informatick", { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const Txtbutton1 = this.scene.scene.add.text(260, 285, tabAnswer1[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const Txtbutton2 = this.scene.scene.add.text(512, 285, tabAnswer2[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const Txtbutton3 = this.scene.scene.add.text(235, 335, tabAnswer3[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const Txtbutton4 = this.scene.scene.add.text(552, 335, tabAnswer4[ale], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
                 var groupeTexte = this.add.group();
                 groupeTexte.add(Txtbutton1);
                 groupeTexte.add(Txtbutton2);
@@ -127,6 +138,12 @@ class Question extends Phaser.Scene {
             this.editorCreate();
             this.createEvent();
         } // Fin create()
+
+        getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
 
         update() {
 
