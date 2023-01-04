@@ -1,8 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from os import path
 from flask_login import LoginManager
-from sqlalchemy import MetaData, create_engine
+from sqlalchemy import create_engine
 
 db = SQLAlchemy()
 DB_NAME = "database.db"

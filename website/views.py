@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash
 from . import db
-from .models import Question, User
+from .models import Question
 from flask_login import login_required, current_user
 
 views = Blueprint("views", __name__)

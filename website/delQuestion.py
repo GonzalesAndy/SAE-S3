@@ -1,9 +1,7 @@
 from flask import Blueprint, redirect, render_template, request, url_for
 from .models import Question
 from flask_login import current_user
-from sqlalchemy import desc
 from . import db
-from flask_table import Table, Col
 
 
 tableDelete = Blueprint("delete", __name__)

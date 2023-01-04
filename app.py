@@ -1,8 +1,4 @@
 from website import create_app
-from flask import Flask, jsonify
-
-from website.models import User
-
 
 app = create_app()
 
