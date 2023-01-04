@@ -24,9 +24,9 @@ class Menu extends Phaser.Scene {
 		start.scaleY = 0.75;
 
 		// walker
-		const walker = this.add.sprite(59, 420, "10 idle", 0);
-		walker.scaleX = 3;
-		walker.scaleY = 3;
+		const walker = this.add.sprite(59, 420, "idleF", 0);
+		walker.scaleX = 1/2;
+		walker.scaleY = 1/2;
 
 		// engrenage
 		const engrenage = this.add.image(950, 70, "engrenage");
@@ -66,7 +66,7 @@ class Menu extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
-		this.walker.play('walk');
+		this.walker.play('walkF');
 
 	} // Fin create()
 
