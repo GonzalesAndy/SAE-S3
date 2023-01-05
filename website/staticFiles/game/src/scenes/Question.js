@@ -12,7 +12,7 @@ class Question extends Phaser.Scene {
                 this.intPerso = data.intPerso;
                 this.vitesseEnnemy = data.vitesseEnnemy;
                 this.pointDeViePerso = data.pointDeViePerso;
-                this.questionDejaVue = data.questionDejaVue;
+                this.questionRecap = data.questionRecap;
 
             } // Fin init()
 
@@ -26,8 +26,8 @@ class Question extends Phaser.Scene {
                 const tabAnswer3 = element.dataset.answer3.split(",");
                 const tabAnswer4 = element.dataset.answer4.split(",");
                 var listeReponse = [tabAnswer1, tabAnswer2, tabAnswer3, tabAnswer4];
-                var aleatoireQuestion = this.getRandomInt(0, tabAnswer1.length - 2, this.questionDejaVue);
-                this.questionDejaVue.push(aleatoireQuestion);
+                var aleatoireQuestion = this.getRandomInt(0, tabAnswer1.length - 2, this.questionRecap[0]);
+                this.questionRecap[0].push(tabQuestion[aleatoireQuestion])
                 this.tabAnswer1 = tabAnswer1;
 
                 // feuilleQuestion
@@ -134,6 +134,8 @@ class Question extends Phaser.Scene {
                     if (this.bonneReponse == this.selectionnee) { // Si la réponse séléctionné est la bonne
                         this.Aright.visible = true;
                         this.Afalse.visible = false;
+                        console.log(typeof(this.questionRecap[1]));
+                        this.questionRecap[1] = parseInt(this.questionRecap[1]) + 1;
                         if (this.vitesseEnnemy <= 80) {
                             this.vitesseEnnemy = 70;
                         } else {
@@ -151,7 +153,7 @@ class Question extends Phaser.Scene {
 
                     this.scene.stop("Question");
                     this.scene.stop('Level');
-                    this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso, this.questionDejaVue]);
+                    this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso, this.questionRecap]);
 
                 }, this);
             }, this);

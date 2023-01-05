@@ -36,7 +36,7 @@ class Level extends Phaser.Scene {
 		this.intPerso = arg[1];
 		this.vitesseEnnemy = arg[2];
 		this.pointDeViePerso = arg[3];
-		this.questionDejaVue = arg[4];
+		this.questionRecap = arg[4];
 
 	} // Fin init
 
@@ -135,6 +135,9 @@ class Level extends Phaser.Scene {
 
 		this.editorCreate();
 
+		console.log("nombre de question : ", this.questionRecap[0]);
+		console.log("nombre de bonne réponse : ", this.questionRecap[1]);
+
 		//perso joue les animations
 		if(this.nomPerso == "idleF"){
 			this.player.play("idleF");
@@ -175,7 +178,7 @@ class Level extends Phaser.Scene {
 							intPerso: this.intPerso , 
 							vitesseEnnemy: this.vitesseEnnemy, 
 							pointDeViePerso : this.pointDeViePerso,
-							questionDejaVue : this.questionDejaVue});
+							questionRecap : this.questionRecap});
 				this.scene.pause('Level');
 				this.scene.sendToBack();
 
