@@ -11,19 +11,19 @@
         <th>Answer 4</th>
         <th>Delete Row</th>
     </tr>
-    {% for data in data %}
+    {% for donnees in donnees %}
     <tr>
-        <td>{{data.questionId}}</td>
-        <td>{{data.question}}</td>
-        <td>{{data.type}}</td>
-        <td>{{data.answer1}}</td>
-        <td>{{data.answer2}}</td>
-        <td>{{data.answer3}}</td>
-        <td>{{data.answer4}}</td>
+        <td>{{donnees.questionId}}</td>
+        <td>{{donnees.question}}</td>
+        <td>{{donnees.type}}</td>
+        <td>{{donnees.answer1}}</td>
+        <td>{{donnees.answer2}}</td>
+        <td>{{donnees.answer3}}</td>
+        <td>{{donnees.answer4}}</td>
         <td>
             <form action="/delete_row" method="POST">
-                <input type="hidden" name="row_id" value="{{data.questionId}}">
-                <button type="submit">Delete</button>
+                <input type="hidden" name="idLigne" value="{{donnees.questionId}}">
+                <button class="btn btn-outline-danger" type="submit">Supprimer</button>
             </form>
         </td>
     </tr>
