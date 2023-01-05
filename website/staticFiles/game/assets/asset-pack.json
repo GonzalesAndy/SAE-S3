@@ -2,6 +2,62 @@
     "section1": {
         "files": [
 
+            
+            {
+                "url": "staticFiles/game/assets/map/map1.json",
+                "type": "tilemapTiledJSON",
+                "key": "map1"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map2.json",
+                "type": "tilemapTiledJSON",
+                "key": "map2"
+            },
+            {
+                "url": "staticFiles/game/assets/map/JeuTuile.png",
+                "type": "image",
+                "key": "JeuTuile"
+            },
+
+
+
+
+
+
+            {
+                "url": "staticFiles/game/assets/menu/option/quitter.png",
+                "type": "image",
+                "key": "quitter"
+            },
+            {
+                "url": "staticFiles/game/assets/menu/option/feuilleOption.png",
+                "type": "image",
+                "key": "feuilleOption"
+            },
+
+            {
+                "url": "staticFiles/game/assets/menu/background.png",
+                "type": "image",
+                "key": "background"
+            },
+            {
+                "url": "staticFiles/game/assets/menu/logo.png",
+                "type": "image",
+                "key": "logo"
+            },
+            {
+                "url": "staticFiles/game/assets/menu/engrenage.png",
+                "type": "image",
+                "key": "engrenage"
+            },
+            {
+                "url": "staticFiles/game/assets/menu/start.png",
+                "type": "image",
+                "key": "start"
+            },
+
+
+
 
             {
                 "url": "staticFiles/game/assets/perso/idle_sprite_f.png",
@@ -56,7 +112,7 @@
                 "key": "walkG"
             },
             {
-                "url": "staticFiles/game/assets/ennemy.png",
+                "url": "staticFiles/game/assets/perso/ennemy.png",
                 "frameConfig": {
                     "frameWidth": 128,
                     "frameHeight": 128,
@@ -69,94 +125,10 @@
                 "key": "ennemyFly"
 
             },
-            {
-                "url": "staticFiles/game/assets/animations-ennemy.json",
-                "type": "animation",
-                "key": "animations-ennemy"
-            },
-            {
-                "url": "staticFiles/game/assets/animations-perso.json",
-                "type": "animation",
-                "key": "animations-perso"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/background.png",
-                "type": "image",
-                "key": "background"
-            },
-            {
-                "url": "staticFiles/game/assets/map/map1.json",
-                "type": "tilemapTiledJSON",
-                "key": "map1"
-            },
-            {
-                "url": "staticFiles/game/assets/map/map2.json",
-                "type": "tilemapTiledJSON",
-                "key": "map2"
-            },
-            {
-                "url": "staticFiles/game/assets/map/map3.json",
-                "type": "tilemapTiledJSON",
-                "key": "map3"
-            },
-            {
-                "url": "staticFiles/game/assets/map/map4.json",
-                "type": "tilemapTiledJSON",
-                "key": "map4"
-            },
-            {
-                "url": "staticFiles/game/assets/map/demiMap1.json",
-                "type": "tilemapTiledJSON",
-                "key": "demiMap1"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/logo.png",
-                "type": "image",
-                "key": "logo"
-            },
-            {
-                "url": "staticFiles/game/assets/map/JeuTuile.png",
-                "type": "image",
-                "key": "JeuTuile"
-            },
-            {
-                "url": "staticFiles/game/assets/no_son.png",
-                "type": "image",
-                "key": "no_son"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/option/feuilleOption.png",
-                "type": "image",
-                "key": "feuilleOption"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/engrenage.png",
-                "type": "image",
-                "key": "engrenage"
-            },
-            {
-                "url": [
-                    "staticFiles/game/src/components/Physics.js",
-                    "staticFiles/game/src/components/Mouvement.js"
-                ],
-                "type": "scripts",
-                "key": "Physics"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/option/quitter.png",
-                "type": "image",
-                "key": "quitter"
-            },
-            {
-                "url": "staticFiles/game/assets/son.png",
-                "type": "image",
-                "key": "son"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/start.png",
-                "type": "image",
-                "key": "start"
-            },
+
+
+
+
             {
                 "url": "staticFiles/game/assets/question/feuilleQuestion.png",
                 "type": "image",
@@ -172,6 +144,9 @@
                 "type": "image",
                 "key": "valider"
             },
+
+
+
             {
                 "url": "staticFiles/game/assets/3vies.png",
                 "type": "image",
@@ -186,6 +161,24 @@
                 "url": "staticFiles/game/assets/1vies.png",
                 "type": "image",
                 "key": "1vies"
+            },
+            {
+                "url": "staticFiles/game/assets/animations-ennemy.json",
+                "type": "animation",
+                "key": "animations-ennemy"
+            },
+            {
+                "url": "staticFiles/game/assets/animations-perso.json",
+                "type": "animation",
+                "key": "animations-perso"
+            },
+            {
+                "url": [
+                    "staticFiles/game/src/components/Physics.js",
+                    "staticFiles/game/src/components/Mouvement.js"
+                ],
+                "type": "scripts",
+                "key": "Physics"
             }
         ]
     },
