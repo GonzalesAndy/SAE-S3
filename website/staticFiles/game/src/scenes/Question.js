@@ -1,11 +1,18 @@
 class Question extends Phaser.Scene {
 
+
+        VERT = "#228B22";
+        MARRON = "#66431a";
+        GRIS = "#B8833B";
+        ROUGE = "#ff0000";
+
         init(data) {
 
                 this.nameMap = data.nameMap;
                 this.intPerso = data.intPerso;
                 this.vitesseEnnemy = data.vitesseEnnemy;
                 this.pointDeViePerso = data.pointDeViePerso;
+                this.questionRecap = data.questionRecap;
 
             } // Fin init()
 
@@ -19,14 +26,15 @@ class Question extends Phaser.Scene {
                 const tabAnswer3 = element.dataset.answer3.split(",");
                 const tabAnswer4 = element.dataset.answer4.split(",");
                 var listeReponse = [tabAnswer1, tabAnswer2, tabAnswer3, tabAnswer4];
-                var aleatoireQuestion = this.getRandomInt(0, tabAnswer1.length - 1);
+                var aleatoireQuestion = this.getRandomInt(0, tabAnswer1.length - 2, this.questionRecap[0]);
+                this.questionRecap[0].push(tabQuestion[aleatoireQuestion])
                 this.tabAnswer1 = tabAnswer1;
 
                 // feuilleQuestion
                 const feuilleQuestion = this.add.image(500, 294, "feuille").setScrollFactor(0);
 
                 // txtQuestion
-                const txtQuestion = this.add.text(230, 150, tabQuestion[aleatoireQuestion], { font: "32px Helvetica bold", fill: "#66431a", wordWrap: { width:650 } }).setScrollFactor(0);
+                const txtQuestion = this.add.text(230, 150, tabQuestion[aleatoireQuestion], { font: "32px Helvetica bold", fill: this.MARRON , wordWrap: { width:650 } }).setScrollFactor(0);
 
                 const valider = this.scene.scene.add.image(490, 415, "valider").setScrollFactor(0);
                 valider.scaleX = 0.07;
@@ -38,8 +46,8 @@ class Question extends Phaser.Scene {
                 Phaser.Display.Align.In.Center(txtQuestion, feuilleQuestion, 0, -120);
 
                 // Texte "Right" & "False"
-                const Aright = this.scene.scene.add.text(420, 225, "Right", { font: "50px Helvetica bold", fill: "#228B22" }).setScrollFactor(0);
-                const Afalse = this.scene.scene.add.text(420, 225, "Wrong", { font: "50px Helvetica bold", fill: "#ff0000" }).setScrollFactor(0);
+                const Aright = this.scene.scene.add.text(420, 225, "Right", { font: "50px Helvetica bold", fill: this.VERT }).setScrollFactor(0);
+                const Afalse = this.scene.scene.add.text(420, 225, "Wrong", { font: "50px Helvetica bold", fill: this.ROUGE }).setScrollFactor(0);
                 Afalse.visible = false;
                 Aright.visible = false;
 
@@ -55,28 +63,28 @@ class Question extends Phaser.Scene {
                 // Groupe de texte de bouton
                 var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
                 valeurExclus.push(aleatoireReponse);
-                const Txtbutton1 = this.scene.scene.add.text(260, 285, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const Txtbutton1 = this.scene.scene.add.text(260, 285, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0);
                 if(aleatoireReponse == 0){
                     bonneReponse = 0;
                 }
 
                 var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
                 valeurExclus.push(aleatoireReponse);
-                const Txtbutton2 = this.scene.scene.add.text(512, 285, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0); 
+                const Txtbutton2 = this.scene.scene.add.text(512, 285, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0); 
                 if(aleatoireReponse == 0){
                     bonneReponse = 1;
                 }
 
                 var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
                 valeurExclus.push(aleatoireReponse);
-                const Txtbutton3 = this.scene.scene.add.text(235, 335, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const Txtbutton3 = this.scene.scene.add.text(235, 335, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0);
                 if(aleatoireReponse == 0){
                     bonneReponse = 2;
                 }
 
                 var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
                 valeurExclus.push(aleatoireReponse);
-                const Txtbutton4 = this.scene.scene.add.text(552, 335, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: "#66431a" }).setScrollFactor(0);
+                const Txtbutton4 = this.scene.scene.add.text(552, 335, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0);
                 if(aleatoireReponse == 0){
                     bonneReponse = 3;
                 }
@@ -126,6 +134,8 @@ class Question extends Phaser.Scene {
                     if (this.bonneReponse == this.selectionnee) { // Si la réponse séléctionné est la bonne
                         this.Aright.visible = true;
                         this.Afalse.visible = false;
+                        console.log(typeof(this.questionRecap[1]));
+                        this.questionRecap[1] = parseInt(this.questionRecap[1]) + 1;
                         if (this.vitesseEnnemy <= 80) {
                             this.vitesseEnnemy = 70;
                         } else {
@@ -143,9 +153,7 @@ class Question extends Phaser.Scene {
 
                     this.scene.stop("Question");
                     this.scene.stop('Level');
-                    this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso]);
-
-
+                    this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso, this.questionRecap]);
 
                 }, this);
             }, this);
@@ -157,11 +165,6 @@ class Question extends Phaser.Scene {
             this.createEvent();
         } // Fin create()
 
-        /*getRandomInt(min, max) {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }*/
         getRandomInt(min, max, excludedValues) {
             min = Math.ceil(min);
             max = Math.floor(max);
@@ -177,37 +180,37 @@ class Question extends Phaser.Scene {
                 // on déséléctionne l'ancienne réponse et séléctionne la nouvelle réponse
                 this.enfantBoutton[0].once('pointerup', function(event) {
                     if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
-                        this.enfantTxt[0].setStyle({ color: "#228B22" })
-                        this.enfantTxt[1].setStyle({ color: "#66431a" })
-                        this.enfantTxt[2].setStyle({ color: "#66431a" })
-                        this.enfantTxt[3].setStyle({ color: "#66431a" })
+                        this.enfantTxt[0].setStyle({ color: this.GRIS })
+                        this.enfantTxt[1].setStyle({ color: this.MARRON })
+                        this.enfantTxt[2].setStyle({ color: this.MARRON })
+                        this.enfantTxt[3].setStyle({ color: this.MARRON })
                         this.selectionnee = 0;
                     }
                 }, this);
                 this.enfantBoutton[1].once('pointerup', function(event) {
                     if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
-                        this.enfantTxt[0].setStyle({ color: "#66431a" })
-                        this.enfantTxt[1].setStyle({ color: "#228B22" })
-                        this.enfantTxt[2].setStyle({ color: "#66431a" })
-                        this.enfantTxt[3].setStyle({ color: "#66431a" })
+                        this.enfantTxt[0].setStyle({ color: this.MARRON })
+                        this.enfantTxt[1].setStyle({ color: this.GRIS })
+                        this.enfantTxt[2].setStyle({ color: this.MARRON })
+                        this.enfantTxt[3].setStyle({ color: this.MARRON })
                         this.selectionnee = 1;
                     }
                 }, this);
                 this.enfantBoutton[2].once('pointerup', function(event) {
                     if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
-                        this.enfantTxt[0].setStyle({ color: "#66431a" })
-                        this.enfantTxt[1].setStyle({ color: "#66431a" })
-                        this.enfantTxt[2].setStyle({ color: "#228B22" })
-                        this.enfantTxt[3].setStyle({ color: "#66431a" })
+                        this.enfantTxt[0].setStyle({ color: this.MARRON })
+                        this.enfantTxt[1].setStyle({ color: this.MARRON })
+                        this.enfantTxt[2].setStyle({ color: this.GRIS })
+                        this.enfantTxt[3].setStyle({ color: this.MARRON })
                         this.selectionnee = 2;
                     }
                 }, this);
                 this.enfantBoutton[3].once('pointerup', function(event) {
                     if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
-                        this.enfantTxt[0].setStyle({ color: "#66431a" })
-                        this.enfantTxt[1].setStyle({ color: "#66431a" })
-                        this.enfantTxt[2].setStyle({ color: "#66431a" })
-                        this.enfantTxt[3].setStyle({ color: "#228B22" })
+                        this.enfantTxt[0].setStyle({ color: this.MARRON })
+                        this.enfantTxt[1].setStyle({ color: this.MARRON })
+                        this.enfantTxt[2].setStyle({ color: this.MARRON })
+                        this.enfantTxt[3].setStyle({ color: this.GRIS })
                         this.selectionnee = 3;
                     }
                 }, this);

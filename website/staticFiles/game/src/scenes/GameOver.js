@@ -10,6 +10,7 @@ class GameOver extends Phaser.Scene {
 
         // progress
         const progress = this.add.text(500, 349, "Game Over", {});
+        console.log()
         this.events.emit("scene-awake");
     } // Fin editorCreate()
 

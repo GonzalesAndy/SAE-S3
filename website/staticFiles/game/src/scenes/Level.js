@@ -22,7 +22,7 @@ class Level extends Phaser.Scene {
 				this.yDepart = 100;
 				this.porteY = [312,360];
 				break;
-		}//Fin case
+		} //Fin case
 
 		//En fonction de quel personnage a été choisi (homme/femme)
 		switch(arg[1]){
@@ -36,8 +36,9 @@ class Level extends Phaser.Scene {
 		this.intPerso = arg[1];
 		this.vitesseEnnemy = arg[2];
 		this.pointDeViePerso = arg[3];
+		this.questionRecap = arg[4];
 
-	}// Fin init
+	} // Fin init
 
 	/** @returns {void} */
 	editorCreate() {
@@ -134,6 +135,9 @@ class Level extends Phaser.Scene {
 
 		this.editorCreate();
 
+		console.log("nombre de question : ", this.questionRecap[0]);
+		console.log("nombre de bonne réponse : ", this.questionRecap[1]);
+
 		//perso joue les animations
 		if(this.nomPerso == "idleF"){
 			this.player.play("idleF");
@@ -170,7 +174,11 @@ class Level extends Phaser.Scene {
 
 				this.player.x = 1160;
 				this.move = false;
-				this.scene.launch('Question',{ nameMap: this.nameMap, intPerso: this.intPerso , vitesseEnnemy: this.vitesseEnnemy, pointDeViePerso : this.pointDeViePerso});
+				this.scene.launch('Question',{ nameMap: this.nameMap, 
+							intPerso: this.intPerso , 
+							vitesseEnnemy: this.vitesseEnnemy, 
+							pointDeViePerso : this.pointDeViePerso,
+							questionRecap : this.questionRecap});
 				this.scene.pause('Level');
 				this.scene.sendToBack();
 
@@ -190,8 +198,6 @@ class Level extends Phaser.Scene {
 			this.ennemy.x -= 100;
 			this.ennemy.y -= 100;
 		} // Fin if
-
-	//console.log(this.sur.pntDeVie)
 
 	} //Fin update()
 } //Fin class
