@@ -143,6 +143,7 @@ class Level extends Phaser.Scene {
 
 		// Création carte/jeu de tuile
 		const carte = this.make.tilemap({key : this.nomMap});
+		this.carte = carte;
 		
 		if(this.double == true){
 				
@@ -169,8 +170,8 @@ class Level extends Phaser.Scene {
 		}
 
 		//Création collision layer
-		fond.setCollisionByProperty({ estSolide: true });
-		platforme.setCollisionByProperty({ estSolide: true });
+		this.fond.setCollisionByProperty({ estSolide: true });
+		this.platforme.setCollisionByProperty({ estSolide: true });
 
 		// joueur
 		const joueur = this.physics.add.sprite(this.xDepart, this.yDepart, this.nomPerso, 0);
@@ -191,13 +192,13 @@ class Level extends Phaser.Scene {
 		new Physics(ennemi);
 
 		//ajout collision layer - joueur/ennemy
-		this.physics.add.collider(joueur, [fond,platforme]);
+		this.physics.add.collider(joueur, [this.fond,this.platforme]);
 
 		//ajout collision joueur - ennemy
 		this.physics.add.collider(ennemi, joueur);
 
 		//limité la caméra
-		this.cameras.main.setBounds(0, 0, 1200, 672);
+		this.cameras.main.setBounds(0, 0, this.carte.widthInPixels, this.carte.heightInPixels);
 
 		// ancrage de la caméra sur le joueur
 		this.cameras.main.startFollow(joueur); 
@@ -232,13 +233,15 @@ class Level extends Phaser.Scene {
 	/** @type {Phaser.GameObjects.Sprite} */
 	ennemi;
 
+	carte
+
 	create() {
 
 		this.editorCreate();
 
 		this.ennemi.play("idleN");
 		//Limite du monde
-		this.physics.world.setBounds(0, 0, 1200, 672);
+		this.physics.world.setBounds(0, 0, this.carte.widthInPixels, this.carte.heightInPixels);
 
 	} // Fin create()
 
