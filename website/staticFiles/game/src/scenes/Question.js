@@ -1,5 +1,9 @@
+/*
+    * @fichier Question.js
+    * @description Question scene
+    * Cette scene est utilisée pour afficher les questions
+*/
 class Question extends Phaser.Scene {
-
 
         VERT = "#228B22";
         MARRON = "#66431a";
@@ -19,104 +23,105 @@ class Question extends Phaser.Scene {
         /** @returns {void} */
         editorCreate() {
 
-                const element = document.getElementById('tableauDonnees');
-                const tabQuestion = element.dataset.question.split(",");
-                const tabAnswer1 = element.dataset.answer1.split(",");
-                const tabAnswer2 = element.dataset.answer2.split(",");
-                const tabAnswer3 = element.dataset.answer3.split(",");
-                const tabAnswer4 = element.dataset.answer4.split(",");
-                var listeReponse = [tabAnswer1, tabAnswer2, tabAnswer3, tabAnswer4];
-                var aleatoireQuestion = this.getRandomInt(0, tabAnswer1.length - 2, this.questionRecap[0]);
-                this.questionRecap[0].push(tabQuestion[aleatoireQuestion])
-                this.tabAnswer1 = tabAnswer1;
+            // Liaison avec la base de donnée
+            const element = document.getElementById('tableauDonnees');
+            const tabQuestion = element.dataset.question.split(",");
+            const tabAnswer1 = element.dataset.answer1.split(",");
+            const tabAnswer2 = element.dataset.answer2.split(",");
+            const tabAnswer3 = element.dataset.answer3.split(",");
+            const tabAnswer4 = element.dataset.answer4.split(",");
+            var listeReponse = [tabAnswer1, tabAnswer2, tabAnswer3, tabAnswer4];
+            var aleatoireQuestion = this.getRandomInt(0, tabAnswer1.length - 2, this.questionRecap[0]);
+            this.questionRecap[0].push(tabQuestion[aleatoireQuestion])
+            this.tabAnswer1 = tabAnswer1;
 
-                // feuilleQuestion
-                const feuilleQuestion = this.add.image(500, 294, "feuille").setScrollFactor(0);
+            // feuilleQuestion
+            const feuilleQuestion = this.add.image(500, 294, "feuille").setScrollFactor(0);
 
-                // txtQuestion
-                const txtQuestion = this.add.text(230, 150, tabQuestion[aleatoireQuestion], { font: "32px Helvetica bold", fill: this.MARRON , wordWrap: { width:650 } }).setScrollFactor(0);
+            // txtQuestion
+            const txtQuestion = this.add.text(230, 150, tabQuestion[aleatoireQuestion], { font: "32px Helvetica bold", fill: this.MARRON , wordWrap: { width:650 } }).setScrollFactor(0);
 
-                const valider = this.scene.scene.add.image(490, 415, "valider").setScrollFactor(0);
-                valider.scaleX = 0.07;
-                valider.scaleY = 0.07;
-                new PushOnClick(valider);
+            const valider = this.scene.scene.add.image(490, 415, "valider").setScrollFactor(0);
+            valider.scaleX = 0.07;
+            valider.scaleY = 0.07;
+            new PushOnClick(valider);
 
 
-                //Aligner feuille et question
-                Phaser.Display.Align.In.Center(txtQuestion, feuilleQuestion, 0, -120);
+            //Aligner feuille et question
+            Phaser.Display.Align.In.Center(txtQuestion, feuilleQuestion, 0, -120);
 
-                // Texte "Right" & "False"
-                const Aright = this.scene.scene.add.text(420, 225, "Right", { font: "50px Helvetica bold", fill: this.VERT }).setScrollFactor(0);
-                const Afalse = this.scene.scene.add.text(420, 225, "Wrong", { font: "50px Helvetica bold", fill: this.ROUGE }).setScrollFactor(0);
-                Afalse.visible = false;
-                Aright.visible = false;
+            // Texte "Right" & "False"
+            const Aright = this.scene.scene.add.text(420, 225, "Right", { font: "50px Helvetica bold", fill: this.VERT }).setScrollFactor(0);
+            const Afalse = this.scene.scene.add.text(420, 225, "Wrong", { font: "50px Helvetica bold", fill: this.ROUGE }).setScrollFactor(0);
+            Afalse.visible = false;
+            Aright.visible = false;
 
-                // Groupe de bouton
-                var groupeBoutton = this.add.group([
-                    { key: 'qcm', frame: 0, repeat: 1, setXY: { x: 350, y: 300, stepX: 280, scrollFactorX: 0 } },
-                    { key: 'qcm', frame: 0, repeat: 1, setXY: { x: 350, y: 350, stepX: 280 } }
-                ]);
+            // Groupe de bouton
+            var groupeBoutton = this.add.group([
+                { key: 'qcm', frame: 0, repeat: 1, setXY: { x: 350, y: 300, stepX: 280, scrollFactorX: 0 } },
+                { key: 'qcm', frame: 0, repeat: 1, setXY: { x: 350, y: 350, stepX: 280 } }
+            ]);
 
-                var valeurExclus = []
-                var bonneReponse;
+            var valeurExclus = []
+            var bonneReponse;
 
-                // Groupe de texte de bouton
-                var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
-                valeurExclus.push(aleatoireReponse);
-                const Txtbutton1 = this.scene.scene.add.text(260, 285, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0);
-                if(aleatoireReponse == 0){
-                    bonneReponse = 0;
-                }
+            // Groupe de texte de bouton
+            var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
+            valeurExclus.push(aleatoireReponse);
+            const Txtbutton1 = this.scene.scene.add.text(260, 285, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0);
+            if(aleatoireReponse == 0){
+                bonneReponse = 0;
+            } // Fin if
 
-                var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
-                valeurExclus.push(aleatoireReponse);
-                const Txtbutton2 = this.scene.scene.add.text(512, 285, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0); 
-                if(aleatoireReponse == 0){
-                    bonneReponse = 1;
-                }
+            var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
+            valeurExclus.push(aleatoireReponse);
+            const Txtbutton2 = this.scene.scene.add.text(512, 285, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0); 
+            if(aleatoireReponse == 0){
+                bonneReponse = 1;
+            } // Fin if
 
-                var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
-                valeurExclus.push(aleatoireReponse);
-                const Txtbutton3 = this.scene.scene.add.text(235, 335, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0);
-                if(aleatoireReponse == 0){
-                    bonneReponse = 2;
-                }
+            var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
+            valeurExclus.push(aleatoireReponse);
+            const Txtbutton3 = this.scene.scene.add.text(235, 335, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0);
+            if(aleatoireReponse == 0){
+                bonneReponse = 2;
+            } // Fin if
 
-                var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
-                valeurExclus.push(aleatoireReponse);
-                const Txtbutton4 = this.scene.scene.add.text(552, 335, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0);
-                if(aleatoireReponse == 0){
-                    bonneReponse = 3;
-                }
+            var aleatoireReponse = this.getRandomInt(0, 3,valeurExclus);
+            valeurExclus.push(aleatoireReponse);
+            const Txtbutton4 = this.scene.scene.add.text(552, 335, listeReponse[aleatoireReponse][aleatoireQuestion], { font: "30px Helvetica bold", fill: this.MARRON }).setScrollFactor(0);
+            if(aleatoireReponse == 0){
+                bonneReponse = 3;
+            } // Fin if
 
-                this.bonneReponse = bonneReponse;
+            this.bonneReponse = bonneReponse;
 
-                var groupeTexte = this.add.group();
-                groupeTexte.add(Txtbutton1);
-                groupeTexte.add(Txtbutton2);
-                groupeTexte.add(Txtbutton3);
-                groupeTexte.add(Txtbutton4);
+            var groupeTexte = this.add.group();
+            groupeTexte.add(Txtbutton1);
+            groupeTexte.add(Txtbutton2);
+            groupeTexte.add(Txtbutton3);
+            groupeTexte.add(Txtbutton4);
 
-                //Creer les enfant des groupes
-                var enfantBoutton = groupeBoutton.getChildren();
-                var enfantTxt = groupeTexte.getChildren();
+            //Creer les enfant des groupes
+            var enfantBoutton = groupeBoutton.getChildren();
+            var enfantTxt = groupeTexte.getChildren();
 
-                //Aligner les boutons et le text + push on click sur bouton
-                for (var i = 0; i < enfantBoutton.length; i++) {
-                    new PushOnClick(enfantBoutton[i]);
-                    Phaser.Display.Align.In.Center(enfantTxt[i], enfantBoutton[i]);
-                }
+            //Aligner les boutons et le text + push on click sur bouton
+            for (var i = 0; i < enfantBoutton.length; i++) {
+                new PushOnClick(enfantBoutton[i]);
+                Phaser.Display.Align.In.Center(enfantTxt[i], enfantBoutton[i]);
+            } // Fin for
 
-                this.Aright = Aright;
-                this.Afalse = Afalse;
-                this.valider = valider;
-                this.enfantBoutton = enfantBoutton;
-                this.enfantTxt = enfantTxt;
+            this.Aright = Aright;
+            this.Afalse = Afalse;
+            this.valider = valider;
+            this.enfantBoutton = enfantBoutton;
+            this.enfantTxt = enfantTxt;
 
-                this.nmbCliqueSelectionnee = 0;
+            this.nmbCliqueSelectionnee = 0;
 
-                this.events.emit("scene-awake");
-            } // Fin editorCreate()
+            this.events.emit("scene-awake");
+        } // Fin editorCreate()
 
         createEvent(){
 
