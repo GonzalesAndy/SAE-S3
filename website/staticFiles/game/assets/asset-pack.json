@@ -14,15 +14,75 @@
                 "key": "map2"
             },
             {
+                "url": "staticFiles/game/assets/map/map3.json",
+                "type": "tilemapTiledJSON",
+                "key": "map3"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map4.json",
+                "type": "tilemapTiledJSON",
+                "key": "map4"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map5.json",
+                "type": "tilemapTiledJSON",
+                "key": "map5"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map6.json",
+                "type": "tilemapTiledJSON",
+                "key": "map6"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map7.json",
+                "type": "tilemapTiledJSON",
+                "key": "map7"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map8.json",
+                "type": "tilemapTiledJSON",
+                "key": "map8"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map9.json",
+                "type": "tilemapTiledJSON",
+                "key": "map9"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map10.json",
+                "type": "tilemapTiledJSON",
+                "key": "map10"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map12.json",
+                "type": "tilemapTiledJSON",
+                "key": "map12"
+            },
+            {
                 "url": "staticFiles/game/assets/map/JeuTuile.png",
                 "type": "image",
                 "key": "JeuTuile"
             },
-
-
-
-
-
+            {
+                "url": "staticFiles/game/assets/map/Frozen-Pixel-Art-Environment-Assets-Pack2.png",
+                "type": "image",
+                "key": "Frozen-Pixel-Art-Environment-Assets-Pack2"
+            },
+            {
+                "url": "staticFiles/game/assets/map/Frozen-Pixel-Art-Environment-Assets-Pack3.png",
+                "type": "image",
+                "key": "Frozen-Pixel-Art-Environment-Assets-Pack3"
+            },
+            {
+                "url": "staticFiles/game/assets/map/Desert-Pixel-Art-Environment-Assets-Pack2.png",
+                "type": "image",
+                "key": "Desert-Pixel-Art-Environment-Assets-Pack2"
+            },
+            {
+                "url": "staticFiles/game/assets/map/Desert-Pixel-Art-Environment-Assets-Pack3.png",
+                "type": "image",
+                "key": "Desert-Pixel-Art-Environment-Assets-Pack3"
+            },
 
             {
                 "url": "staticFiles/game/assets/menu/option/quitter.png",
