@@ -29,31 +29,31 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/game">Jeu</a>
+                        <a class="nav-link" aria-current="page" href="/game">Game</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/logout">Déconnexion</a>
+                        <a class="nav-link" aria-current="page" href="/logout">Logout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/leaderboard">Tableau de Score</a>
+                        <a class="nav-link" href="/leaderboard">Scoreboard</a>
                     </li>
                     {% if current_user.sudo == 1 %}
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/add">Ajouter</a>
+                        <a class="nav-link" aria-current="page" href="/add">Add</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/delete">Supprimer</a>
+                        <a class="nav-link" aria-current="page" href="/delete">Delete</a>
                     </li>
                     {% endif %} {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/leaderboard">Tableau de Score</a>
+                        <a class="nav-link" href="/leaderboard">Scoreboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/sign-up">Création de Compte</a>
+                        <a class="nav-link" href="/sign-up">Sign Up</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Connexion</a>
