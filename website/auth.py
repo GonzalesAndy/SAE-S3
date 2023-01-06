@@ -35,19 +35,19 @@ def sign_up():
     #Récupère les données du formulaire
     if request.method == 'POST':
         email = request.form.get("email")
-        username = request.form.get("username")
+        pseudo = request.form.get("username")
         motDePasse1 = request.form.get("password1")
         emailExiste = User.query.filter_by(email=email).first()
-        pseudoExiste = User.query.filter_by(username=username).first()
+        pseudoExiste = User.query.filter_by(username=pseudo).first()
 
         #Condition de création d'un compte
         if emailExiste:
             flash('Un compte existe déjà avec cet email', category='error')
         elif pseudoExiste:
             flash('Un utilisateur utilise déjà ce pseudo.', category='error')
-        elif len(username) < 2:
+        elif len(pseudo) < 2:
             flash('Pseudo trop court.', category='error')
-        elif len(username) > 15:
+        elif len(pseudo) > 15:
             flash('Pseudo trop long.', category='error')
         elif len(motDePasse1) < 6:
             flash('Mot de passe pas assez sécurisé.', category='error')
@@ -55,7 +55,7 @@ def sign_up():
             flash("Email trop courte.", category='error')
         #Création du compte
         else:
-            nouvelUtilisateur = User(email=email, username=username, password=generate_password_hash(
+            nouvelUtilisateur = User(email=email, username=pseudo, password=generate_password_hash(
                 motDePasse1, method='sha256'))
             db.session.add(nouvelUtilisateur)
             db.session.commit()
@@ -70,4 +70,4 @@ def sign_up():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("views.home"))
+    return redirect(url_for("views.accueil"))
