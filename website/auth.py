@@ -22,7 +22,7 @@ def login():
             if check_password_hash(utilisateur.password, motDePasse):
                 flash("Connecté!", category='success')
                 login_user(utilisateur, remember=True)
-                return redirect(url_for('views.home'))
+                return redirect(url_for('views.accueil'))
             else:
                 flash('Le mot de passe ne correspond pas. Si perdu contactez l\'administrateur', category='error')
         else:

@@ -2,7 +2,9 @@ class Level extends Phaser.Scene {
 	
 	/*
 	arg[0] {
+
 		this.nomMap -> nom de la map
+
 		this.xDepart -> coordoné X de départ du joueur
 		this.yDepart -> coordoné Y de départ du joueur
 		this.porteY -> coordoné Y de la porte (sortie de map)
@@ -16,13 +18,16 @@ class Level extends Phaser.Scene {
 		switch(arg[0]){
 			case 1 : //si map1
 				this.nomMap = "map1";
+
 				this.double = false;
 				this.tile = "JeuTuile";
 				// fin de declaration des tiles
+        
 				this.xDepart  = 32;
 				this.yDepart = 455;
 				this.porte = [0,150];
 				break;
+
 			case 2 : //si map3
 				this.nomMap = "map3";
 				// declaration des tiles
@@ -173,13 +178,16 @@ class Level extends Phaser.Scene {
 		this.fond.setCollisionByProperty({ estSolide: true });
 		this.platforme.setCollisionByProperty({ estSolide: true });
 
+
 		// joueur
 		const joueur = this.physics.add.sprite(this.xDepart, this.yDepart, this.nomPerso, 0);
 		joueur.scaleX = 1/2;
 		joueur.scaleY = 1/2;
 		joueur.setCollideWorldBounds(true);
 
+
 		// joueur (components)
+
 		new Physics(joueur);
 		new Mouvement(joueur, this.nomPerso);
 
@@ -192,7 +200,9 @@ class Level extends Phaser.Scene {
 		new Physics(ennemi);
 
 		//ajout collision layer - joueur/ennemy
+
 		this.physics.add.collider(joueur, [this.fond,this.platforme]);
+
 
 		//ajout collision joueur - ennemy
 		this.physics.add.collider(ennemi, joueur);
@@ -202,6 +212,7 @@ class Level extends Phaser.Scene {
 
 		// ancrage de la caméra sur le joueur
 		this.cameras.main.startFollow(joueur); 
+
 
 		// initialisation des pixels au deplacement de la caméra
 		this.cameras.main.roundPixels = true;
@@ -233,6 +244,7 @@ class Level extends Phaser.Scene {
 	/** @type {Phaser.GameObjects.Sprite} */
 	ennemi;
 
+
 	carte
 
 	create() {
@@ -241,11 +253,13 @@ class Level extends Phaser.Scene {
 
 		this.ennemi.play("idleN");
 		//Limite du monde
+
 		this.physics.world.setBounds(0, 0, this.carte.widthInPixels, this.carte.heightInPixels);
 
 	} // Fin create()
 
 	update(){
+
 
 		//this.ennemyMouvement.suivre(this.joueur);
         this.physics.moveToObject(this.ennemi, this.joueur, this.vitesseEnnemi);
@@ -255,6 +269,7 @@ class Level extends Phaser.Scene {
 
 			this.joueur.x = 1160;
 			this.scene.launch('Question',{ nomMap: this.nomMap, 
+
 						intPerso: this.intPerso , 
 						vitesseEnnemy: this.vitesseEnnemi, 
 						pointDeViePerso : this.pointDeViePerso,
