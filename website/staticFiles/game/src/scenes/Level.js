@@ -180,6 +180,7 @@ class Level extends Phaser.Scene {
 		this.vitesseEnnemi = arg[2];
 		this.pointDeViePerso = arg[3];
 		this.questionRecap = arg[4];
+		this.old_random = arg[5];
 
 	} // Fin init
 
@@ -271,6 +272,14 @@ class Level extends Phaser.Scene {
 		this.scenePointDeVie.pntDeVie = this.pointDeViePerso;
 		this.scenePointDeVie.perdVie();
 
+		if(this.old_random === undefined){
+			this.old_random = 0;
+		}
+		if(this.nombre_random === undefined){
+			this.nombre_random = 0;
+		}
+
+
 		this.joueur = joueur;
 		this.ennemi = ennemi;
 
@@ -283,8 +292,9 @@ class Level extends Phaser.Scene {
 	joueur;
 	/** @type {Phaser.GameObjects.Sprite} */
 	ennemi;
-
-
+	nombre_random;
+	
+	old_random;
 	carte
 
 	create() {
@@ -300,21 +310,26 @@ class Level extends Phaser.Scene {
 
 	update(){
 
-		console.log("x",this.joueur.x);
-		console.log(this.joueur.y);
+	
 		//this.ennemyMouvement.suivre(this.joueur);
         this.physics.moveToObject(this.ennemi, this.joueur, this.vitesseEnnemi);
 
 		//Si le joueur arrivé à la porte, lancement stage suivant
 		if(this.joueur.x >= this.porte.x - 1 && this.joueur.x <= this.porte.x + 1 && this.joueur.y >= this.porte.y - 1 && this.joueur.y <= this.porte.y + 1){
+		
+		while(this.nombre_random === this.old_random){
+				console.log("okidoki")
+				this.nombre_random = Math.floor(Math.random() * 10) + 1;
 
+			}
 			this.joueur.x = 1160;
 			this.scene.launch('Question',{ nomMap: this.nomMap, 
 
 						intPerso: this.intPerso , 
 						vitesseEnnemy: this.vitesseEnnemi, 
 						pointDeViePerso : this.pointDeViePerso,
-						questionRecap : this.questionRecap});
+						questionRecap : this.questionRecap,
+						nombre_random: this.nombre_random});
 			this.scene.pause('Level');
 			this.scene.sendToBack();
 
