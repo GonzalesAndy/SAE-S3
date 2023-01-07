@@ -16,18 +16,15 @@ class Level extends Phaser.Scene {
 
 		//En fonction de quel map est appelé, on change les paramettres
 		switch(arg[0]){
-			case 1 : //si map1
-				this.nomMap = "map1";
-
+			case 1 : //si map2
+				this.nomMap = "map2";
 				this.double = false;
 				this.tile = "JeuTuile";
 				// fin de declaration des tiles
-        
 				this.xDepart  = 32;
 				this.yDepart = 455;
 				this.porte = [0,150];
 				break;
-
 			case 2 : //si map3
 				this.nomMap = "map3";
 				// declaration des tiles
