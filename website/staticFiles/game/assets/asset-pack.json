@@ -4,37 +4,37 @@
 
 
             {
-                "url": "staticFiles/game/assets/gameOver/option/gameOverLost.png",
+                "url": "staticFiles/game/assets/gameOver/gameOverLost.png",
                 "type": "image",
                 "key": "gameOverLostF"
             },
             {
-                "url": "staticFiles/game/assets/gameOver/option/gameOverLostM.png",
+                "url": "staticFiles/game/assets/gameOver/gameOverLostM.png",
                 "type": "image",
                 "key": "gameOverLostM"
             },
             {
-                "url": "staticFiles/game/assets/gameOver/option/gameOverWin.png",
+                "url": "staticFiles/game/assets/gameOver/gameOverWin.png",
                 "type": "image",
                 "key": "gameOverWinF"
             },
             {
-                "url": "staticFiles/game/assets/gameOver/option/gameOverWinM.png",
+                "url": "staticFiles/game/assets/gameOver/gameOverWinM.png",
                 "type": "image",
                 "key": "gameOverWinM"
             },
             {
-                "url": "staticFiles/game/assets/gameOver/option/leaderboardButton.png",
+                "url": "staticFiles/game/assets/gameOver/leaderboardButton.png",
                 "type": "image",
                 "key": "leaderboardButton"
             },
             {
-                "url": "staticFiles/game/assets/gameOver/option/playAgainButton.png",
+                "url": "staticFiles/game/assets/gameOver/playAgainButton.png",
                 "type": "image",
                 "key": "playAgainButton"
             },
             {
-                "url": "staticFiles/game/assets/gameOver/option/retryButton.png",
+                "url": "staticFiles/game/assets/gameOver/retryButton.png",
                 "type": "image",
                 "key": "retryButton"
             },
