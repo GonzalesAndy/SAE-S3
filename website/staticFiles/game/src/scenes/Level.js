@@ -23,7 +23,9 @@ class Level extends Phaser.Scene {
 				// fin de declaration des tiles
 				this.xDepart  = 114;
 				this.yDepart = 1840;
+
 				this.tomber = false;
+
 				this.porte = {x:1326,y:208};
 				break;
 			case 2 : //si map2
@@ -107,6 +109,7 @@ class Level extends Phaser.Scene {
 				// fin de declaration des tiles
 				this.tomber = true;
 				this.chute ={y:880};
+
 				this.xDepart  = 46;
 				this.yDepart = 160;
 				this.porte = {x:2785,y:784};
@@ -294,10 +297,13 @@ class Level extends Phaser.Scene {
 			this.scene.sendToBack();
 		}, this);
 
-	
-		this.scenePointDeVie = new PointDeVie(this);
+
+		this.scenePointDeVie = new PointDeVie(this, this.intPerso);
+
 		this.scenePointDeVie.pntDeVie = this.pointDeViePerso;
+		//this.scenePointDeVie.pntDeVie = 0;
 		this.scenePointDeVie.perdVie();
+
 
 		this.timer = new Timer(this);
 
@@ -307,6 +313,7 @@ class Level extends Phaser.Scene {
 			this.temps= 0;
 		}
 		
+
 		if(this.old_random === undefined){
 			this.old_random = 0;
 		}
@@ -330,6 +337,7 @@ class Level extends Phaser.Scene {
 	nombre_random;
 	
 	old_random;
+
 	carte;
 
 	temps;
@@ -381,8 +389,10 @@ class Level extends Phaser.Scene {
 						vitesseEnnemy: this.vitesseEnnemi, 
 						pointDeViePerso : this.pointDeViePerso,
 						questionRecap : this.questionRecap,
+
 						nombre_random: this.nombre_random,
 						temps: this.temps});
+
 			this.scene.pause('Level');
 			this.scene.sendToBack();
 

@@ -1,11 +1,12 @@
 class PointDeVie extends Phaser.GameObjects.Image {
 
-	constructor(scene) {
+	constructor(scene, intPerso) {
 		super(scene, 930, 30, "3vies");
 
 		this.pntDeVie = 3;
 		this.setScrollFactor(0);
 		this.scene = scene;
+		this.intPerso = intPerso;
 		scene.add.existing(this);
 	} // Fin constructor
 
@@ -17,7 +18,7 @@ class PointDeVie extends Phaser.GameObjects.Image {
 			this.setTexture("1vies");
 		}
 		else if(this.pntDeVie == 0){
-            this.scene.scene.start('GameOver')
+            this.scene.scene.launch('GameOver',{intPerso: this.intPerso})
 		} // Fin if else
 	} // Fin perdVie()
 

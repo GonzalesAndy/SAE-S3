@@ -41,6 +41,8 @@ class Menu extends Phaser.Scene {
 			choixPerso.runChoixPerso();
 		}, this);
 
+		this.bringToTop;
+
 		this.fond = fond;
 		this.engrenage = engrenage;
 
