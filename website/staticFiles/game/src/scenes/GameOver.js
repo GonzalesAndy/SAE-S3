@@ -1,16 +1,21 @@
 class GameOver extends Phaser.Scene {
 
-    constructor() {
-        super("GameOver");
+    init(data) {
+
+        this.intPerso = data.intPerso;
 
     } // Fin constructor()
 
     /** @returns {void} */
     editorCreate() {
 
-        // progress
-        const progress = this.add.text(500, 349, "Game Over", {});
-        console.log()
+		// fond en fonction du personnage selectionnee
+        if(this.intPerso == 1){
+            const fond = this.add.image(512, 384, "gameOverLostF");
+        } else {
+            const fond = this.add.image(512, 384, "gameOverLostM");
+        }
+        
         this.events.emit("scene-awake");
     } // Fin editorCreate()
 
