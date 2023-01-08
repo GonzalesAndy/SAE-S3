@@ -91,9 +91,29 @@
                 "key": "map10"
             },
             {
+                "url": "staticFiles/game/assets/map/map11.json",
+                "type": "tilemapTiledJSON",
+                "key": "map11"
+            },
+            {
                 "url": "staticFiles/game/assets/map/map12.json",
                 "type": "tilemapTiledJSON",
                 "key": "map12"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map13.json",
+                "type": "tilemapTiledJSON",
+                "key": "map13"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map14.json",
+                "type": "tilemapTiledJSON",
+                "key": "map14"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map15.json",
+                "type": "tilemapTiledJSON",
+                "key": "map15"
             },
             {
                 "url": "staticFiles/game/assets/map/JeuTuile.png",
