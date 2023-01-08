@@ -10,12 +10,22 @@ class GameOver extends Phaser.Scene {
     editorCreate() {
 
 		// fond en fonction du personnage selectionnee
+        var fond;
         if(this.intPerso == 1){
-            const fond = this.add.image(512, 384, "gameOverLostF");
+            fond = this.add.image(512, 384, "gameOverLostF");
         } else {
-            const fond = this.add.image(512, 384, "gameOverLostM");
+            fond = this.add.image(512, 384, "gameOverLostM");
         }
+
+        const retryButton = this.add.image(0, 0, "retryButton");
+        new PushOnClick(retryButton);
+        Phaser.Display.Align.In.Center(retryButton, fond, 0, 320);
         
+        retryButton.once('pointerup', function(event) {
+            this.scene.launch('Menu');
+        }, this);
+     
+
         this.events.emit("scene-awake");
     } // Fin editorCreate()
 

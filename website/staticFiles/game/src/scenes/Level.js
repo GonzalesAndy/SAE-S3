@@ -269,8 +269,8 @@ class Level extends Phaser.Scene {
 		}, this);
 
 		this.scenePointDeVie = new PointDeVie(this, this.intPerso);
-		//this.scenePointDeVie.pntDeVie = this.pointDeViePerso;
-		this.scenePointDeVie.pntDeVie = 0;
+		this.scenePointDeVie.pntDeVie = this.pointDeViePerso;
+		//this.scenePointDeVie.pntDeVie = 0;
 		this.scenePointDeVie.perdVie();
 
 		if(this.old_random === undefined){
