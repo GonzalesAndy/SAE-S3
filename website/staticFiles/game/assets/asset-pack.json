@@ -132,43 +132,6 @@
                 "key": "Frozen-Pixel-Art-Environment-Assets-Pack3"
             },
             {
-                "url": "staticFiles/game/assets/map/Desert-Pixel-Art-Environment-Assets-Pack2.png",
-                "type": "image",
-                "key": "Desert-Pixel-Art-Environment-Assets-Pack2"
-            },
-            {
-                "url": "staticFiles/game/assets/map/Desert-Pixel-Art-Environment-Assets-Pack3.png",
-                "type": "image",
-                "key": "Desert-Pixel-Art-Environment-Assets-Pack3"
-            },
-
-            {
-                "url": "staticFiles/game/assets/menu/option/arrowDownButton.png",
-                "type": "image",
-                "key": "arrowDownButton"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/option/arrowUpButton.png",
-                "type": "image",
-                "key": "arrowUpButton"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/option/leaderboardButton.png",
-                "type": "image",
-                "key": "leaderboardButton"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/option/background.png",
-                "type": "image",
-                "key": "backgroundOption"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/option/quitter.png",
-                "type": "image",
-                "key": "quitter"
-            },
-
-            {
                 "url": "staticFiles/game/assets/gameOver/gameOverLost.png",
                 "type": "image",
                 "key": "gameOverLostF"

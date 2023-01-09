@@ -65,7 +65,7 @@
                     "keyframe": false
                 }
             ],
-            "frameRate": 10,
+            "frameRate": 24,
             "skipMissedFrames": true,
             "repeat": -1
         },
@@ -134,7 +134,7 @@
                     "keyframe": false
                 }
             ],
-            "frameRate": 10,
+            "frameRate": 24,
             "skipMissedFrames": true,
             "repeat": -1
         },
@@ -227,7 +227,7 @@
                     "keyframe": false
                 }
             ],
-            "frameRate": 15,
+            "frameRate": 24,
             "skipMissedFrames": true,
             "repeat": -1
         },
@@ -320,7 +320,7 @@
                     "keyframe": false
                 }
             ],
-            "frameRate": 15,
+            "frameRate": 20,
             "skipMissedFrames": true,
             "repeat": -1
         },
@@ -389,9 +389,9 @@
                     "keyframe": false
                 }
             ],
-            "frameRate": 20,
+            "frameRate": 30,
             "skipMissedFrames": true,
-            "repeat": -1
+            "repeat":0
         },
         {
             "key": "dashG",
@@ -458,9 +458,9 @@
                     "keyframe": false
                 }
             ],
-            "frameRate": 20,
+            "frameRate": 30,
             "skipMissedFrames": true,
-            "repeat": -1
+            "repeat":0
         },
         {
             "key": "fallF",
@@ -481,12 +481,14 @@
                 {
                     "key": "fallF",
                     "frame": 2,
-                    "duration": 0,
+                    "duration": 99999,
                     "keyframe": false
                 }
+                
             ],
-            "frameRate": 5,
-            "skipMissedFrames": true
+            "frameRate": 10,
+            "skipMissedFrames": true,
+            "repeat":0
         },
         {
             "key": "fallG",
@@ -507,12 +509,13 @@
                 {
                     "key": "fallG",
                     "frame": 2,
-                    "duration": 0,
+                    "duration": 99999,
                     "keyframe": false
                 }
             ],
-            "frameRate": 5,
-            "skipMissedFrames": true
+            "frameRate": 10,
+            "skipMissedFrames": true,
+            "repeat":0
         },
         {
             "key": "jumpF",
@@ -533,12 +536,13 @@
                 {
                     "key": "jumpF",
                     "frame": 2,
-                    "duration": 0,
+                    "duration": 99999,
                     "keyframe": false
                 }
             ],
-            "frameRate": 5,
-            "skipMissedFrames": true
+            "frameRate": 10,
+            "skipMissedFrames": true,
+            "repeat":0
         },
         {
             "key": "jumpG",
@@ -559,22 +563,18 @@
                 {
                     "key": "jumpG",
                     "frame": 2,
-                    "duration": 0,
+                    "duration": 99999,
                     "keyframe": false
                 }
             ],
-            "frameRate": 5,
-            "skipMissedFrames": true
+            "frameRate": 10,
+            "skipMissedFrames": true,
+            "repeat":0
         }
     ],
     "globalTimeScale": 1,
     "meta": {
         "app": "Phaser Editor 2D v3",
         "contentType": "Phaser v3 Animations"
-    },
-    "settings": {
-        "sourceLang": "JAVA_SCRIPT",
-        "esModule": false,
-        "generateCode": false
     }
 }
