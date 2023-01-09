@@ -21,8 +21,12 @@ class GameOver extends Phaser.Scene {
         new PushOnClick(retryButton);
         Phaser.Display.Align.In.Center(retryButton, fond, 0, 320);
         
+        this.scene.stop("Level");
+
         retryButton.once('pointerup', function(event) {
-            this.scene.launch('Menu');
+            
+            this.scene.stop();
+            this.scene.start("Menu");
         }, this);
      
 
@@ -32,5 +36,6 @@ class GameOver extends Phaser.Scene {
     create() {
         this.editorCreate();
     } // Fin create()
+
 
 } // Fin class GameOver
