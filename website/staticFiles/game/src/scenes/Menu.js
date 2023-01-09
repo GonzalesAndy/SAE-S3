@@ -63,8 +63,6 @@ class Menu extends Phaser.Scene {
 
 	update() {
 
-		console.log();
-
 		//quand on clique sur l'engrenage, on affiche le menu
 		this.engrenage.once('pointerup',function(){
 			this.scene.launch('Option');

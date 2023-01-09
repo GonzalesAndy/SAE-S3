@@ -2,8 +2,6 @@ class ChoixPerso{
 
     constructor(scene, intPerso){
 
-        console.log("choixperso");
-
         //Feuille
         const feuille = scene.add.image(500, 294, "feuille").setScrollFactor(0);
         feuille.scaleX = 1.3;

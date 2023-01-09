@@ -206,7 +206,6 @@ class Level extends Phaser.Scene {
 		} //Fin case
 		this.intPerso = arg[1];
 		this.vitesseEnnemi = arg[2];
-		console.log("vitesse ennemi : " + this.vitesseEnnemi);
 		this.pointDeViePerso = arg[3];
 		this.questionRecap = arg[4];
 		this.old_random = arg[5];

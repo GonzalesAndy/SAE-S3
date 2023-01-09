@@ -72,7 +72,6 @@ class Option extends Phaser.Scene {
     } // Fin editorCreate()
 
 	setTextDifficulty(vitesse){
-		console.log(vitesse);
 		var text = "";
 		if(vitesse == 70 ){
 			text = "Normal";
@@ -81,7 +80,6 @@ class Option extends Phaser.Scene {
 		} else if(vitesse == 90){
 			text = "Hard";
 		} // Fin else if
-		console.log(text);
 		return text;
 	} // Fin setTextDifficulty
 
@@ -92,7 +90,6 @@ class Option extends Phaser.Scene {
 
 	update(){
 
-		console.log(this.setTextDifficulty(this.vitesse));
 		this.difficulty.setText(this.setTextDifficulty(this.vitesse));
 		Phaser.Display.Align.In.Center(this.difficulty, this.fondOption, 0, 0);
 	}
