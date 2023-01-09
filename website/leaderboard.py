@@ -7,14 +7,14 @@ from flask_table import Table, Col
 
 tableLeaderboard = Blueprint("leaderboard", __name__)
 
-
+#Tableau du leaderboard
 class ItemTable(Table):
-    rank = Col('Rank')
+    rank = Col('Rang')
     allow_sort=True
-    username = Col('Username', column_html_attrs = {'class': 'usernameCol'})
-    score = Col('High Score', column_html_attrs = {'class': 'scoreCol'})
+    username = Col('Pseudo', column_html_attrs = {'class': 'usernameCol'})
+    score = Col('Meilleur Score', column_html_attrs = {'class': 'scoreCol'})
     
-
+    #Permet de trier les colonnes en fonction d'un critère
     def sort_url(self, col_id, reverse=False):
         if reverse:
             order = 'desc'
@@ -24,14 +24,15 @@ class ItemTable(Table):
 
     
 
+#Permet d'envoyer les données de la table au template
 @tableLeaderboard.route("/leaderboard")
-def leaderboard():
-    items = User.query.order_by(desc(User.score)).all()
-    table = ItemTable(items)
-    rank = 1
+def tableauDesScores():
+    objets = User.query.order_by(desc(User.score)).all()
+    table = ItemTable(objets)
+    rang = 1
     for score in table.items:
-        score.rank = rank
-        rank += 1
+        score.rank = rang
+        rang += 1
     
     
 

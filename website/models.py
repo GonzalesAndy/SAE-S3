@@ -1,9 +1,7 @@
 from . import db
 from flask_login import UserMixin
-from sqlalchemy.sql import func
-from sqlalchemy import CheckConstraint
 
-
+#Création de la table User
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(150), unique=True)
@@ -14,7 +12,8 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
-    
+
+#Création de la table Question
 class Question(db.Model):
     questionId = db.Column(db.Integer, primary_key=True, autoincrement=True)
     question = db.Column(db.String(150), unique = True)
@@ -26,12 +25,3 @@ class Question(db.Model):
 
     def __repr__(self):
         return '<Question {}>'.format(self.question)
-
-'''class Score(db.Model):
-    scoreId = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    userId = db.Column(db.Integer,db.ForeignKey('user.id'), nullable=False)
-    lastScore = db.Column(db.Integer)
-    highScore = db.Column(db.Integer)
-
-    def __repr__(self):
-        return '<Score {}>'.format(self.highScore)'''

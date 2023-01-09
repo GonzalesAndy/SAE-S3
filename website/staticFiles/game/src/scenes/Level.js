@@ -346,7 +346,7 @@ class Level extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
-		
+	
 
 		this.ennemi.play("idleN");
 		//Limite du monde
