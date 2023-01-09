@@ -1,8 +1,7 @@
 body {
-    background-image: url("/staticFiles/map.png");
-    background-attachment: fixed;
-    background-size: cover;
+    background-image: url("/staticFiles/images/map.png");
     background-repeat: no-repeat;
+    background-attachment: fixed;
     margin: 0px;
     padding: 0px;
     height: 100vh;
@@ -15,12 +14,6 @@ footer {
     color: white;
     width: 100%;
     text-align: center;
-    margin-top: 1%;
-}
-
-canvas {
-    max-height: 90%;
-    max-width: none;
 }
 
 footer>button {
@@ -156,7 +149,7 @@ nav {
 
 /* Leaderboard */
 
-.container {
+.myTable {
     overflow: scroll;
 }
 
@@ -173,9 +166,6 @@ table {
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-table {
     background: rgba(6, 66, 0, 0.9);
 }
 
@@ -259,6 +249,12 @@ tbody tr:hover {
     color: white;
     font-size: x-large;
     text-align: center;
+}
+
+@media screen and (max-width: 756px) {
+    .intro>p {
+        font-size: medium;
+    }
 }
 
 

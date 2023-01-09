@@ -1,136 +1,8 @@
 {
     "section1": {
         "files": [
-            {
-                "url": "staticFiles/game/assets/1vies.png",
-                "type": "image",
-                "key": "1vies"
-            },
-            {
-                "url": "staticFiles/game/assets/2vies.png",
-                "type": "image",
-                "key": "2vies"
-            },
-            {
-                "url": "staticFiles/game/assets/3vies.png",
-                "type": "image",
-                "key": "3vies"
-            },
-            {
-                "url": "staticFiles/game/assets/animations-ennemy.json",
-                "type": "animation",
-                "key": "animations-ennemy"
-            },
-            {
-                "url": "staticFiles/game/assets/animations-perso.json",
-                "type": "animation",
-                "key": "animations-perso"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/background.png",
-                "type": "image",
-                "key": "background"
-            },
-            {
-                "url": "staticFiles/game/assets/perso/dash_sprite_f.png",
-                "frameConfig": {
-                    "frameWidth": 128,
-                    "frameHeight": 128,
-                    "startFrame": 0,
-                    "endFrame": -1,
-                    "spacing": 0,
-                    "margin": 0
-                },
-                "type": "spritesheet",
-                "key": "dashF"
-            },
-            {
-                "url": "staticFiles/game/assets/perso/dash_sprite_g.png",
-                "frameConfig": {
-                    "frameWidth": 128,
-                    "frameHeight": 128,
-                    "startFrame": 0,
-                    "endFrame": -1,
-                    "spacing": 0,
-                    "margin": 0
-                },
-                "type": "spritesheet",
-                "key": "dashG"
-            },
-            {
-                "url": "staticFiles/game/assets/map/Desert-Pixel-Art-Environment-Assets-Pack2.png",
-                "type": "image",
-                "key": "Desert-Pixel-Art-Environment-Assets-Pack2"
-            },
-            {
-                "url": "staticFiles/game/assets/map/Desert-Pixel-Art-Environment-Assets-Pack3.png",
-                "type": "image",
-                "key": "Desert-Pixel-Art-Environment-Assets-Pack3"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/engrenage.png",
-                "type": "image",
-                "key": "engrenage"
-            },
-            {
-                "url": "staticFiles/game/assets/perso/ennemy.png",
-                "frameConfig": {
-                    "frameWidth": 128,
-                    "frameHeight": 128,
-                    "startFrame": 0,
-                    "endFrame": -1,
-                    "spacing": 0,
-                    "margin": 0
-                },
-                "type": "spritesheet",
-                "key": "ennemyFly"
-            },
-            {
-                "url": "staticFiles/game/assets/perso/fall_sprite_f.png",
-                "frameConfig": {
-                    "frameWidth": 128,
-                    "frameHeight": 128,
-                    "startFrame": 0,
-                    "endFrame": -1,
-                    "spacing": 0,
-                    "margin": 0
-                },
-                "type": "spritesheet",
-                "key": "fallF"
-            },
-            {
-                "url": "staticFiles/game/assets/perso/fall_sprite_g.png",
-                "frameConfig": {
-                    "frameWidth": 128,
-                    "frameHeight": 128,
-                    "startFrame": 0,
-                    "endFrame": -1,
-                    "spacing": 0,
-                    "margin": 0
-                },
-                "type": "spritesheet",
-                "key": "fallG"
-            },
-            {
-                "url": "staticFiles/game/assets/question/feuilleQuestion.png",
-                "type": "image",
-                "key": "feuille"
-            },
-            {
-                "url": "staticFiles/game/assets/menu/option/feuilleOption.png",
-                "type": "image",
-                "key": "feuilleOption"
-            },
-            {
-                "url": "staticFiles/game/assets/map/Frozen-Pixel-Art-Environment-Assets-Pack2.png",
-                "type": "image",
-                "key": "Frozen-Pixel-Art-Environment-Assets-Pack2"
-            },
-            {
-                "url": "staticFiles/game/assets/map/Frozen-Pixel-Art-Environment-Assets-Pack3.png",
-                "type": "image",
-                "key": "Frozen-Pixel-Art-Environment-Assets-Pack3"
-            },
+
+
             {
                 "url": "staticFiles/game/assets/gameOver/gameOverLost.png",
                 "type": "image",
@@ -152,106 +24,26 @@
                 "key": "gameOverWinM"
             },
             {
-                "url": "staticFiles/game/assets/perso/idle_sprite_f.png",
-                "frameConfig": {
-                    "frameWidth": 128,
-                    "frameHeight": 128,
-                    "startFrame": 0,
-                    "endFrame": -1,
-                    "spacing": 0,
-                    "margin": 0
-                },
-                "type": "spritesheet",
-                "key": "idleF"
-            },
-            {
-                "url": "staticFiles/game/assets/perso/idle_sprite_g.png",
-                "frameConfig": {
-                    "frameWidth": 128,
-                    "frameHeight": 128,
-                    "startFrame": 0,
-                    "endFrame": -1,
-                    "spacing": 0,
-                    "margin": 0
-                },
-                "type": "spritesheet",
-                "key": "idleG"
-            },
-            {
-                "url": "staticFiles/game/assets/map/JeuTuile.png",
-                "type": "image",
-                "key": "JeuTuile"
-            },
-            {
-                "url": "staticFiles/game/assets/perso/jump_sprite_f.png",
-                "frameConfig": {
-                    "frameWidth": 128,
-                    "frameHeight": 128,
-                    "startFrame": 0,
-                    "endFrame": -1,
-                    "spacing": 0,
-                    "margin": 0
-                },
-                "type": "spritesheet",
-                "key": "jumpF"
-            },
-            {
-                "url": "staticFiles/game/assets/perso/jump_sprite_g.png",
-                "frameConfig": {
-                    "frameWidth": 128,
-                    "frameHeight": 128,
-                    "startFrame": 0,
-                    "endFrame": -1,
-                    "spacing": 0,
-                    "margin": 0
-                },
-                "type": "spritesheet",
-                "key": "jumpG"
-            },
-            {
                 "url": "staticFiles/game/assets/gameOver/leaderboardButton.png",
                 "type": "image",
                 "key": "leaderboardButton"
             },
             {
-                "url": "staticFiles/game/assets/menu/logo.png",
+                "url": "staticFiles/game/assets/gameOver/playAgainButton.png",
                 "type": "image",
-                "key": "logo"
+                "key": "playAgainButton"
             },
+            {
+                "url": "staticFiles/game/assets/gameOver/retryButton.png",
+                "type": "image",
+                "key": "retryButton"
+            },
+
+            
             {
                 "url": "staticFiles/game/assets/map/map1.json",
                 "type": "tilemapTiledJSON",
                 "key": "map1"
-            },
-            {
-                "url": "staticFiles/game/assets/map/map10.json",
-                "type": "tilemapTiledJSON",
-                "key": "map10"
-            },
-            {
-                "url": "staticFiles/game/assets/map/map11.json",
-                "type": "tilemapTiledJSON",
-                "key": "map11"
-            },
-            {
-                "url": "staticFiles/game/assets/map/map12.json",
-                "type": "tilemapTiledJSON",
-                "key": "map12"
-            },
-            {
-                "url": "staticFiles/game/assets/map/map13.json",
-                "type": "tilemapTiledJSON",
-                "key": "map13"
-            },
-            {
-                "url": "staticFiles/game/assets/map/map14.json",
-                "type": "tilemapTiledJSON",
-                "key": "map14"
-            },
-            {
-                "url": "staticFiles/game/assets/map/map15.json",
-                "type": "tilemapTiledJSON",
-                "key": "map15"
             },
             {
                 "url": "staticFiles/game/assets/map/map2.json",
@@ -294,42 +86,101 @@
                 "key": "map9"
             },
             {
-                "url": [
-                    "staticFiles/game/src/components/Physics.js",
-                    "staticFiles/game/src/components/Mouvement.js"
-                ],
-                "type": "scripts",
-                "key": "Physics"
+                "url": "staticFiles/game/assets/map/map10.json",
+                "type": "tilemapTiledJSON",
+                "key": "map10"
             },
             {
-                "url": "staticFiles/game/assets/gameOver/playAgainButton.png",
-                "type": "image",
-                "key": "playAgainButton"
+                "url": "staticFiles/game/assets/map/map12.json",
+                "type": "tilemapTiledJSON",
+                "key": "map12"
             },
             {
-                "url": "staticFiles/game/assets/question/qcm.png",
+                "url": "staticFiles/game/assets/map/JeuTuile.png",
                 "type": "image",
-                "key": "qcm"
+                "key": "JeuTuile"
             },
+            {
+                "url": "staticFiles/game/assets/map/Frozen-Pixel-Art-Environment-Assets-Pack2.png",
+                "type": "image",
+                "key": "Frozen-Pixel-Art-Environment-Assets-Pack2"
+            },
+            {
+                "url": "staticFiles/game/assets/map/Frozen-Pixel-Art-Environment-Assets-Pack3.png",
+                "type": "image",
+                "key": "Frozen-Pixel-Art-Environment-Assets-Pack3"
+            },
+            {
+                "url": "staticFiles/game/assets/map/Desert-Pixel-Art-Environment-Assets-Pack2.png",
+                "type": "image",
+                "key": "Desert-Pixel-Art-Environment-Assets-Pack2"
+            },
+            {
+                "url": "staticFiles/game/assets/map/Desert-Pixel-Art-Environment-Assets-Pack3.png",
+                "type": "image",
+                "key": "Desert-Pixel-Art-Environment-Assets-Pack3"
+            },
+
             {
                 "url": "staticFiles/game/assets/menu/option/quitter.png",
                 "type": "image",
                 "key": "quitter"
             },
             {
-                "url": "staticFiles/game/assets/gameOver/retryButton.png",
+                "url": "staticFiles/game/assets/menu/option/feuilleOption.png",
                 "type": "image",
-                "key": "retryButton"
+                "key": "feuilleOption"
+            },
+
+            {
+                "url": "staticFiles/game/assets/menu/background.png",
+                "type": "image",
+                "key": "background"
+            },
+            {
+                "url": "staticFiles/game/assets/menu/logo.png",
+                "type": "image",
+                "key": "logo"
+            },
+            {
+                "url": "staticFiles/game/assets/menu/engrenage.png",
+                "type": "image",
+                "key": "engrenage"
             },
             {
                 "url": "staticFiles/game/assets/menu/start.png",
                 "type": "image",
                 "key": "start"
             },
+
+
+
+
             {
-                "url": "staticFiles/game/assets/question/valider.png",
-                "type": "image",
-                "key": "valider"
+                "url": "staticFiles/game/assets/perso/idle_sprite_f.png",
+                "frameConfig": {
+                    "frameWidth": 128,
+                    "frameHeight": 128,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "idleF"
+            },
+            {
+                "url": "staticFiles/game/assets/perso/idle_sprite_g.png",
+                "frameConfig": {
+                    "frameWidth": 128,
+                    "frameHeight": 128,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "idleG"
             },
             {
                 "url": "staticFiles/game/assets/perso/run_sprite_f.png",
@@ -356,6 +207,75 @@
                 },
                 "type": "spritesheet",
                 "key": "walkG"
+            },
+            {
+                "url": "staticFiles/game/assets/perso/ennemy.png",
+                "frameConfig": {
+                    "frameWidth": 128,
+                    "frameHeight": 128,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "ennemyFly"
+
+            },
+
+
+
+
+            {
+                "url": "staticFiles/game/assets/question/feuilleQuestion.png",
+                "type": "image",
+                "key": "feuille"
+            },
+            {
+                "url": "staticFiles/game/assets/question/qcm.png",
+                "type": "image",
+                "key": "qcm"
+            },
+            {
+                "url": "staticFiles/game/assets/question/valider.png",
+                "type": "image",
+                "key": "valider"
+            },
+
+
+
+            {
+                "url": "staticFiles/game/assets/3vies.png",
+                "type": "image",
+                "key": "3vies"
+            },
+            {
+                "url": "staticFiles/game/assets/2vies.png",
+                "type": "image",
+                "key": "2vies"
+            },
+            {
+                "url": "staticFiles/game/assets/1vies.png",
+                "type": "image",
+                "key": "1vies"
+            },
+            {
+                "url": "staticFiles/game/assets/animations-ennemy.json",
+                "type": "animation",
+                "key": "animations-ennemy"
+            },
+            {
+                "url": "staticFiles/game/assets/animations-perso.json",
+                "type": "animation",
+                "key": "animations-perso"
+            },
+            {
+                "url": [
+                    "staticFiles/game/src/components/Physics.js",
+                    "staticFiles/game/src/components/Mouvement.js"
+                ],
+                "type": "scripts",
+                "key": "Physics"
             }
         ]
     },

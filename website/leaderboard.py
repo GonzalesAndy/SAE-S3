@@ -27,7 +27,7 @@ class ItemTable(Table):
 #Permet d'envoyer les données de la table au template
 @tableLeaderboard.route("/leaderboard")
 def tableauDesScores():
-    objets = User.query.order_by(desc(User.score)).all()
+    objets = User.query.filter(User.score>0).order_by(desc(User.score)).all()
     table = ItemTable(objets)
     rang = 1
     for score in table.items:

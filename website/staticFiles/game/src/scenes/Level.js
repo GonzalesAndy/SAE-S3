@@ -270,6 +270,7 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
+
 		// Création carte/jeu de tuile
 		const carte = this.make.tilemap({key : this.nomMap});
 		this.carte = carte;
@@ -333,6 +334,7 @@ class Level extends Phaser.Scene {
 
 		//limité la caméra
 		this.cameras.main.setBounds(0, 0, this.carte.widthInPixels, this.carte.heightInPixels);
+		//this.cameras.main.setBounds(0, 0, 5, 5);
 
 		// ancrage de la caméra sur le joueur
 		this.cameras.main.startFollow(joueur); 
@@ -362,6 +364,7 @@ class Level extends Phaser.Scene {
 		this.timer.setTimer(this.temps[0], this.temps[1], this.temps[2]);
 
 		if(this.temps === undefined){
+			//console.log(this.temps);
 			this.temps= 0;
 		}
 		
