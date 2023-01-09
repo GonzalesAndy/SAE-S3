@@ -12,13 +12,12 @@ class Question extends Phaser.Scene {
 
         init(data) {
 
-                this.nomMap = data.nomMap;
+                this.nameMap = data.nameMap;
                 this.intPerso = data.intPerso;
                 this.vitesseEnnemy = data.vitesseEnnemy;
                 this.pointDeViePerso = data.pointDeViePerso;
                 this.questionRecap = data.questionRecap;
                 this.nombre_random = data.nombre_random;
-                this.score = data.score;
 
             } // Fin init()
 
@@ -143,7 +142,6 @@ class Question extends Phaser.Scene {
                     this.nmbCliqueSelectionnee = 1; // On ne peut plus changer de réponse
 
                     if (this.bonneReponse == this.selectionnee) { // Si la réponse séléctionné est la bonne
-                       
                         this.Aright.visible = true;
                         this.Afalse.visible = false;
                         console.log(typeof(this.questionRecap[1]));
@@ -166,7 +164,7 @@ class Question extends Phaser.Scene {
 
                     this.scene.stop("Question");
                     this.scene.stop('Level');
-                    this.scene.start("Level", [this.nombre_random, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso, this.questionRecap,this.nombre_random,this.score]);
+                    this.scene.start("Level", [this.nombre_random, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso, this.questionRecap,this.nombre_random]);
 
                 }, this);
             }, this);

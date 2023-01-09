@@ -42,6 +42,7 @@ class Menu extends Phaser.Scene {
 		}, this);
 
 		this.bringToTop;
+		console.log("mENU");
 
 		this.fond = fond;
 		this.engrenage = engrenage;
