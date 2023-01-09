@@ -21,60 +21,53 @@ class Level extends Phaser.Scene {
 				this.double = false;
 				this.tile = "JeuTuile";
 				// fin de declaration des tiles
-				this.xDepart  = 114;
-				this.yDepart = 440;
-
-				this.tomber = false;
-
-				this.porte = {x:1326,y:208};
+				this.xDepart  = 138;
+				this.yDepart = 784;
+				this.porte = {x:2726,y:256};
+				this.fantome = {x:-50,y:750};
 				break;
 			case 2 : //si map2
 				this.nomMap = "map2";
 				this.double = false;
 				this.tile = "JeuTuile";
 				// fin de declaration des tiles
-				this.xDepart  = 114;
+				this.xDepart  = 404;
 				this.yDepart = 1840;
-
-				this.tomber = false;
-
 				this.porte = {x:1326,y:208};
+				this.fantome = {x:-50,y:1840};
 				break;
 			case 3 : //si map3
 				this.nomMap = "map3";
 				// declaration des tiles
 				this.double = false;
-				this.tomber = true;
-				this.chute ={y:900};
 				this.tile = "JeuTuile";
 				// fin de declaration des tiles
 				this.xDepart  = 31;
 				this.yDepart = 696;
 				this.porte = {x:2751,y:880};
+				this.fantome = {x:-50,y:688};
 				break;
 			case 4 : //si map4
 				this.nomMap = "map4";
 				// declaration des tiles
-				this.double = false;
-				this.tomber = true;
-				this.chute ={y:1000};
+				this.double = false;	
 				this.tile = "JeuTuile";
 				// fin de declaration des tiles
 				this.xDepart  = 72;
 				this.yDepart = 744;
-				this.porte = {x:2830,y:352};
+				this.porte = {x:2821,y:496};
+				this.fantome = {x:-100,y:688};
 				break;
 			case 5 : //si map5
 				this.nomMap = "map5";
 				// declaration des tiles
 				this.double = false;
 				this.tile = "JeuTuile";
-				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:900};
-				this.xDepart  = 52;
-				this.yDepart = 840;
+				// fin de declaration des tiles	
+				this.xDepart  = 173;
+				this.yDepart = 784;
 				this.porte = {x:2475,y:880};
+				this.fantome = {x:-100,y:688};
 				break;
 			case 6 : //si map6
 				this.nomMap = "map6";
@@ -82,11 +75,10 @@ class Level extends Phaser.Scene {
 				this.double = false;
 				this.tile = "JeuTuile";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:900};
-				this.xDepart  = 41;
-				this.yDepart = 792;
+				this.xDepart  = 150;
+				this.yDepart = 784;
 				this.porte = {x:2804,y:160};
+				this.fantome = {x:-100,y:688};
 				break;
 			case 7 : //si map7
 				this.nomMap = "map7";
@@ -95,11 +87,10 @@ class Level extends Phaser.Scene {
 				this.tile = "Frozen-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Frozen-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:900};
 				this.xDepart  = 56;
 				this.yDepart = 792;
 				this.porte = {x:2828,y:880};
+				this.fantome = {x:-100,y:688};
 				break;
 			case 8 : //si map8
 				this.nomMap = "map8";
@@ -110,7 +101,8 @@ class Level extends Phaser.Scene {
 				// fin de declaration des tiles
 				this.xDepart  = 849;
 				this.yDepart = 2760;
-				this.porte = [869,216];
+				this.porte = {x:855,y:208};
+				this.fantome = {x:0,y:2752};
 				break;
 			case 9 : //si map9
 				this.nomMap = "map9";
@@ -119,12 +111,10 @@ class Level extends Phaser.Scene {
 				this.tile = "Frozen-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Frozen-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:880};
-
-				this.xDepart  = 46;
+				this.xDepart  = 169;
 				this.yDepart = 160;
 				this.porte = {x:2785,y:784};
+				this.fantome = {x:-10,y:160};
 				break;
 			case 10 : //si map10
 				this.nomMap = "map10";
@@ -133,11 +123,10 @@ class Level extends Phaser.Scene {
 				this.tile = "Frozen-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Frozen-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:910};
-				this.xDepart  = 24;
-				this.yDepart = 840;
+				this.xDepart  = 87;
+				this.yDepart = 880;
 				this.porte ={x:2816,y:448};
+				this.fantome = {x:-40,y:880};
 				break;			
 			case 11 : //si map11
 				this.nomMap = "map11";
@@ -146,11 +135,10 @@ class Level extends Phaser.Scene {
 				this.tile = "Desert-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Desert-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:910};
-				this.xDepart  = 32;
+				this.xDepart  = 136;
 				this.yDepart = 736;
-				this.porte ={x:2746,y:880};
+				this.porte = {x:2746,y:880};
+				this.fantome = {x:-40,y:736};
 				break;
 			case 12 : //si map12
 				this.nomMap = "map12";
@@ -159,11 +147,10 @@ class Level extends Phaser.Scene {
 				this.tile = "Desert-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Desert-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:910};
-				this.xDepart  = 24;
-				this.yDepart = 840;
-				this.porte = [150,744];
+				this.xDepart  = 187;
+				this.yDepart = 832;
+				this.porte = {x:2792,y:880};
+				this.fantome = {x:-40,y:832};
 				break;
 			case 13 : //si map13
 				this.nomMap = "map13";
@@ -172,11 +159,10 @@ class Level extends Phaser.Scene {
 				this.tile = "Desert-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Desert-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:910};
-				this.xDepart  = 24;
-				this.yDepart = 840;
-				this.porte = {x:2249,y:688};
+				this.xDepart  = 136;
+				this.yDepart = 832;
+				this.porte = {x:2830,y:256};
+				this.fantome = {x:-40,y:832};
 				break;
 			case 14 : //si map14
 				this.nomMap = "map14";
@@ -185,11 +171,10 @@ class Level extends Phaser.Scene {
 				this.tile = "Desert-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Desert-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:850};
-				this.xDepart  = 62;
+				this.xDepart  = 166;
 				this.yDepart = 592;
-				this.porte = [150,744];
+				this.porte = {x:182,y:63};
+				this.fantome = {x:-40,y:592};
 				break;
 			case 15 : //si map15
 				this.nomMap = "map15";
@@ -198,11 +183,10 @@ class Level extends Phaser.Scene {
 				this.tile = "Desert-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Desert-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:750};
-				this.xDepart  = 56;
+				this.xDepart  = 215;
 				this.yDepart = 496;
 				this.porte ={x:2780,y:352};
+				this.fantome = {x:-40,y:496};
 				break;
 			case 16 : //si map16
 				this.nomMap = "map16";
@@ -211,11 +195,10 @@ class Level extends Phaser.Scene {
 				this.tile = "Frozen-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Frozen-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:750};
-				this.xDepart  = 56;
-				this.yDepart = 496;
-				this.porte ={x:2780,y:352};
+				this.xDepart  = 204;
+				this.yDepart = 736;
+				this.porte ={x:2764,y:304};
+				this.fantome = {x:-40,y:736};
 				break;
 			case 17 : //si map17
 				this.nomMap = "map17";
@@ -224,11 +207,10 @@ class Level extends Phaser.Scene {
 				this.tile = "Frozen-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Frozen-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:750};
-				this.xDepart  = 56;
-				this.yDepart = 496;
-				this.porte ={x:2780,y:352};
+				this.xDepart  = 242;
+				this.yDepart = 544;
+				this.porte ={x:2806,y:496};
+				this.fantome = {x:-40,y:544};
 				break;
 			case 18 : //si map18
 				this.nomMap = "map18";
@@ -237,11 +219,10 @@ class Level extends Phaser.Scene {
 				this.tile = "Desert-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Desert-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
-				this.tomber = true;
-				this.chute ={y:750};
-				this.xDepart  = 56;
-				this.yDepart = 496;
-				this.porte ={x:2780,y:352};
+				this.xDepart  = 189;
+				this.yDepart = 736;
+				this.porte ={x:2799,y:832};
+				this.fantome = {x:-40,y:736};
 				break;
 			
 			
@@ -276,6 +257,8 @@ class Level extends Phaser.Scene {
 		// Création carte/jeu de tuile
 		const carte = this.make.tilemap({key : this.nomMap});
 		this.carte = carte;
+
+		this.limiteBas = this.yDepart + this.carte.heightInPixels;
 		
 		if(this.double == true){
 				
@@ -319,7 +302,7 @@ class Level extends Phaser.Scene {
 		new Mouvement(joueur, this.nomPerso);
 
 		// ennemy
-		const ennemi = this.add.sprite(32, 265, "ennemy", 0);
+		const ennemi = this.add.sprite(this.fantome.x,this.fantome.y, "ennemy", 0);
 		ennemi.scaleX = 1/2;
 		ennemi.scaleY = 1/2;
 
@@ -366,10 +349,8 @@ class Level extends Phaser.Scene {
 		this.timer.setTimer(this.temps[0], this.temps[1], this.temps[2]);
 
 		if(this.temps === undefined){
-			//console.log(this.temps);
 			this.temps= 0;
-		}
-		
+		}		
 
 		if(this.old_random === undefined){
 			this.old_random = 0;
@@ -399,7 +380,7 @@ class Level extends Phaser.Scene {
 
 	timer;
 	temps;
-
+	limiteBas;
 
 	create() {
 
@@ -417,15 +398,14 @@ class Level extends Phaser.Scene {
 	update(time,delta){
 	
 		this.timer.update(time,delta);
-		console.log(time, delta)
-
-		if(this.tomber === true){
-		if (this.joueur.y >= this.chute.y) {
+		console.log("x",this.joueur.x);
+		console.log("y",this.joueur.y);
+		
+		//condition de mort de chute du joueur
+		if(this.joueur.y>this.limiteBas){
 			this.scenePointDeVie.pntDeVie -= 1;
 			this.pointDeViePerso -=1;
 			this.scenePointDeVie.perdVie();
-			
-		  }
 		}
 
 		//this.ennemyMouvement.suivre(this.joueur);
@@ -447,7 +427,7 @@ class Level extends Phaser.Scene {
 						questionRecap : this.questionRecap,
 						nombre_random: this.nombre_random,
 						temps: this.timer.getTimer()});
-			console.log(this.timer.getTimer());
+			
 			this.scene.pause('Level');
 			this.scene.sendToBack();
 
