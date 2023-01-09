@@ -169,8 +169,7 @@
             },
 
             {
-                "url": "staticFiles/game/assets/menu/background.png",
-
+                "url": "staticFiles/game/assets/gameOver/gameOverLost.png",
                 "type": "image",
                 "key": "gameOverLostF"
             },
