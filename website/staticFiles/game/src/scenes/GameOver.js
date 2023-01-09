@@ -4,7 +4,6 @@ class GameOver extends Phaser.Scene {
 
         this.intPerso = data.intPerso;
         this.questionRecap = data.questionRecap;
-        console.log(this.questionRecap[1], this.questionRecap[0].length)
 
     } // Fin constructor()
 

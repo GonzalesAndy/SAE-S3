@@ -143,7 +143,6 @@ class Question extends Phaser.Scene {
                     if (this.bonneReponse == this.selectionnee) { // Si la réponse séléctionné est la bonne
                         this.Aright.visible = true;
                         this.Afalse.visible = false;
-                        console.log(typeof(this.questionRecap[1]));
                         this.questionRecap[1] = parseInt(this.questionRecap[1]) + 1;
 
                         if (this.vitesseEnnemy <= 80) {

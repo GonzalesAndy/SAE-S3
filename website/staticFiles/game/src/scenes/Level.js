@@ -206,7 +206,6 @@ class Level extends Phaser.Scene {
 		} //Fin case
 		this.intPerso = arg[1];
 		this.vitesseEnnemi = arg[2];
-		console.log("vitesse ennemi : " + this.vitesseEnnemi);
 		this.pointDeViePerso = arg[3];
 		this.questionRecap = arg[4];
 		this.old_random = arg[5];
@@ -281,6 +280,7 @@ class Level extends Phaser.Scene {
 
 		//limité la caméra
 		this.cameras.main.setBounds(0, 0, this.carte.widthInPixels, this.carte.heightInPixels);
+		//this.cameras.main.setBounds(0, 0, 5, 5);
 
 		// ancrage de la caméra sur le joueur
 		this.cameras.main.startFollow(joueur); 
