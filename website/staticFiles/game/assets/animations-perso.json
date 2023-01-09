@@ -65,12 +65,10 @@
                     "keyframe": false
                 }
             ],
-            "frameRate": 10,
+            "frameRate": 24,
             "skipMissedFrames": true,
             "repeat": -1
-        },  
-
-
+        },
         {
             "key": "idleG",
             "type": "frame",
@@ -136,15 +134,10 @@
                     "keyframe": false
                 }
             ],
-            "frameRate": 10,
+            "frameRate": 24,
             "skipMissedFrames": true,
             "repeat": -1
-        },  
-        
-
-
-
-
+        },
         {
             "key": "walkF",
             "type": "frame",
@@ -234,11 +227,10 @@
                     "keyframe": false
                 }
             ],
-            "frameRate": 15,
+            "frameRate": 24,
             "skipMissedFrames": true,
             "repeat": -1
         },
-
         {
             "key": "walkG",
             "type": "frame",
@@ -328,13 +320,257 @@
                     "keyframe": false
                 }
             ],
-            "frameRate": 15,
+            "frameRate": 20,
             "skipMissedFrames": true,
             "repeat": -1
+        },
+        {
+            "key": "dashF",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "dashF",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashF",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashF",
+                    "frame": 2,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashF",
+                    "frame": 3,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashF",
+                    "frame": 4,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashF",
+                    "frame": 5,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashF",
+                    "frame": 6,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashF",
+                    "frame": 7,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashF",
+                    "frame": 8,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashF",
+                    "frame": 9,
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 30,
+            "skipMissedFrames": true,
+            "repeat":0
+        },
+        {
+            "key": "dashG",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "dashG",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashG",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashG",
+                    "frame": 2,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashG",
+                    "frame": 3,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashG",
+                    "frame": 4,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashG",
+                    "frame": 5,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashG",
+                    "frame": 6,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashG",
+                    "frame": 7,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashG",
+                    "frame": 8,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "dashG",
+                    "frame": 9,
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 30,
+            "skipMissedFrames": true,
+            "repeat":0
+        },
+        {
+            "key": "fallF",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "fallF",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "fallF",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "fallF",
+                    "frame": 2,
+                    "duration": 99999,
+                    "keyframe": false
+                }
+                
+            ],
+            "frameRate": 10,
+            "skipMissedFrames": true,
+            "repeat":0
+        },
+        {
+            "key": "fallG",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "fallG",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "fallG",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "fallG",
+                    "frame": 2,
+                    "duration": 99999,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 10,
+            "skipMissedFrames": true,
+            "repeat":0
+        },
+        {
+            "key": "jumpF",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "jumpF",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "jumpF",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "jumpF",
+                    "frame": 2,
+                    "duration": 99999,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 10,
+            "skipMissedFrames": true,
+            "repeat":0
+        },
+        {
+            "key": "jumpG",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "jumpG",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "jumpG",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "jumpG",
+                    "frame": 2,
+                    "duration": 99999,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 10,
+            "skipMissedFrames": true,
+            "repeat":0
         }
-
-
-
     ],
     "globalTimeScale": 1,
     "meta": {

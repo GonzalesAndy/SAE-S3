@@ -17,6 +17,7 @@ class Mouvement {
     jumpBegin = 0;
     dashVel = 600;
     dashTime = 0;
+    animComplete = () => {this.gameObject.anims.pause(this.gameObject.anims.currentAnim.frames[-1]);}
 
     constructor(gameObject, nomJoueur) {
         this.gameObject = gameObject;
@@ -71,6 +72,14 @@ class Mouvement {
 
             // y movement
             if (this.cursors.spacebar.isDown) {
+                // animation
+                if(this.gameObject.body.velocity.y <=0){
+                    if(this.nomJoueur == "idleF"){
+                        this.gameObject.play("jumpF", true).on("animationcomplete", this.animComplete);
+                    }else if (this.nomJoueur == "idleG"){
+                        this.gameObject.play("jumpG", true).on("animationcomplete", this.animComplete);
+                    } // Fin else if
+                }
                 // adaptative jump
                 if (this.isOnFloor() && this.jump === false) {
                     this.jump = true;
@@ -124,28 +133,37 @@ class Mouvement {
     } // Fin stop()
 
     direction(){
-        if(this.cursors.right.isDown){
-            if(this.nomJoueur == "idleF"){
-                this.gameObject.play("walkF", true);
-            }else if (this.nomJoueur == "idleG"){
-                this.gameObject.play("walkG", true);
-            } // Fin else if
-
-        } else if(this.cursors.left.isDown){
-            if(this.nomJoueur == "idleF"){
-                this.gameObject.play("walkF", true);
-            }else if (this.nomJoueur == "idleG"){
-                this.gameObject.play("walkG", true);
-            } // Fin else if
+        if(this.cursors.left.isDown){
             this.gameObject.flipX = true;
-
+        }
+        if((this.cursors.right.isDown || this.cursors.left.isDown)){
+            if(this.isDashing){
+                if(this.nomJoueur == "idleF"){
+                    this.gameObject.play("dashF", true).on("animationcomplete", this.animComplete);
+                }else if (this.nomJoueur == "idleG"){
+                    this.gameObject.play("dashG", true).on("animationcomplete", this.animComplete);
+                } // Fin else if
+            }
+            else if(this.gameObject.body.velocity.y > 0){
+                if(this.nomJoueur == "idleF"){
+                    this.gameObject.play("fallF", true).on("animationcomplete", this.animComplete);
+                }else if (this.nomJoueur == "idleG"){
+                    this.gameObject.play("fallG", true).on("animationcomplete", this.animComplete);
+                } // Fin else if
+            }
+            else if(!this.gameObject.body.velocity.y){
+                if(this.nomJoueur == "idleF"){
+                    this.gameObject.play("walkF", true);
+                }else if (this.nomJoueur == "idleG"){
+                    this.gameObject.play("walkG", true);
+                } // Fin else if 
+            }
         } else{
             this.gameObject.play(this.nomJoueur, true);
-        }// Fin else if
+        }// Fin else
     } // Fin direction
 
     update() {
-
         if (typeof this.gameObject.body !== "undefined") {
             this.gameObject.flipX = false;
             this.direction();
