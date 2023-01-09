@@ -17,6 +17,7 @@ class Question extends Phaser.Scene {
                 this.vitesseEnnemy = data.vitesseEnnemy;
                 this.pointDeViePerso = data.pointDeViePerso;
                 this.questionRecap = data.questionRecap;
+                this.nombre_random = data.nombre_random;
 
             } // Fin init()
 
@@ -112,6 +113,7 @@ class Question extends Phaser.Scene {
                 Phaser.Display.Align.In.Center(enfantTxt[i], enfantBoutton[i]);
             } // Fin for
 
+
             this.Aright = Aright;
             this.Afalse = Afalse;
             this.valider = valider;
@@ -120,10 +122,13 @@ class Question extends Phaser.Scene {
 
             this.nmbCliqueSelectionnee = 0;
 
+
             this.events.emit("scene-awake");
         } // Fin editorCreate()
 
         createEvent(){
+
+    
 
             var selectionnee;
             this.selectionnee = selectionnee;
@@ -156,9 +161,10 @@ class Question extends Phaser.Scene {
 
                 this.valider.once('pointerup', function(event) {
 
+
                     this.scene.stop("Question");
                     this.scene.stop('Level');
-                    this.scene.start("Level", [2, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso, this.questionRecap]);
+                    this.scene.start("Level", [this.nombre_random, this.intPerso, this.vitesseEnnemy, this.pointDeViePerso, this.questionRecap,this.nombre_random]);
 
                 }, this);
             }, this);

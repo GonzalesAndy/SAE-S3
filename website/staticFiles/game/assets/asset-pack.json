@@ -2,6 +2,43 @@
     "section1": {
         "files": [
 
+
+            {
+                "url": "staticFiles/game/assets/gameOver/gameOverLost.png",
+                "type": "image",
+                "key": "gameOverLostF"
+            },
+            {
+                "url": "staticFiles/game/assets/gameOver/gameOverLostM.png",
+                "type": "image",
+                "key": "gameOverLostM"
+            },
+            {
+                "url": "staticFiles/game/assets/gameOver/gameOverWin.png",
+                "type": "image",
+                "key": "gameOverWinF"
+            },
+            {
+                "url": "staticFiles/game/assets/gameOver/gameOverWinM.png",
+                "type": "image",
+                "key": "gameOverWinM"
+            },
+            {
+                "url": "staticFiles/game/assets/gameOver/leaderboardButton.png",
+                "type": "image",
+                "key": "leaderboardButton"
+            },
+            {
+                "url": "staticFiles/game/assets/gameOver/playAgainButton.png",
+                "type": "image",
+                "key": "playAgainButton"
+            },
+            {
+                "url": "staticFiles/game/assets/gameOver/retryButton.png",
+                "type": "image",
+                "key": "retryButton"
+            },
+
             
             {
                 "url": "staticFiles/game/assets/map/map1.json",
@@ -54,9 +91,29 @@
                 "key": "map10"
             },
             {
+                "url": "staticFiles/game/assets/map/map11.json",
+                "type": "tilemapTiledJSON",
+                "key": "map11"
+            },
+            {
                 "url": "staticFiles/game/assets/map/map12.json",
                 "type": "tilemapTiledJSON",
                 "key": "map12"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map13.json",
+                "type": "tilemapTiledJSON",
+                "key": "map13"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map14.json",
+                "type": "tilemapTiledJSON",
+                "key": "map14"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map15.json",
+                "type": "tilemapTiledJSON",
+                "key": "map15"
             },
             {
                 "url": "staticFiles/game/assets/map/JeuTuile.png",
