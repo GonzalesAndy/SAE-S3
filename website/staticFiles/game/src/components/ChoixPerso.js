@@ -67,6 +67,7 @@ class ChoixPerso{
 
         this.joueur1.once('pointerup', function(event) { 
             this.choix = 1;
+            //this.scene.scene.start("Question");
             this.scene.scene.start('Level', [1, 1, this.scene.game.scene.getScene('Option').vitesse,3, [[],[0]]]);
         }, this);
         this.joueur2.once('pointerup', function(event) { 
