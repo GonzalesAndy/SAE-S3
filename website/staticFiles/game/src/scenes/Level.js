@@ -280,6 +280,7 @@ class Level extends Phaser.Scene {
 
 		//limité la caméra
 		this.cameras.main.setBounds(0, 0, this.carte.widthInPixels, this.carte.heightInPixels);
+		//this.cameras.main.setBounds(0, 0, 5, 5);
 
 		// ancrage de la caméra sur le joueur
 		this.cameras.main.startFollow(joueur); 
