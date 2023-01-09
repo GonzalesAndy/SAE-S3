@@ -298,7 +298,7 @@ class Level extends Phaser.Scene {
 		}, this);
 
 
-		this.scenePointDeVie = new PointDeVie(this, this.intPerso);
+		this.scenePointDeVie = new PointDeVie(this, this.intPerso, this.questionRecap);
 
 		this.scenePointDeVie.pntDeVie = this.pointDeViePerso;
 		//this.scenePointDeVie.pntDeVie = 0;
@@ -346,7 +346,7 @@ class Level extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
-	
+		
 
 		this.ennemi.play("idleN");
 		//Limite du monde
