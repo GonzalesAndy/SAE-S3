@@ -10,8 +10,6 @@ class GameOver extends Phaser.Scene {
     /** @returns {void} */
     editorCreate() {
 
-        this.scene.stop("Level");
-
 		// fond en fonction du personnage selectionnee
         var fond;
         if(this.intPerso == 1){
@@ -23,16 +21,13 @@ class GameOver extends Phaser.Scene {
         const retryButton = this.add.image(0, 0, "retryButton");
         new PushOnClick(retryButton);
         Phaser.Display.Align.In.Center(retryButton, fond, 0, 320);
-
+        
         // progress
         var texte = this.questionRecap[1] + "/" + this.questionRecap[0].length;
         const score = this.add.text(150, 150, texte);
         score.setStyle({ "fontSize": "30px" });
-
         retryButton.once('pointerup', function(event) {
-            
-            this.scene.stop();
-            this.scene.start("Menu");
+            this.scene.launch('Menu');
         }, this);
      
 
@@ -42,6 +37,5 @@ class GameOver extends Phaser.Scene {
     create() {
         this.editorCreate();
     } // Fin create()
-
 
 } // Fin class GameOver

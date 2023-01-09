@@ -12,12 +12,28 @@ class Timer extends Phaser.GameObjects.Text {
         scene.add.existing(this);
     }
 
-    update(time, delta) {
+    heures;
+    minutes;
+    secondes;
+    tempsEcoule;
+
+    getTimer(){
+        return [this.heures, this.minutes, this.secondes]
+    }
+
+    setTimer(heures,minutes,secondes){
+        this.heures = heures;
+        this.minutes = minutes;
+        this.secondes = secondes;
+        this.tempsEcoule = secondes + minutes*60 + heures*3600
+    }
+
+    update(time,delta) {
         this.tempsEcoule += delta / 1000; // on ajoute le temps écoulé en secondes
-        const heures = Math.floor(this.tempsEcoule / 3600);
-        const minutes = Math.floor((this.tempsEcoule % 3600) / 60);
-        const secondes = Math.floor(this.tempsEcoule % 60);
-        this.setText(`Time: ${heures}:${minutes}:${secondes}`);
+        this.heures = Math.floor(this.tempsEcoule / 3600);
+        this.minutes = Math.floor((this.tempsEcoule % 3600) / 60);
+        this.secondes = Math.floor(this.tempsEcoule % 60);
+        this.setText(`Time: ${this.heures}:${this.minutes}:${this.secondes}`);
     }
 
    
