@@ -2,8 +2,6 @@ class ChoixPerso{
 
     constructor(scene, intPerso){
 
-        console.log("choixperso");
-
         //Feuille
         const feuille = scene.add.image(500, 294, "feuille").setScrollFactor(0);
         feuille.scaleX = 1.3;
@@ -67,11 +65,11 @@ class ChoixPerso{
 
         this.joueur1.once('pointerup', function(event) { 
             this.choix = 1;
-            this.scene.scene.start('Level', [1, 1, 70,3, [[],[0]]]);
+            this.scene.scene.start('Level', [1, 1, 70,3, [[],[0]], 0, [0,0,0]]);
         }, this);
         this.joueur2.once('pointerup', function(event) { 
             this.choix = 2;
-            this.scene.scene.start('Level', [1, 2, 70,3, [[],[0]]]);
+            this.scene.scene.start('Level', [2, 2, 70,3, [[],[0]], 0, [0,0,0]]);
         }, this);
 	} // Fin runChoixPerso()
 } // Fin class
