@@ -92,7 +92,6 @@ class Option extends Phaser.Scene {
 
 	update(){
 
-
 		console.log(this.setTextDifficulty(this.vitesse));
 		this.difficulty.setText(this.setTextDifficulty(this.vitesse));
 		Phaser.Display.Align.In.Center(this.difficulty, this.fondOption, 0, 0);
