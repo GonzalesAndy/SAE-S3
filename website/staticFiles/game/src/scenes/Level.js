@@ -13,7 +13,7 @@ class Level extends Phaser.Scene {
 		this.questionRecap -> tableau de question déja vue, nombre de bonne réponse
 	}*/
 	init(arg){
-
+	
 		//En fonction de quel map est appelé, on change les paramettres
 		switch(arg[0]){
 			case 1 : //si map1
@@ -23,12 +23,17 @@ class Level extends Phaser.Scene {
 				// fin de declaration des tiles
 				this.xDepart  = 114;
 				this.yDepart = 1840;
+
+				this.tomber = false;
+
 				this.porte = {x:1326,y:208};
 				break;
 			case 2 : //si map2
 				this.nomMap = "map3";
 				// declaration des tiles
 				this.double = false;
+				this.tomber = true;
+				this.chute ={y:900};
 				this.tile = "JeuTuile";
 				// fin de declaration des tiles
 				this.xDepart  = 31;
@@ -39,6 +44,8 @@ class Level extends Phaser.Scene {
 				this.nomMap = "map4";
 				// declaration des tiles
 				this.double = false;
+				this.tomber = true;
+				this.chute ={y:1000};
 				this.tile = "JeuTuile";
 				// fin de declaration des tiles
 				this.xDepart  = 72;
@@ -51,6 +58,8 @@ class Level extends Phaser.Scene {
 				this.double = false;
 				this.tile = "JeuTuile";
 				// fin de declaration des tiles
+				this.tomber = true;
+				this.chute ={y:900};
 				this.xDepart  = 52;
 				this.yDepart = 840;
 				this.porte = {x:2475,y:880};
@@ -61,6 +70,8 @@ class Level extends Phaser.Scene {
 				this.double = false;
 				this.tile = "JeuTuile";
 				// fin de declaration des tiles
+				this.tomber = true;
+				this.chute ={y:900};
 				this.xDepart  = 41;
 				this.yDepart = 792;
 				this.porte = {x:2804,y:160};
@@ -72,6 +83,8 @@ class Level extends Phaser.Scene {
 				this.tile = "Frozen-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Frozen-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
+				this.tomber = true;
+				this.chute ={y:900};
 				this.xDepart  = 56;
 				this.yDepart = 792;
 				this.porte = {x:2828,y:880};
@@ -94,6 +107,9 @@ class Level extends Phaser.Scene {
 				this.tile = "Frozen-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Frozen-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
+				this.tomber = true;
+				this.chute ={y:880};
+
 				this.xDepart  = 46;
 				this.yDepart = 160;
 				this.porte = {x:2785,y:784};
@@ -105,6 +121,8 @@ class Level extends Phaser.Scene {
 				this.tile = "Frozen-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Frozen-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
+				this.tomber = true;
+				this.chute ={y:910};
 				this.xDepart  = 24;
 				this.yDepart = 840;
 				this.porte ={x:2816,y:448};
@@ -116,6 +134,8 @@ class Level extends Phaser.Scene {
 				this.tile = "Desert-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Desert-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
+				this.tomber = true;
+				this.chute ={y:910};
 				this.xDepart  = 32;
 				this.yDepart = 736;
 				this.porte ={x:2746,y:880};
@@ -127,6 +147,8 @@ class Level extends Phaser.Scene {
 				this.tile = "Desert-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Desert-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
+				this.tomber = true;
+				this.chute ={y:910};
 				this.xDepart  = 24;
 				this.yDepart = 840;
 				this.porte = [150,744];
@@ -138,6 +160,8 @@ class Level extends Phaser.Scene {
 				this.tile = "Desert-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Desert-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
+				this.tomber = true;
+				this.chute ={y:910};
 				this.xDepart  = 24;
 				this.yDepart = 840;
 				this.porte = {x:2249,y:688};
@@ -149,6 +173,8 @@ class Level extends Phaser.Scene {
 				this.tile = "Desert-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Desert-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
+				this.tomber = true;
+				this.chute ={y:850};
 				this.xDepart  = 62;
 				this.yDepart = 592;
 				this.porte = [150,744];
@@ -160,6 +186,8 @@ class Level extends Phaser.Scene {
 				this.tile = "Desert-Pixel-Art-Environment-Assets-Pack2";
 				this.tile2 = "Desert-Pixel-Art-Environment-Assets-Pack3";
 				// fin de declaration des tiles
+				this.tomber = true;
+				this.chute ={y:750};
 				this.xDepart  = 56;
 				this.yDepart = 496;
 				this.porte ={x:2780,y:352};
@@ -181,6 +209,7 @@ class Level extends Phaser.Scene {
 		this.pointDeViePerso = arg[3];
 		this.questionRecap = arg[4];
 		this.old_random = arg[5];
+		this.temps = arg[6];
 
 	} // Fin init
 
@@ -224,7 +253,7 @@ class Level extends Phaser.Scene {
 		const joueur = this.physics.add.sprite(this.xDepart, this.yDepart, this.nomPerso, 0);
 		joueur.scaleX = 1/2;
 		joueur.scaleY = 1/2;
-		joueur.setCollideWorldBounds(true);
+		joueur.setCollideWorldBounds(false);
 
 
 		// joueur (components)
@@ -268,10 +297,22 @@ class Level extends Phaser.Scene {
 			this.scene.sendToBack();
 		}, this);
 
+
 		this.scenePointDeVie = new PointDeVie(this, this.intPerso);
+
 		this.scenePointDeVie.pntDeVie = this.pointDeViePerso;
 		//this.scenePointDeVie.pntDeVie = 0;
 		this.scenePointDeVie.perdVie();
+
+
+		this.timer = new Timer(this);
+
+
+		if(this.temps === undefined){
+			console.log(this.temps);
+			this.temps= 0;
+		}
+		
 
 		if(this.old_random === undefined){
 			this.old_random = 0;
@@ -296,11 +337,16 @@ class Level extends Phaser.Scene {
 	nombre_random;
 	
 	old_random;
-	carte
+
+	carte;
+
+	temps;
+
 
 	create() {
 
 		this.editorCreate();
+		
 
 		this.ennemi.play("idleN");
 		//Limite du monde
@@ -309,9 +355,19 @@ class Level extends Phaser.Scene {
 
 	} // Fin create()
 
-	update(){
-
+	update(time,delta){
 	
+		this.timer.update(time, delta);
+
+		if(this.tomber === true){
+		if (this.joueur.y >= this.chute.y) {
+			this.scenePointDeVie.pntDeVie -= 1;
+			this.pointDeViePerso -=1;
+			this.scenePointDeVie.perdVie();
+			
+		  }
+		}
+
 		//this.ennemyMouvement.suivre(this.joueur);
         this.physics.moveToObject(this.ennemi, this.joueur, this.vitesseEnnemi);
 
@@ -330,7 +386,10 @@ class Level extends Phaser.Scene {
 						vitesseEnnemy: this.vitesseEnnemi, 
 						pointDeViePerso : this.pointDeViePerso,
 						questionRecap : this.questionRecap,
-						nombre_random: this.nombre_random});
+
+						nombre_random: this.nombre_random,
+						temps: this.temps});
+
 			this.scene.pause('Level');
 			this.scene.sendToBack();
 
@@ -349,6 +408,7 @@ class Level extends Phaser.Scene {
 			this.ennemi.x -= 100;
 			this.ennemi.y -= 100;
 		} // Fin if
+		
 
 	} //Fin update()
 } //Fin class
