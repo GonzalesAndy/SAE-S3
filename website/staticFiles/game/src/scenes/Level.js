@@ -262,7 +262,7 @@ class Level extends Phaser.Scene {
 		new Mouvement(joueur, this.nomPerso);
 
 		// ennemy
-		const ennemi = this.add.sprite(32, 265, "ennemy", 0);
+		const ennemi = this.add.sprite(50,1500, "ennemy", 0);
 		ennemi.scaleX = 1/2;
 		ennemi.scaleY = 1/2;
 
@@ -346,10 +346,7 @@ class Level extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
-		
-
-		 
-		
+	
 
 		this.ennemi.play("idleN");
 		//Limite du monde
