@@ -24,7 +24,6 @@ class GameOver extends Phaser.Scene {
         const retryButton = this.add.image(0, 0, "retryButton");
         new PushOnClick(retryButton);
         Phaser.Display.Align.In.Center(retryButton, fond, 0, 320);
-        
 
         // progress
         var texte = this.questionRecap[1] + "/" + this.questionRecap[0].length;
