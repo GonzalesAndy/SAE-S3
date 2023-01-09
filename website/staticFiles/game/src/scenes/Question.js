@@ -41,7 +41,6 @@ class Question extends Phaser.Scene {
 
             // txtQuestion
             const txtQuestion = this.add.text(230, 150, tabQuestion[aleatoireQuestion], { font: "32px Helvetica bold", fill: this.MARRON , wordWrap: { width:650 } }).setScrollFactor(0);
-
             const valider = this.scene.scene.add.image(490, 415, "valider").setScrollFactor(0);
             valider.scaleX = 0.07;
             valider.scaleY = 0.07;
@@ -130,7 +129,7 @@ class Question extends Phaser.Scene {
 
     
 
-            var selectionnee;
+            var selectionnee = 42;
             this.selectionnee = selectionnee;
 
             //On regarde si la réponse est juste ou fausse
@@ -146,17 +145,23 @@ class Question extends Phaser.Scene {
                         this.Afalse.visible = false;
                         console.log(typeof(this.questionRecap[1]));
                         this.questionRecap[1] = parseInt(this.questionRecap[1]) + 1;
+
                         if (this.vitesseEnnemy <= 80) {
                             this.vitesseEnnemy = 70;
                         } else {
                             this.vitesseEnnemy -= 10;
-                        }
-                    } else {
+                        } // Fin if else
+
+                    } else if(this.selectionnee != 42 && this.selectionnee != this.bonneReponse) {
+                        
+                        this.enfantTxt[this.selectionnee].setStyle({ color: this.ROUGE })
                         this.Aright.visible = false;
                         this.Afalse.visible = true;
                         this.vitesseEnnemy += 50
-                    } // Fin if else
 
+                    }// Fin if else
+
+                    this.enfantTxt[this.bonneReponse].setStyle({ color: this.VERT });
                 } // Fin if else
 
                 this.valider.once('pointerup', function(event) {
@@ -188,45 +193,45 @@ class Question extends Phaser.Scene {
 
         update() {
 
-                // on déséléctionne l'ancienne réponse et séléctionne la nouvelle réponse
-                this.enfantBoutton[0].once('pointerup', function(event) {
-                    if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
-                        this.enfantTxt[0].setStyle({ color: this.GRIS })
-                        this.enfantTxt[1].setStyle({ color: this.MARRON })
-                        this.enfantTxt[2].setStyle({ color: this.MARRON })
-                        this.enfantTxt[3].setStyle({ color: this.MARRON })
-                        this.selectionnee = 0;
-                    }
-                }, this);
-                this.enfantBoutton[1].once('pointerup', function(event) {
-                    if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
-                        this.enfantTxt[0].setStyle({ color: this.MARRON })
-                        this.enfantTxt[1].setStyle({ color: this.GRIS })
-                        this.enfantTxt[2].setStyle({ color: this.MARRON })
-                        this.enfantTxt[3].setStyle({ color: this.MARRON })
-                        this.selectionnee = 1;
-                    }
-                }, this);
-                this.enfantBoutton[2].once('pointerup', function(event) {
-                    if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
-                        this.enfantTxt[0].setStyle({ color: this.MARRON })
-                        this.enfantTxt[1].setStyle({ color: this.MARRON })
-                        this.enfantTxt[2].setStyle({ color: this.GRIS })
-                        this.enfantTxt[3].setStyle({ color: this.MARRON })
-                        this.selectionnee = 2;
-                    }
-                }, this);
-                this.enfantBoutton[3].once('pointerup', function(event) {
-                    if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
-                        this.enfantTxt[0].setStyle({ color: this.MARRON })
-                        this.enfantTxt[1].setStyle({ color: this.MARRON })
-                        this.enfantTxt[2].setStyle({ color: this.MARRON })
-                        this.enfantTxt[3].setStyle({ color: this.GRIS })
-                        this.selectionnee = 3;
-                    }
-                }, this);
+            // on déséléctionne l'ancienne réponse et séléctionne la nouvelle réponse
+            this.enfantBoutton[0].once('pointerup', function(event) {
+                if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
+                    this.enfantTxt[0].setStyle({ color: this.GRIS })
+                    this.enfantTxt[1].setStyle({ color: this.MARRON })
+                    this.enfantTxt[2].setStyle({ color: this.MARRON })
+                    this.enfantTxt[3].setStyle({ color: this.MARRON })
+                    this.selectionnee = 0;
+                }
+            }, this);
+            this.enfantBoutton[1].once('pointerup', function(event) {
+                if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
+                    this.enfantTxt[0].setStyle({ color: this.MARRON })
+                    this.enfantTxt[1].setStyle({ color: this.GRIS })
+                    this.enfantTxt[2].setStyle({ color: this.MARRON })
+                    this.enfantTxt[3].setStyle({ color: this.MARRON })
+                    this.selectionnee = 1;
+                }
+            }, this);
+            this.enfantBoutton[2].once('pointerup', function(event) {
+                if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
+                    this.enfantTxt[0].setStyle({ color: this.MARRON })
+                    this.enfantTxt[1].setStyle({ color: this.MARRON })
+                    this.enfantTxt[2].setStyle({ color: this.GRIS })
+                    this.enfantTxt[3].setStyle({ color: this.MARRON })
+                    this.selectionnee = 2;
+                }
+            }, this);
+            this.enfantBoutton[3].once('pointerup', function(event) {
+                if (this.nmbCliqueSelectionnee == 0) { // si la réponse n'as pas encore été séléctionné
+                    this.enfantTxt[0].setStyle({ color: this.MARRON })
+                    this.enfantTxt[1].setStyle({ color: this.MARRON })
+                    this.enfantTxt[2].setStyle({ color: this.MARRON })
+                    this.enfantTxt[3].setStyle({ color: this.GRIS })
+                    this.selectionnee = 3;
+                }
+            }, this);
 
 
-            } // Fin update()
+        } // Fin update()
 
-    } //Fin class
+} //Fin class

@@ -217,6 +217,7 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
+
 		// Création carte/jeu de tuile
 		const carte = this.make.tilemap({key : this.nomMap});
 		this.carte = carte;
