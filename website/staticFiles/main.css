@@ -1,5 +1,8 @@
 body {
     background-image: url("/staticFiles/map.png");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 0px;
     padding: 0px;
     height: 100vh;
@@ -12,6 +15,12 @@ footer {
     color: white;
     width: 100%;
     text-align: center;
+    margin-top: 1%;
+}
+
+canvas {
+    max-height: 90%;
+    max-width: none;
 }
 
 footer>button {
@@ -35,13 +44,14 @@ footer>button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(25, 0, 58);
+    background-color: rgb(3, 36, 0);
     border: 1px solid black;
     padding: 20px;
     color: white;
     max-width: 80%;
     max-height: 80%;
     min-width: 300px;
+    border-radius: 10px;
     overflow: scroll;
 }
 
@@ -166,7 +176,7 @@ table {
 }
 
 table {
-    background: rgba(36, 32, 88, 0.9);
+    background: rgba(6, 66, 0, 0.9);
 }
 
 .scoreCol {
@@ -187,7 +197,7 @@ th {
     font-weight: 600;
     padding: 0.5em 1em;
     text-align: left;
-    background: rgb(15, 11, 66);
+    background: rgb(3, 36, 0);
     border-radius: 0.25em;
     margin: 1em;
 }
@@ -208,7 +218,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-    background: rgb(28, 23, 84);
+    background: rgb(3, 36, 0);
 }
 
 
