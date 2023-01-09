@@ -294,6 +294,21 @@
                 "key": "map9"
             },
             {
+                "url": "staticFiles/game/assets/map/map16.json",
+                "type": "tilemapTiledJSON",
+                "key": "map16"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map17.json",
+                "type": "tilemapTiledJSON",
+                "key": "map17"
+            },
+            {
+                "url": "staticFiles/game/assets/map/map18.json",
+                "type": "tilemapTiledJSON",
+                "key": "map18"
+            },
+            {
                 "url": [
                     "staticFiles/game/src/components/Physics.js",
                     "staticFiles/game/src/components/Mouvement.js"

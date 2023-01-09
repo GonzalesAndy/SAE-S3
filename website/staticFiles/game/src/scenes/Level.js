@@ -265,6 +265,8 @@ class Level extends Phaser.Scene {
 		this.old_random = arg[5];
 		this.temps = arg[6];
 
+		//this.old_score = arg[8];
+
 	} // Fin init
 
 	/** @returns {void} */
