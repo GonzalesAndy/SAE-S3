@@ -327,9 +327,13 @@ class Level extends Phaser.Scene {
 		//ajout collision joueur - ennemy
 		this.physics.add.collider(ennemi, joueur);
 
+		//ajout collision joueur - porte
+		this.physics.add.collider(porte_fin, joueur);
+
 		//ajout colision porte -joueur et sol
 
 		this.physics.add.collider(porte_fin, [this.platforme,this.joueur]);
+
 
 		porte_fin.setSize(porte_fin.width, porte_fin.height / 2, true);
 
@@ -354,10 +358,6 @@ class Level extends Phaser.Scene {
 			this.scene.sendToBack();
 		}, this);
 
-		this.physics.add.collider(joueur,porte_fin,function(joueur,porte_fin){
-		
-			porte_fin.play("ouverture-porte");
-		})
 
 
 		this.scenePointDeVie = new PointDeVie(this, this.intPerso);
@@ -418,13 +418,14 @@ class Level extends Phaser.Scene {
 		this.physics.world.setBounds(0, 0, this.carte.widthInPixels, this.carte.heightInPixels);
 
 	} // Fin create()
+	
+
 
 	update(time,delta){
 		this.porte_fin.body.moves = false;
 	
 		this.timer.update(time,delta);
-		console.log("x",this.joueur.x);
-		console.log("y",this.joueur.y);
+	
 		
 		//condition de mort de chute du joueur
 		if(this.joueur.y>this.limiteBas){
@@ -437,26 +438,36 @@ class Level extends Phaser.Scene {
         this.physics.moveToObject(this.ennemi, this.joueur, this.vitesseEnnemi);
 
 		//Si le joueur arrivé à la porte, lancement stage suivant
-		if(this.joueur.x >= this.porte.x - 1 && this.joueur.x <= this.porte.x + 1 && this.joueur.y >= this.porte.y - 1 && this.joueur.y <= this.porte.y + 1){
-		
+		let joueurX = this.joueur.x;
+		let joueurY = this.joueur.y;
+		let joueurWidth = this.joueur.width;
+		let joueurHeight = this.joueur.height;
+
+		let porteX = this.porte_fin.x;
+		let porteY = this.porte_fin.y;
+		let porteWidth = this.porte_fin.width;
+	let porteHeight = this.porte_fin.height;
+
+// Vérifier si les sprites se chevauchent
+	if (joueurX < porteX + porteWidth && joueurX + joueurWidth > porteX && joueurY < porteY + porteHeight &&joueurY + joueurHeight > porteY) {
+		this.porte_fin.play("ouverture-porte");
 		while(this.nombre_random === this.old_random){
-				this.nombre_random = Math.floor(Math.random() * 10) + 1;
+			this.nombre_random = Math.floor(Math.random() * 10) + 1;
 
-			}
-			this.joueur.x = 1160;
-			this.scene.launch('Question',{ nomMap: this.nomMap, 
+		}
+		this.joueur.x = 1160;
+		this.scene.launch('Question',{ nomMap: this.nomMap, 
 
-						intPerso: this.intPerso , 
-						vitesseEnnemy: this.vitesseEnnemi, 
-						pointDeViePerso : this.pointDeViePerso,
-						questionRecap : this.questionRecap,
-						nombre_random: this.nombre_random,
-						temps: this.timer.getTimer()});
-			
-			this.scene.pause('Level');
-			this.scene.sendToBack();
-
-		} //Fin if
+					intPerso: this.intPerso , 
+					vitesseEnnemy: this.vitesseEnnemi, 
+					pointDeViePerso : this.pointDeViePerso,
+					questionRecap : this.questionRecap,
+					nombre_random: this.nombre_random,
+					temps: this.timer.getTimer()});
+		
+		this.scene.pause('Level');
+		this.scene.sendToBack();
+}
 
 		//Si le joueur touche l'ennemy 
 		if( this.joueur.x - 32 <= this.ennemi.x + 32 &&
