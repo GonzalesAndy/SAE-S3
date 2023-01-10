@@ -301,10 +301,20 @@ class Level extends Phaser.Scene {
 		new Physics(joueur);
 		new Mouvement(joueur, this.nomPerso);
 
+
 		// ennemy
 		const ennemi = this.add.sprite(this.fantome.x,this.fantome.y, "ennemy", 0);
 		ennemi.scaleX = 1/2;
 		ennemi.scaleY = 1/2;
+		
+		//porte
+		const porte_fin = this.add.sprite(this.porte.x,this.porte.y,"porte_sprite_ouvrir");
+		porte_fin.scaleX = 1/2;
+		porte_fin.scaleY = 1/2;
+
+		
+		// porte (physics)
+		new Physics(porte_fin);
 
 		// ennemy (components)
 		new Physics(ennemi);
@@ -316,6 +326,12 @@ class Level extends Phaser.Scene {
 
 		//ajout collision joueur - ennemy
 		this.physics.add.collider(ennemi, joueur);
+
+		//ajout colision porte -joueur et sol
+
+		this.physics.add.collider(porte_fin, [this.platforme,this.joueur]);
+
+		porte_fin.setSize(porte_fin.width, porte_fin.height / 2, true);
 
 		//limité la caméra
 		this.cameras.main.setBounds(0, 0, this.carte.widthInPixels, this.carte.heightInPixels);
@@ -337,6 +353,11 @@ class Level extends Phaser.Scene {
 			this.scene.pause('Level');
 			this.scene.sendToBack();
 		}, this);
+
+		this.physics.add.collider(joueur,porte_fin,function(joueur,porte_fin){
+		
+			porte_fin.play("ouverture-porte");
+		})
 
 
 		this.scenePointDeVie = new PointDeVie(this, this.intPerso);
@@ -362,6 +383,8 @@ class Level extends Phaser.Scene {
 
 		this.joueur = joueur;
 		this.ennemi = ennemi;
+		this.porte_fin = porte_fin;
+
 
 		this.events.emit("scene-awake");
 	} //Fin editorCreate
@@ -381,6 +404,7 @@ class Level extends Phaser.Scene {
 	timer;
 	temps;
 	limiteBas;
+	porte_fin;
 
 	create() {
 
@@ -396,6 +420,7 @@ class Level extends Phaser.Scene {
 	} // Fin create()
 
 	update(time,delta){
+		this.porte_fin.body.moves = false;
 	
 		this.timer.update(time,delta);
 		console.log("x",this.joueur.x);
