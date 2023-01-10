@@ -209,6 +209,24 @@
                 "key": "jumpG"
             },
             {
+                "url": "staticFiles/game/assets/animations-porte.json",
+                "type": "animation",
+                "key": "animations-porte"
+            },
+            {
+                "url": "staticFiles/game/assets/porte_sprite_ouvrir.png",
+                "frameConfig": {
+                    "frameWidth": 128,
+                    "frameHeight": 128,
+                    "startFrame": 0,
+                    "endFrame": 6,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "porte_sprite_ouvrir"
+            },
+            {
                 "url": "staticFiles/game/assets/gameOver/leaderboardButton.png",
                 "type": "image",
                 "key": "leaderboardButton"
