@@ -46,6 +46,8 @@ class Menu extends Phaser.Scene {
 		this.fond = fond;
 		this.engrenage = engrenage;
 
+		this.game.scene.getScene('Option').vitesse = 70;
+
 		this.events.emit("scene-awake");
 	} // Fin editorCreate()
 
