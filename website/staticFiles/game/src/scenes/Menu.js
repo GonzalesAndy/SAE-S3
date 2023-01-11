@@ -67,7 +67,7 @@ class Menu extends Phaser.Scene {
 	engrenage;
 
 	create() {
-		this.scale.startFullscreen();
+		//this.scale.startFullscreen();
 		this.editorCreate();
 
 	} // Fin create()
