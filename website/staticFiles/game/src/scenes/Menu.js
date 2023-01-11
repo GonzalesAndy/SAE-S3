@@ -13,12 +13,19 @@ class Menu extends Phaser.Scene {
 		fond.setOrigin(0, 0);
 
 		// titre
-		const titre = this.add.image(500, 142, "logo");
+		const titre = this.add.image(0, 0, "logo");
 
+		//Aligner titre et fond
+		Phaser.Display.Align.In.Center(titre, fond, 0, -175);
+		
 		// start
 		const titreStart = this.add.image(500, 550, "start");
 		titreStart.scaleX = 0.75;
 		titreStart.scaleY = 0.75;
+
+
+		//Aligner titre et fond
+		Phaser.Display.Align.In.Center(titreStart, fond, 0, 225);
 
 		// joueur
 		const joueur = this.add.sprite(59, 420, "idleF", 0);
@@ -30,6 +37,9 @@ class Menu extends Phaser.Scene {
 		const engrenage = this.add.image(950, 70, "engrenage");
 		engrenage.scaleX = 0.15;
 		engrenage.scaleY = 0.15;
+
+		//Aligner engrenage et fond
+		Phaser.Display.Align.In.Center(engrenage, fond, +525, -275);
 
 		//annimation boutons
 		new PushOnClick(engrenage);
@@ -57,6 +67,7 @@ class Menu extends Phaser.Scene {
 	engrenage;
 
 	create() {
+		this.scale.startFullscreen();
 		this.editorCreate();
 
 	} // Fin create()
