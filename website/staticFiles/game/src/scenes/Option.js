@@ -44,12 +44,14 @@ class Option extends Phaser.Scene {
 		new PushOnClick(quitter);
 		new PushOnClick(flecheMoinsButton);
 		new PushOnClick(flechePlusButton);
+		new PushOnClick(classement);
 
         this.quitter = quitter;
 		this.fondOption = fondOption;
 		this.difficulty = difficulty;
 		this.flecheMoinsButton = flecheMoinsButton;
 		this.flechePlusButton = flechePlusButton;
+		this.quitter = quitter;
 
         this.quitter.once('pointerup', function(event) { 
             this.scene.resume('Menu');
@@ -70,6 +72,10 @@ class Option extends Phaser.Scene {
 			if(this.vitesse == 70 || this.vitesse == 50){
 				this.vitesse += 20;
 			}
+		}, this);
+
+		this.classement.setInteractive({ useHandCursor: true }).on("pointerdown", () => {
+			window.open("http://127.0.0.1:5000/leaderboard", "_blank")
 		}, this);
 
         this.events.emit("scene-awake");
