@@ -360,7 +360,7 @@ class Level extends Phaser.Scene {
 
 
 
-		this.scenePointDeVie = new PointDeVie(this, this.intPerso);
+		this.scenePointDeVie = new PointDeVie(this, this.intPerso, this.questionRecap);
 
 		this.scenePointDeVie.pntDeVie = this.pointDeViePerso;
 		//this.scenePointDeVie.pntDeVie = 0;
