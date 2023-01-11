@@ -344,6 +344,29 @@
                 "type": "image",
                 "key": "qcm"
             },
+
+
+
+            {
+                "url": "staticFiles/game/assets/menu/option/arrowDownButton.png",
+                "type": "image",
+                "key": "arrowDownButton"
+            },
+            {
+                "url": "staticFiles/game/assets/menu/option/arrowUpButton.png",
+                "type": "image",
+                "key": "arrowUpButton"
+            },
+            {
+                "url": "staticFiles/game/assets/menu/option/leaderboardButton.png",
+                "type": "image",
+                "key": "leaderboardButton"
+            },
+            {
+                "url": "staticFiles/game/assets/menu/option/background.png",
+                "type": "image",
+                "key": "backgroundOption"
+            },
             {
                 "url": "staticFiles/game/assets/menu/option/quitter.png",
                 "type": "image",
