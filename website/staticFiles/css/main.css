@@ -29,6 +29,23 @@ footer>button:hover {
 }
 
 
+/* Game */
+
+canvas {
+    visibility: hidden;
+}
+
+#playButton {
+    position: absolute;
+    top: 50%;
+    font-size: x-large;
+    left: 50%;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 0.5% 1% 0.5% 1%;
+    transform: translate(-50%, -50%);
+}
+
+
 /* Pop-Up Footer*/
 
 #popupMention,
