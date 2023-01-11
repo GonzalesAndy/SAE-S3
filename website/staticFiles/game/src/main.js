@@ -1,16 +1,15 @@
 window.addEventListener('load', function() {
 
     var game = new Phaser.Game({
-        max: {
-            width: 1100,
-            height: 672,
-        },
-        
+
         type: Phaser.AUTO,
         backgroundColor: "#242424",
         scale: {
+            startFullScreen: true,
             mode: Phaser.Scale.FIT,
-            autoCenter: Phaser.Scale.CENTER_BOTH
+            autoCenter: Phaser.Scale.CENTER_BOTH,
+            width: 1200,
+            height: 672
         },
         physics: {
             default: "arcade",
@@ -38,4 +37,5 @@ class Boot extends Phaser.Scene {
 
         this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start("Preload"));
     }
+
 }
