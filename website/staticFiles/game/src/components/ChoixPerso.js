@@ -3,7 +3,7 @@ class ChoixPerso{
     constructor(scene, intPerso){
 
         //Feuille
-        const feuille = scene.add.image(500, 294, "feuille").setScrollFactor(0);
+        const feuille = scene.add.image(scene.game.scale.width/2, scene.game.scale.height/2, "feuille").setScrollFactor(0);
         feuille.scaleX = 1.3;
         feuille.scaleY = 1.3;
         feuille.visible = false;
@@ -71,7 +71,7 @@ class ChoixPerso{
         }, this);
         this.joueur2.once('pointerup', function(event) { 
             this.choix = 2;
-            this.scene.scene.start('Level', [1, 2, this.scene.game.scene.getScene('Option').vitesse,3, [[],[0]], 0, [0,0,0]]);
+            this.scene.scene.start('Level', [11, 2, this.scene.game.scene.getScene('Option').vitesse,3, [[],[0]], 0, [0,0,0]]);
         }, this);
 	} // Fin runChoixPerso()
 } // Fin class
