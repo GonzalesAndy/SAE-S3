@@ -1,7 +1,7 @@
 class PointDeVie extends Phaser.GameObjects.Image {
 
 	constructor(scene, intPerso) {
-		super(scene, 930, 30, "3vies");
+		super(scene, scene.game.scale.width - 150, 30, "3vies");
 
 		this.pntDeVie = 3;
 		this.setScrollFactor(0);
