@@ -7,8 +7,9 @@ class Option extends Phaser.Scene {
 	} // Fin constructor()
     editorCreate(){
 
+
 		// fondOption
-		const fondOption = this.add.image(500, 294, "backgroundOption");
+		const fondOption = this.add.image(this.game.scale.width/2, this.game.scale.height/2, "backgroundOption");
 		fondOption.scaleX = 0.8;
 		fondOption.scaleY = 0.8;
 
@@ -32,9 +33,12 @@ class Option extends Phaser.Scene {
 		Phaser.Display.Align.In.Center(classement, fondOption, 0, 125);
 
 		// quitter
-		const quitter = this.add.image(710, 100, "quitter");
+		const quitter = this.add.image(this.game.scale.width/2+ fondOption.width/2 -100,this.game.scale.height/2 - fondOption.height/2 +140 , "quitter");
 		quitter.scaleX = 0.07;
 		quitter.scaleY = 0.07;
+		//Aligner quitter et fond
+		//Phaser.Display.Align.In.Center(quitter, fondOption, fondOption.width/2, -fondOption.height/2);
+		//Phaser.Display.Align.In.Center(quitter, fondOption, fondOption.width/2 - quitter.wi, 0);
 
 		//annimation boutons
 		new PushOnClick(quitter);
