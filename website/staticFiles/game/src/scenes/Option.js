@@ -51,7 +51,7 @@ class Option extends Phaser.Scene {
 		this.difficulty = difficulty;
 		this.flecheMoinsButton = flecheMoinsButton;
 		this.flechePlusButton = flechePlusButton;
-		this.quitter = quitter;
+		this.classement = classement;
 
         this.quitter.once('pointerup', function(event) { 
             this.scene.resume('Menu');
